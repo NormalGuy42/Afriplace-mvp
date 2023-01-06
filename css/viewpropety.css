@@ -1,8 +1,43 @@
+/*Property Listing start*/
+.property_container{
+    margin: 0 auto;
+    width: 70%;
+}
+/*Image containers start*/
+.img_containers{
+    height: 300px;
+    width: 100%;
+}
+/**Image containers end/
+/*Quick info start*/
+.adress{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+.property_info{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.column{
+    text-align: center;
+}
+.column .column_row{
+    font-weight: bold;
+    font-size: 22px;
+}
+.column label{
+    color: #767676;
+}
+/**Quick info end/
+
 /*Property Details start*/
 .property_details{
     display: flex;
     justify-content: space-between;
     height: 900px;
+    margin-top: 25px;
 }
 .details_box{
     display: inline-block;
@@ -11,13 +46,7 @@
 .details_box h3{
     font-size: 22px;
     font-weight: 600;
-}
-.details_box .line{
-    background-color: black;
-    width: 92%;
-    height: 2px;
-    margin-top: 15px;
-    margin-bottom: 20px
+    margin-bottom: 8px;
 }
 .details_box .installation{
     margin-top: 20px;
