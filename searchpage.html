@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/searchpage.css">
+    <script src="https://kit.fontawesome.com/92960f12ec.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <header class="header_container">
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <!--<i class="fas fa-bars"></i>-->
+                <svg class="burger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" version="1.1" 
+                width="400" height="400" viewBox="0, 0, 400,400">
+                    <g id="svgg">
+                        <path id="path0" d="M60.169 74.148 C 47.307 78.873,46.513 97.065,58.895 103.329 L 61.011 104.400 204.800 104.400 
+                        L 348.589 104.400 350.794 103.303 C 353.391 102.011,356.886 98.629,357.821 
+                        96.503 C 358.184 95.676,358.682 94.579,358.928 94.064 C 359.575 92.705,359.507 
+                        86.134,358.823 84.000 C 357.606 80.200,354.434 76.679,350.535 74.798 L 348.050 
+                        73.600 204.725 73.648 C 99.229 73.683,61.075 73.815,60.169 74.148 M62.200 170.182 C 47.700 173.758,45.600 193.882,59.041 
+                        200.451 L 61.800 201.800 204.800 201.800 L 347.800 201.800 350.479 200.490 C 356.965 
+                        197.317,360.468 190.657,359.400 183.529 C 359.180 182.061,358.865 180.726,358.700 180.563 C 358.535 180.400,358.400 180.017,358.400 
+                        179.711 C 358.400 176.719,352.298 171.459,347.325 170.164 C 344.316 169.380,65.379 169.398,62.200 170.182 M60.973 267.526 
+                        C 46.699 272.270,46.388 293.278,60.515 298.442 C 63.768 299.631,345.832 299.631,349.085 298.442 
+                        C 363.245 293.266,362.974 272.618,348.681 267.595 C 345.416 266.447,64.422 266.380,60.973 267.526 "stroke="none" 
+                        fill="#040404" fill-rule="evenodd" class="">
+                        </path>
+                    </g>
+                </svg>
+            </label>
+            <div class="logo_area">
+                <a href="index.html"><span><label class="logo">afriplace</label></span></a>
+            </div>
+            <ul class="nav_ul">
+                <li><a href="searchpage.html">Achetez</a></li>
+                <li><a href="searchpage.html">Louez</a></li>
+                <li><a href="contact.html">Contactez-nous</a></li>
+                <li><a href="#"><img src="assets/guinea.jpg"></a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <section>
+        <div class="tab">
+            <input type="text" class="search_field">
+           <div class="tab_index home_type" id="home_type">
+            <button class="search_btn home_type" onclick="toggleHome()">
+                <div class="btn_description">
+                    <div>Appart</div>
+                    <div><svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 0 30 28" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.961 18.183l7.056-7.147 1.893 1.868-8.951 9.068-8.927-9.069 1.896-1.866z" fill="black">
+                        </path>
+                    </svg>
+                    </div>
+                </div>
+            </button>
+            <section class="dialog home_type" id="home_section">
+                <div class="dialog_header">Type d'habitat</div>
+                <ul class="dialog_list">
+                        <li><div class="dialog_div"><input type="checkbox"><label>Appart</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Hôtel</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Maison</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Terrain</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Bureaux</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Motels</label></div></li>
+                        <li><div class="dialog_div"><input type="checkbox"><label>Tout</label></div></li>
+                </ul>
+                <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+            </section>
+           </div>
+           <div class="tab_index action_type" id="action_type">
+                <button class="search_btn action_type" onclick="toggleAction()"> 
+                    <div class="btn_description">
+                        <div>Louer</div>
+                        <div><svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 0 30 28" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.961 18.183l7.056-7.147 1.893 1.868-8.951 9.068-8.927-9.069 1.896-1.866z" fill="black">
+                                </path>
+                            </svg>
+                        </div>                    
+                    </div>
+                </button>
+                <section class="dialog home_type" id="action_section">
+                    <div class="dialog_header">Type</div>
+                    <form action="">
+                        <ul class="dialog_list">
+                            <li><input type="radio" name="home_type" value="louer"><label>Louer</label></li>
+                            <li><input type="radio" name="home_type" value="acheter"><label>Acheter</label></li>
+                            <li><input type="radio" name="home_type" value="les_deux"><label>Les deux</label></li>
+                    </ul>
+                    <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                    </form>
+                </section>
+           </div>
+           <div class="tab_index prix" id="prix">
+                <button class="search_btn price_range" onclick="togglePrice()"> 
+                    <div class="btn_description">
+                        <div>Prix</div>
+                        <div><svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 0 30 28" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.961 18.183l7.056-7.147 1.893 1.868-8.951 9.068-8.927-9.069 1.896-1.866z" fill="black">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                <section class="dialog price_range" id="price_section">
+                        <div class="dialog_header">Prix</div>
+                        <form action="">
+                            <div class="input_group">
+                                <div class="input_row">
+                                    <input class="input_field" placeholder="Prix min">
+                                </div>
+                                <div class="sep"><span>-</span></div>
+                                <div class="input_row">
+                                    <input class="input_field" placeholder="Prix max">
+                                </div>  
+                        </div>
+                        <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                        </form>
+                    </section>
+           </div>
+            <div class="tab_index filter" id="filter">
+                <button class="search_btn filter" onclick="toggleFilter()">
+                    <div class="btn_description">
+                        <div>Filtrer</div>
+                        <div><svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 0 30 28" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.961 18.183l7.056-7.147 1.893 1.868-8.951 9.068-8.927-9.069 1.896-1.866z" fill="black">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                <section class="dialog filter" id="filter_section">
+                    <form class="option_container">
+                        <div class="dialog_header">Filtres</div>
+                        <div class="option">
+                            <label for="">Lits</label>
+                            <div class="room_row">
+                                <button>Tout</button>
+                                <button>1</button>
+                                <button>2</button>
+                                <button>3</button>
+                                <button>4</button>
+                                <button>5+</button>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <label>Toilettes</label>
+                            <div class="room_row">
+                                <button>Tout</button>
+                                <button>1</button>
+                                <button>2</button>
+                                <button>3</button>
+                                <button>4</button>
+                                <button>5+</button>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <label>Surface</label>
+                            <div class="input_group">
+                                <div class="input_row">
+                                    <input class="input_field" placeholder="Surface min">
+                                </div>
+                                <div class="sep"><span>-</span></div>
+                                <div class="input_row">
+                                    <input class="input_field" placeholder="Surface max">
+                                </div>  
+                        </div>
+                        </div>
+                        <div class="option">
+                            <label>Installations</label>
+                            <ul>
+                                <li><input type="checkbox">Meublé</li>
+                                <li><input type="checkbox">Climatisation</li>
+                                <li><input type="checkbox">Gardiens</li>
+                                <li><input type="checkbox">Machine à laver</li>
+                                <li><input type="checkbox">Piscine</li>
+                                <li><input type="checkbox">Parking</li>
+                                <li><input type="checkbox">Groupe Electrogène</li>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                </section>
+            </div>
+        </div>
+        <div class="searchresults_container">
+            <div class="searchresults_header">
+                <!--Lieu + Type + Bien-->
+                <h1 id="results_title">Apparts à Louer à Lambagny</h1>
+                <!--Nombre de résultats-->
+                <span id="results_num">500 résultats</span>
+            </div>
+            <div class="searchresults_grid">
+                <ul class="searchresults_list">
+                    <li>
+                        <div class="result_box">
+                            <a href="viewproperty.html" class="result_link">
+                                <div class="thumb">
+                                    <form action="get" method="post" class="save">
+                                        <button type="submit" name="save">
+                                            <svg viewBox="0 0 24 22">
+                                                <path class="HeartIcon_fill"
+                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
+                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
+                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
+                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
+                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
+                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
+                                                    6.17511e-05Z">
+                                                </path>
+                                                <path class="HeartIcon_outline"
+                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
+                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
+                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
+                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
+                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
+                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
+                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
+                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
+                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
+                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
+                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <img src="assets/living.jpg" class="">
+                                </div>
+                                <div class="info_container">
+                                    <h3 class="prix">230.000.000 GNF</h3>
+                                    <div class="flex_container">
+                                        <div class="flex">
+                                            <span><!--<i class="fas fa-map-marker-alt"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 300,350">
+                                                    <g id="svgg">
+                                                        <path id="path0" d="M182.422 59.315 C 134.494 69.319,102.262 112.788,107.757 160.012 C 111.741 194.248,141.545 254.972,190.018 
+                                                        327.613 L 199.842 342.335 203.227 337.378 C 250.833 267.672,286.972 196.664,292.191 162.580 C 301.492 101.835,242.880 46.696,
+                                                        182.422 59.315 M210.156 101.591 C 247.465 109.777,261.872 155.348,235.910 183.051 C 208.562 212.232,160.123 198.586,151.861 
+                                                        159.375 C 144.750 125.629,176.460 94.198,210.156 101.591 " stroke="none" fill="#afa7a7" fill-rule="evenodd">
+                                                        </path>
+                                                    </g>
+                                                </svg> Lambagny</span>
+                                            <span><!--<i class="fas fa-bed"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+                                                    <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
+                                                    fill="#afa7a7">
+                                                    </path>
+                                                </svg> 2</span>
+                                            <span><!--<i class="fas fa-bath"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                                    <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
+                                                    2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
+                                                    4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
+                                                    </path></svg> 3</span>
+                                            <span><!--<i class="fas fa-square"></i>-->
+                                                <svg width="20" height="20">
+                                                    <rect y="6" height="14" width="16" fill="#afa7a7"></rect>
+                                                </svg> 750m<sup>2</sup></span>
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Apparts à louer</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae, excepturi
+                                            esse tempore officia ducimus consectetur debitis id harum culpa.</p>
+                                    </div>
+                                </div>
+                                <div class="btn search">
+                                    <a href="viewproperty.html" class="btn">voir le bien</a>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result_box">
+                            <a href="viewproperty.html" class="result_link">
+                                <div class="thumb">
+                                    <form action="get" method="post" class="save">
+                                        <button type="submit" name="save">
+                                            <svg viewBox="0 0 24 22">
+                                                <path class="HeartIcon_fill"
+                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
+                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
+                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
+                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
+                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
+                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
+                                                    6.17511e-05Z">
+                                                </path>
+                                                <path class="HeartIcon_outline"
+                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
+                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
+                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
+                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
+                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
+                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
+                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
+                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
+                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
+                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
+                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <img src="assets/living.jpg" class="">
+                                </div>
+                                <div class="info_container">
+                                    <h3 class="prix">230.000.000 GNF</h3>
+                                    <div class="flex_container">
+                                        <div class="flex">
+                                            <span><!--<i class="fas fa-map-marker-alt"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 300,350">
+                                                    <g id="svgg">
+                                                        <path id="path0" d="M182.422 59.315 C 134.494 69.319,102.262 112.788,107.757 160.012 C 111.741 194.248,141.545 254.972,190.018 
+                                                        327.613 L 199.842 342.335 203.227 337.378 C 250.833 267.672,286.972 196.664,292.191 162.580 C 301.492 101.835,242.880 46.696,
+                                                        182.422 59.315 M210.156 101.591 C 247.465 109.777,261.872 155.348,235.910 183.051 C 208.562 212.232,160.123 198.586,151.861 
+                                                        159.375 C 144.750 125.629,176.460 94.198,210.156 101.591 " stroke="none" fill="#afa7a7" fill-rule="evenodd">
+                                                        </path>
+                                                    </g>
+                                                </svg> Lambagny</span>
+                                            <span><!--<i class="fas fa-bed"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+                                                    <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
+                                                    fill="#afa7a7">
+                                                    </path>
+                                                </svg> 2</span>
+                                            <span><!--<i class="fas fa-bath"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                                    <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
+                                                    2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
+                                                    4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
+                                                    </path></svg> 3</span>
+                                            <span><!--<i class="fas fa-square"></i>-->
+                                                <svg width="20" height="20">
+                                                    <rect y="6" height="14" width="16" fill="#afa7a7"></rect>
+                                                </svg> 750m<sup>2</sup></span>
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Apparts à louer</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae, excepturi
+                                            esse tempore officia ducimus consectetur debitis id harum culpa.</p>
+                                    </div>
+                                </div>
+                                <div class="btn search">
+                                    <a href="viewproperty.html" class="btn">voir le bien</a>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result_box">
+                            <a href="viewproperty.html" class="result_link">
+                                <div class="thumb">
+                                    <form action="get" method="post" class="save">
+                                        <button type="submit" name="save">
+                                            <svg viewBox="0 0 24 22">
+                                                <path class="HeartIcon_fill"
+                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
+                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
+                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
+                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
+                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
+                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
+                                                    6.17511e-05Z">
+                                                </path>
+                                                <path class="HeartIcon_outline"
+                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
+                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
+                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
+                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
+                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
+                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
+                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
+                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
+                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
+                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
+                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <img src="assets/living.jpg" class="">
+                                </div>
+                                <div class="info_container">
+                                    <h3 class="prix">230.000.000 GNF</h3>
+                                    <div class="flex_container">
+                                        <div class="flex">
+                                            <span><!--<i class="fas fa-map-marker-alt"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 300,350">
+                                                    <g id="svgg">
+                                                        <path id="path0" d="M182.422 59.315 C 134.494 69.319,102.262 112.788,107.757 160.012 C 111.741 194.248,141.545 254.972,190.018 
+                                                        327.613 L 199.842 342.335 203.227 337.378 C 250.833 267.672,286.972 196.664,292.191 162.580 C 301.492 101.835,242.880 46.696,
+                                                        182.422 59.315 M210.156 101.591 C 247.465 109.777,261.872 155.348,235.910 183.051 C 208.562 212.232,160.123 198.586,151.861 
+                                                        159.375 C 144.750 125.629,176.460 94.198,210.156 101.591 " stroke="none" fill="#afa7a7" fill-rule="evenodd">
+                                                        </path>
+                                                    </g>
+                                                </svg> Lambagny</span>
+                                            <span><!--<i class="fas fa-bed"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+                                                    <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
+                                                    fill="#afa7a7">
+                                                    </path>
+                                                </svg> 2</span>
+                                            <span><!--<i class="fas fa-bath"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                                    <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
+                                                    2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
+                                                    4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
+                                                    </path></svg> 3</span>
+                                            <span><!--<i class="fas fa-square"></i>-->
+                                                <svg width="20" height="20">
+                                                    <rect y="6" height="14" width="16" fill="#afa7a7"></rect>
+                                                </svg> 750m<sup>2</sup></span>
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Apparts à louer</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae, excepturi
+                                            esse tempore officia ducimus consectetur debitis id harum culpa.</p>
+                                    </div>
+                                </div>
+                                <div class="btn search">
+                                    <a href="viewproperty.html" class="btn">voir le bien</a>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result_box">
+                            <a href="viewproperty.html" class="result_link">
+                                <div class="thumb">
+                                    <form action="get" method="post" class="save">
+                                        <button type="submit" name="save">
+                                            <svg viewBox="0 0 24 22">
+                                                <path class="HeartIcon_fill"
+                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
+                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
+                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
+                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
+                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
+                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
+                                                    6.17511e-05Z">
+                                                </path>
+                                                <path class="HeartIcon_outline"
+                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
+                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
+                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
+                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
+                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
+                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
+                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
+                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
+                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
+                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
+                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <img src="assets/living.jpg" class="">
+                                </div>
+                                <div class="info_container">
+                                    <h3 class="prix">230.000.000 GNF</h3>
+                                    <div class="flex_container">
+                                        <div class="flex">
+                                            <span><!--<i class="fas fa-map-marker-alt"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 300,350">
+                                                    <g id="svgg">
+                                                        <path id="path0" d="M182.422 59.315 C 134.494 69.319,102.262 112.788,107.757 160.012 C 111.741 194.248,141.545 254.972,190.018 
+                                                        327.613 L 199.842 342.335 203.227 337.378 C 250.833 267.672,286.972 196.664,292.191 162.580 C 301.492 101.835,242.880 46.696,
+                                                        182.422 59.315 M210.156 101.591 C 247.465 109.777,261.872 155.348,235.910 183.051 C 208.562 212.232,160.123 198.586,151.861 
+                                                        159.375 C 144.750 125.629,176.460 94.198,210.156 101.591 " stroke="none" fill="#afa7a7" fill-rule="evenodd">
+                                                        </path>
+                                                    </g>
+                                                </svg> Lambagny</span>
+                                            <span><!--<i class="fas fa-bed"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+                                                    <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
+                                                    fill="#afa7a7">
+                                                    </path>
+                                                </svg> 2</span>
+                                            <span><!--<i class="fas fa-bath"></i>-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                                    <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
+                                                    2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
+                                                    4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
+                                                    </path></svg> 3</span>
+                                            <span><!--<i class="fas fa-square"></i>-->
+                                                <svg width="20" height="20">
+                                                    <rect y="6" height="14" width="16" fill="#afa7a7"></rect>
+                                                </svg> 750m<sup>2</sup></span>
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Apparts à louer</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae, excepturi
+                                            esse tempore officia ducimus consectetur debitis id harum culpa.</p>
+                                    </div>
+                                </div>
+                                <div class="btn search">
+                                    <a href="viewproperty.html" class="btn">voir le bien</a>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="searchresult_pagination"></div>
+        </div>
+    </section>
+    <footer class="footer">
+        <section class="flex">
+            <div class="box">
+                <h2 style="color:grey">Nos contacts</h2>
+                <a href="tel:224622658967"><i class="fas fa-phone"></i><span>224622658967</span></a>
+                <a href="mailto:madioudiallo5742@gmail.com"><i
+                        class="fa fa-envelope"></i><span>madioudiallo5742@gmail.com</span></a>
+            </div>
+
+            <div class="box">
+                <h2 style="color:grey">Nos réseaux</h2>
+                <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
+                <a href="#"><span>facebook</span><i class="fab fa-facebook"></i></a>
+                <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
