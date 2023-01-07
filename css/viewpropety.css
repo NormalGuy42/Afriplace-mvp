@@ -19,6 +19,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-top: 8px;
 }
 .column{
     text-align: center;
@@ -26,6 +27,9 @@
 .column .column_row{
     font-weight: bold;
     font-size: 22px;
+}
+sup{
+    font-size: 13px;
 }
 .column label{
     color: #767676;
@@ -37,7 +41,7 @@
     display: flex;
     justify-content: space-between;
     height: 900px;
-    margin-top: 25px;
+    margin-top: 16px;
 }
 .details_box{
     display: inline-block;
@@ -67,3 +71,35 @@
 }
 /*Property Details end*/
 /*Property Listing end*/
+
+@media (max-width:500px) {
+    .img_containers{
+        height: 230px;
+    }
+    .property_container{
+        width: 85%;
+    }
+    .property_info{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }   
+    .column .column_row{
+        font-weight: normal;
+        font-size: 18px;
+    }
+    .column_row.price {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .column.price{
+        width: 100%;
+        display: flex
+    }
+    .column .price_label{
+        display: none;
+    } 
+    .contact_box{
+        display: none;
+    }
+}
