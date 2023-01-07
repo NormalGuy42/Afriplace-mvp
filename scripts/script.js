@@ -1,1 +1,83 @@
+//toggle tabs start
+function toggleHome() {
+  document.getElementById("home_section").classList.toggle("show");
+}
+function toggleAction() {
+  document.getElementById("action_section").classList.toggle("show");
+}
+function togglePrice() {
+  document.getElementById("price_section").classList.toggle("show");
+}
+function toggleFilter() {
+  document.getElementById("filter_section").classList.toggle("show");
+}
+//toggle tabs end
+
+// window.onclick = function(event) {
+//   var dialog = document.querySelector('.dialog home_type');
+//   if (!event.target.matches(dialog)){
+//     console.log('Clicked Inside');
+//   }else{
+//     console.log('Clicked Outside');
+//   }
+// }
+;
+document.addEventListener('click',function(e){
+  var dialog = document.getElementById('home_section');
+  if(e.target.closest("#home_section")){
+    console.log('Clicked inside')
+  }else{
+    console.log('Clicked outside');
+    console.log(dialog.style.display);
+  }
+})
+
+var dialog = document.querySelector('#results_title');
+
+//All the input sections
+var homeInput = document.querySelector('#homeInput');
+var actionInput = document.querySelector('#actionInput');
+var priceInput = document.querySelector('#priceInput');
+//filter
+var filterInput = document.getElementById('filter_input');
+var filterSection = document.getElementById('filter_section');
+
+//Creating an adding Price section
+function addPriceSection(input,text){
+  //Create div and label section
+  const div = document.createElement('div');
+  const label = document.createElement('label')
+  //Configure div and label
+  label.innerText = text
+  div.classList.add('option');
+  div.appendChild(label)
+  //Append elements to filter section
+  div.innerHTML += input.innerHTML;
+  filterInput.prepend(div);
+}
+function add(){
+  const div = document.createElement('div');
+  const label = document.createElement('label')
+  //Configure div and label
+  label.innerText = 'Maison'
+  div.classList.add('option');
+  div.appendChild(label)
+  //Append elements to filter section
+  div.innerHTML += homeInput.innerHTML;
+  filterInput.prepend(div);
+}
+
+
+
+// filter.innerHTML += priceSection.innerHTML;
+// if(priceBtn.style.display == 'none' ){
+//   filter.innerHTML += priceBtn.innerHTML;
+//   console.log('price was added')
+// }else if(actionBtn.style.display == 'none'){
+//   filter.innerHTML += actionBtn.innerHTML;
+//   console.log('action was added')
+// }else if(homeBtn.style.display == 'none'){
+//   filter.innerHTML += homeBtn.innerHTML;
+//   console.log('home was added')
+// }
 
