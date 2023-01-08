@@ -69,6 +69,26 @@ sup{
     text-align: center;
     display: block;
 }
+.contact_btn{
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: orange;
+    text-decoration: none;
+    border: 1px solid darkorange;
+}
+/*Contact box for mobile users*/
+.mobile_contact_box{
+    display: none;
+    padding: 10px;
+    width: 100%;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: white;
+}
+
 /*Property Details end*/
 /*Property Listing end*/
 
@@ -101,5 +121,8 @@ sup{
     } 
     .contact_box{
         display: none;
+    }
+    .mobile_contact_box{
+        display: flex;
     }
 }
