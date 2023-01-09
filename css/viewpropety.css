@@ -40,7 +40,7 @@ sup{
 .property_details{
     display: flex;
     justify-content: space-between;
-    height: 900px;
+    /* height: 900px; */
     margin-top: 16px;
 }
 .details_box{
@@ -54,10 +54,18 @@ sup{
 }
 .details_box .installation{
     margin-top: 20px;
+    white-space: nowrap;
+}
+.installation .installation_list{
+    column-count: 2;
+}
+.installation li::before{
+    content: "• ";
 }
 .contact_box{
     position: sticky;
-    top: 3rem;
+    top: 2rem;
+    padding: 30px 0;
     display: inline-block;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -67,12 +75,16 @@ sup{
 }
 .contact_box label{
     text-align: center;
+    color: orange;
+    font-weight: bold;
     display: block;
 }
 .contact_btn{
     color: white;
     font-weight: bold;
     border-radius: 3px;
+    height: 36px;
+    padding: 0 5px;
     background-color: orange;
     text-decoration: none;
     border: 1px solid darkorange;
@@ -87,29 +99,50 @@ sup{
     top: 0;
     z-index: 5;
     background-color: white;
+    border-top: 1px solid #c1bebe;
+    border-bottom: 1px solid #c1bebe;
 }
-
+.contact_id{
+    text-align: center;
+}
+.contact_id p{
+    color: orange;
+    font-weight: bold;
+}
 /*Property Details end*/
 /*Property Listing end*/
-
+@media (max-width:1300px) {
+    .contact_box{
+        min-width: 200px;
+    }
+}
 @media (max-width:500px) {
     .img_containers{
         height: 230px;
     }
     .property_container{
-        width: 85%;
+        width: 100%;
+        margin: 0;
     }
     .property_info{
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .property_details{
+        width: 85%;
+        margin: 0 auto;
+        height: 100%;
     }   
     .column .column_row{
         font-weight: normal;
         font-size: 18px;
     }
     .column_row.price {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
     }
     .column.price{
