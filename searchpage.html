@@ -64,17 +64,19 @@
                 </div>
             </button>
             <section class="dialog home_type" id="home_section">
-                <div class="dialog_header">Type d'habitat</div>
-                <ul class="dialog_list">
-                        <li><div class="dialog_div"><input type="checkbox"><label>Appart</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Hôtel</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Maison</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Terrain</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Bureaux</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Motels</label></div></li>
-                        <li><div class="dialog_div"><input type="checkbox"><label>Tout</label></div></li>
-                </ul>
-                <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                <form>
+                    <div class="dialog_header">Type d'habitat</div>
+                    <div id="homeInput">
+                        <ul class="dialog_list">
+                            <li><div><input type="checkbox"><label>Appart</label></div></li>
+                            <li><div><input type="checkbox"><label>Maison</label></div></li>
+                            <li><div><input type="checkbox"><label>Terrain</label></div></li>
+                            <li><div><input type="checkbox"><label>Bureaux</label></div></li>
+                            <li><div><input type="checkbox"><label>Tout</label></div></li>
+                        </ul>
+                    </div>
+                    <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                </form>
             </section>
            </div>
            <div class="tab_index action_type" id="action_type">
@@ -91,12 +93,14 @@
                 <section class="dialog home_type" id="action_section">
                     <div class="dialog_header">Type</div>
                     <form action="">
-                        <ul class="dialog_list">
-                            <li><input type="radio" name="home_type" value="louer"><label>Louer</label></li>
-                            <li><input type="radio" name="home_type" value="acheter"><label>Acheter</label></li>
-                            <li><input type="radio" name="home_type" value="les_deux"><label>Les deux</label></li>
-                    </ul>
-                    <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
+                        <div class="actionInput">
+                            <ul class="dialog_list" id="action_input">
+                                <li><input type="radio" name="home_type" value="louer"><label>Louer</label></li>
+                                <li><input type="radio" name="home_type" value="acheter"><label>Acheter</label></li>
+                                <li><input type="radio" name="home_type" value="les_deux"><label>Les deux</label></li>
+                            </ul>
+                        </div>
+                        <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
                     </form>
                 </section>
            </div>
@@ -113,16 +117,18 @@
                 </button>
                 <section class="dialog price_range" id="price_section">
                         <div class="dialog_header">Prix</div>
-                        <form action="">
-                            <div class="input_group">
-                                <div class="input_row">
-                                    <input class="input_field" placeholder="Prix min">
+                        <form action="" class="price_input">
+                            <div id="priceInput">
+                                <div class="input_group">
+                                    <div class="input_row">
+                                        <input class="input_field" placeholder="Prix min">
+                                    </div>
+                                    <div class="sep"><span>-</span></div>
+                                    <div class="input_row">
+                                        <input class="input_field" placeholder="Prix max">
+                                    </div>  
                                 </div>
-                                <div class="sep"><span>-</span></div>
-                                <div class="input_row">
-                                    <input class="input_field" placeholder="Prix max">
-                                </div>  
-                        </div>
+                            </div>
                         <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
                         </form>
                     </section>
@@ -141,51 +147,53 @@
                 <section class="dialog filter" id="filter_section">
                     <form class="option_container">
                         <div class="dialog_header">Filtres</div>
-                        <div class="option">
-                            <label for="">Lits</label>
-                            <div class="room_row">
-                                <button>Tout</button>
-                                <button>1</button>
-                                <button>2</button>
-                                <button>3</button>
-                                <button>4</button>
-                                <button>5+</button>
-                            </div>
-                        </div>
-                        <div class="option">
-                            <label>Toilettes</label>
-                            <div class="room_row">
-                                <button>Tout</button>
-                                <button>1</button>
-                                <button>2</button>
-                                <button>3</button>
-                                <button>4</button>
-                                <button>5+</button>
-                            </div>
-                        </div>
-                        <div class="option">
-                            <label>Surface</label>
-                            <div class="input_group">
-                                <div class="input_row">
-                                    <input class="input_field" placeholder="Surface min">
+                        <div id="filter_input">
+                            <div class="option">
+                                <label for="">Lits</label>
+                                <div class="room_row">
+                                    <button>Tout</button>
+                                    <button>1</button>
+                                    <button>2</button>
+                                    <button>3</button>
+                                    <button>4</button>
+                                    <button>5+</button>
                                 </div>
-                                <div class="sep"><span>-</span></div>
-                                <div class="input_row">
-                                    <input class="input_field" placeholder="Surface max">
-                                </div>  
-                        </div>
-                        </div>
-                        <div class="option">
-                            <label>Installations</label>
-                            <ul>
-                                <li><input type="checkbox">Meublé</li>
-                                <li><input type="checkbox">Climatisation</li>
-                                <li><input type="checkbox">Gardiens</li>
-                                <li><input type="checkbox">Machine à laver</li>
-                                <li><input type="checkbox">Piscine</li>
-                                <li><input type="checkbox">Parking</li>
-                                <li><input type="checkbox">Groupe Electrogène</li>
-                            </ul>
+                            </div>
+                            <div class="option">
+                                <label>Toilettes</label>
+                                <div class="room_row">
+                                    <button>Tout</button>
+                                    <button>1</button>
+                                    <button>2</button>
+                                    <button>3</button>
+                                    <button>4</button>
+                                    <button>5+</button>
+                                </div>
+                            </div>
+                            <div class="option">
+                                <label>Surface</label>
+                                <div class="input_group">
+                                    <div class="input_row">
+                                        <input class="input_field" placeholder="Surface min">
+                                    </div>
+                                    <div class="sep"><span>-</span></div>
+                                    <div class="input_row">
+                                        <input class="input_field" placeholder="Surface max">
+                                    </div>  
+                            </div>
+                            </div>
+                            <div class="option">
+                                <label>Installations</label>
+                                <ul>
+                                    <li><input type="checkbox">Meublé</li>
+                                    <li><input type="checkbox">Climatisation</li>
+                                    <li><input type="checkbox">Gardiens</li>
+                                    <li><input type="checkbox">Machine à laver</li>
+                                    <li><input type="checkbox">Piscine</li>
+                                    <li><input type="checkbox">Parking</li>
+                                    <li><input type="checkbox">Groupe Electrogène</li>
+                                </ul>
+                            </div>
                         </div>
                     </form>
                     <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
@@ -205,34 +213,6 @@
                         <div class="result_box">
                             <a href="viewproperty.html" class="result_link">
                                 <div class="thumb">
-                                    <form action="get" method="post" class="save">
-                                        <button type="submit" name="save">
-                                            <svg viewBox="0 0 24 22">
-                                                <path class="HeartIcon_fill"
-                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
-                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
-                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
-                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
-                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
-                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
-                                                    6.17511e-05Z">
-                                                </path>
-                                                <path class="HeartIcon_outline"
-                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
-                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
-                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
-                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
-                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
-                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
-                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
-                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
-                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
-                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
-                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </form>
                                     <img src="assets/living.jpg" class="">
                                 </div>
                                 <div class="info_container">
@@ -283,34 +263,6 @@
                         <div class="result_box">
                             <a href="viewproperty.html" class="result_link">
                                 <div class="thumb">
-                                    <form action="get" method="post" class="save">
-                                        <button type="submit" name="save">
-                                            <svg viewBox="0 0 24 22">
-                                                <path class="HeartIcon_fill"
-                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
-                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
-                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
-                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
-                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
-                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
-                                                    6.17511e-05Z">
-                                                </path>
-                                                <path class="HeartIcon_outline"
-                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
-                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
-                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
-                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
-                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
-                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
-                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
-                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
-                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
-                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
-                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </form>
                                     <img src="assets/living.jpg" class="">
                                 </div>
                                 <div class="info_container">
@@ -361,34 +313,6 @@
                         <div class="result_box">
                             <a href="viewproperty.html" class="result_link">
                                 <div class="thumb">
-                                    <form action="get" method="post" class="save">
-                                        <button type="submit" name="save">
-                                            <svg viewBox="0 0 24 22">
-                                                <path class="HeartIcon_fill"
-                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
-                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
-                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
-                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
-                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
-                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
-                                                    6.17511e-05Z">
-                                                </path>
-                                                <path class="HeartIcon_outline"
-                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
-                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
-                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
-                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
-                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
-                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
-                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
-                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
-                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
-                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
-                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </form>
                                     <img src="assets/living.jpg" class="">
                                 </div>
                                 <div class="info_container">
@@ -439,34 +363,6 @@
                         <div class="result_box">
                             <a href="viewproperty.html" class="result_link">
                                 <div class="thumb">
-                                    <form action="get" method="post" class="save">
-                                        <button type="submit" name="save">
-                                            <svg viewBox="0 0 24 22">
-                                                <path class="HeartIcon_fill"
-                                                    d="M17.3996 6.17511e-05C15.5119 0.00908657 13.7078 0.779206 12.3955 2.13608L11.9995 2.54408L11.6035 
-                                                    2.13608C10.2912 0.779206 8.48708 0.00908657 6.59946 6.17511e-05C5.15317 -0.00630912 3.7479 0.480456 
-                                                    2.61543 1.38007C1.08163 2.60976 0.137114 4.42893 0.0137749 6.39093C-0.109564 8.35294 0.5997 10.2761 
-                                                    1.96743 11.6882L2.51943 12.2522L11.3995 21.3482C11.5575 21.5095 11.7738 21.6004 11.9995 21.6004C12.2253 
-                                                    21.6004 12.4415 21.5095 12.5995 21.3482L21.4796 12.2522L22.0316 11.6882C23.3993 10.2761 24.1086 8.35294 
-                                                    23.9852 6.39093C23.8619 4.42893 22.9174 2.60976 21.3836 1.38007C20.2511 0.480456 18.8458 -0.00630912 17.3996 
-                                                    6.17511e-05Z">
-                                                </path>
-                                                <path class="HeartIcon_outline"
-                                                    d="M12.3955 2.13608C13.7078 0.779206 15.5119 0.00908657 17.3996 6.17511e-05C18.8458 -0.00630912 
-                                                    20.2511 0.480456 21.3836 1.38007C22.9174 2.60976 23.8619 4.42893 23.9852 6.39093C24.1086 8.35294 
-                                                    23.3993 10.2761 22.0316 11.6882L21.4796 12.2522L12.5995 21.3482C12.4415 21.5095 12.2253 21.6004 
-                                                    11.9995 21.6004C11.7738 21.6004 11.5575 21.5095 11.3995 21.3482L2.51943 12.2522L1.96743 11.6882C0.5997 
-                                                    10.2761 -0.109564 8.35294 0.0137748 6.39093C0.137114 4.42893 1.08163 2.60976 2.61543 1.38007C3.7479 
-                                                    0.480456 5.15317 -0.00630912 6.59946 6.17511e-05C8.48708 0.00908657 10.2912 0.779206 11.6035 2.13608L11.9995 
-                                                    2.54408L12.3955 2.13608ZM19.8956 3.25208C19.1854 2.69122 18.3045 2.39053 17.3996 2.40008C16.1576 2.41525 14.9717 
-                                                    2.91978 14.0995 3.80409L13.7155 4.21209L12.4315 5.5321C12.1927 5.77011 11.8063 5.77011 11.5675 5.5321L10.2835 4.21209L9.8995 
-                                                    3.80409C9.0273 2.91978 7.84145 2.41525 6.59947 2.40008C5.69165 2.39734 4.81045 2.70661 4.10345 3.27608C3.09352 4.06928 2.47292 
-                                                    5.25804 2.39944 6.54011C2.31914 7.81608 2.78104 9.06669 3.67145 9.98414L4.22345 10.5601L11.9995 18.5162L19.8476 10.5601L20.3996 
-                                                    9.98414C21.2638 9.05458 21.6991 7.80545 21.5996 6.54011C21.5329 5.2495 20.9116 4.05071 19.8956 3.25208Z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </form>
                                     <img src="assets/living.jpg" class="">
                                 </div>
                                 <div class="info_container">
@@ -513,10 +409,33 @@
                             </a>
                         </div>
                     </li>
-                    
                 </ul>
             </div>
-            <div class="searchresult_pagination"></div>
+            <div class="searchresult_pagination">
+                <ul>
+                    <li>
+                        <a>
+                            <svg viewBox="0 0 32 32" class="chevron left" aria-hidden="true" 
+                            focusable="false" role="img"><title>Chevron Left</title>
+                            <path stroke="none" d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 
+                            2.83l12 12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"></path></svg>
+                        </a>
+                    </li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>
+                        <a>
+                            <svg viewBox="0 0 32 32" 
+                            class="chevron right" 
+                            aria-hidden="true" focusable="false" role="img"><title>Chevron Right</title>
+                            <path stroke="none" d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 
+                            12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"></path></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
     <footer class="footer">
