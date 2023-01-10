@@ -8,10 +8,12 @@ section .tab .search_field{
     font-size: 20px;
     position: relative;
     top: 2px;
+    border: 1px solid;
 }
-section .tab .tab_index{
-    display: inline-block;
-}
+.tab_index.home_type{display: inline-block;}
+.tab_index.action_type{display: inline-block;}
+#prix{display: inline-block;}
+.tab_index.filter{display: inline-block;}
 
 .search_btn{
     background-color: white;
@@ -72,7 +74,7 @@ section .input_group{
     padding: 0px 10px 10px;
 }
 section .input_group .input_row{
-    flex: 0 0 46%;
+    flex: 0 0 40%;
 }
 section .input_group .input_row label{
     display: block;
@@ -118,7 +120,12 @@ section .dialog .option{
 }
 section .dialog .option label{
     font-weight: bold;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+}
+/*This is for when the home_section enters the filter section*/
+/*Need this otherwise all the labels in the list become bold*/
+.option .dialog_list li label {
+    font-weight: normal;
 }
 section .option .input_group .sep{
     padding-top: 10px;
@@ -186,7 +193,7 @@ section .dialog .option .room_row button:last-child{
     top: 0px;
     margin: 0;
     border-radius: .5rem;
-    size-adjust: cover; 
+    object-fit: cover; 
 }
 /*Thumbnail image end*/
 /*Save button start*/
@@ -291,13 +298,32 @@ section .dialog .option .room_row button:last-child{
 }
 /*Button end*/
 /*Search Results end*/
-@media (max-width:900px) {
+/*Pagination start*/
+.searchresult_pagination {
+    margin-top: 35px;
+}
+.searchresult_pagination ul{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+.searchresult_pagination svg{
+    height: 16px;
+    width: 16px;
+    transform: rotate(270deg)
+}
+.searchresult_pagination svg.chevron.left{
+    transform: rotate(-270deg)
+}
+/*Pagination end*/
+@media(max-width:900px) {
     .searchresults_list{
         grid-template-columns: repeat(auto-fit,22rem);
     }
 }
 @media(max-width:755px) {
-    section .tab_index.prix{
+    #prix{
         display: none;
     }
 }
@@ -318,10 +344,23 @@ section .dialog .option .room_row button:last-child{
     .searchresults_list{
         grid-template-columns: repeat(auto-fit,25rem);
     }
-}
-@media (max-width:455px) {
     section .tab .search_field{
-        width: 230px;
+        margin-right: 30px;
+    }
+}
+@media (max-width:475px) {
+    section .tab .search_field{
+        width: 200px;
+        margin-right: 20px;
+    }
+}
+@media (max-width:370px) {
+    section .tab .search_field{
+        width: 150px;
+        margin-right: 5px;
+    }
+    .searchresults_list{
+        grid-template-columns: repeat(auto-fit,21rem);
     }
 }
 
