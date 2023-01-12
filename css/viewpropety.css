@@ -1,172 +1,239 @@
-/*Login start*/
-.sign-in_box{
-    width: 100%;
-    padding-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-form{
+/*Property Listing start*/
+.property_container{
     margin: 0 auto;
+    margin-top: 20px;
+    width: 70%;
 }
-.userbox{
-    width: 460px;
-    text-align: center;
-    padding: 30px;
-    /* box-shadow: 0 0 12px 0 rgb(0 0 0 / 15%); */
-    display: block;
-    border-bottom: 1px solid rgb(216, 216, 216);
-}
-h3{
-    font-size: 28px;
-    font-weight: normal;
-}
-.connexion{
+/*Image containers start*/
+.img_containers{
+    height: 300px;
     width: 100%;
-    height: 45px;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: orange;
-    display: block;
-    margin-bottom: 8px;
-    cursor: pointer;
-}
-.userbox .forgot{
-    margin-bottom: 16px;
-}
-.userbox .forgot a{
-    text-decoration: none;
-    color: black;
-    font-weight: normal;
-}
-.userbox .forgot a:hover{
-    text-decoration: underline;
-    color: darkorange;
-}
-.login_field{
-    display: block;
-    width: 100%;
-    margin: 1rem 0;
-    padding: 0.6rem;
-    font-size: 1.2rem;
-}
-.login_field.textarea{
-    height: 150px;
-    margin: 0;
-    font-family: arialm
-}
-/*Registering start*/
-.login_field.name{
-    display: inline;
-    width: 100%;
-    margin-bottom: 0
-}
-.userbox ul{
     display: flex;
-}
-.userbox ul li{
-    display: inline-block;
-}
-.userbox ul li:first-child{
-    margin-right: 16px;
-}
-/*Registering end */
-.connect_options{
-    border-top: 1px solid rgb(209, 209, 213);
-    padding: 16px 8px 0px;
-}
-.connect_options .login_button{
-    width: 100%;
-    display: block;
-    margin: 1rem 0;
-    height: 38px;
-    font-size: 15px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     position: relative;
+}
+.img_containers ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.slide{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    inset: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+.slide[data-active]{
+    opacity: 1;
+    z-index: 2;
+    transition-delay:0ms ;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0;
+    top: 0;
+    position: absolute;
+}
+.more_photos{
+    position: absolute;
+    top: 87%;
+    right: 2%;
+}
+.more_photos button{
+    border-radius: 4px;
+    text-align: center;
+    background: #333;
+    border: 1px solid black;
+    font-weight: bold;
+    padding: 5px;
+    color: white;
+    font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif;
+}
+.img_containers .slide-btn{
+    position: absolute;
+    top:45%;
+    /* left: 0px; */
+    background-color: white;
+    height: 48px;
+    width: 28px;
+    border: none;
+    padding: 6px;
     cursor: pointer;
 }
-.connect_options .login_button.btn-facebook{
-    background-color: #006AFF;
-    border-color: #1877f2;
-    color: white;
+.img_containers .slide-btn.next{
+    right: 0px;
 }
-.connect_options .login_button.btn-google{
-    background-color: white;
+.img_containers .slide-btn svg{
+    transform: rotate(270deg);
 }
-.userbox .connect_options .login_button svg{
-    position: absolute;
-    left: 10%;
-    height: 18px;
+.img_containers .slide-btn svg.chevron.left{
+    transform: rotate(-270deg);
 }
-.link_text{
-    color: orangered;
-}
-/*Login start*/
-/*CSS for contact page starts*/
-.contact_section{
+/**Image containers end/
+/*Quick info start*/
+.adress{
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
+    margin-top: 10px;
     width: 100%;
-    padding: 30px 20px;
+    align-items: flex-start;
 }
-.contact_section .text-center{
-    text-align: center!important;
-    margin-bottom: 25px;
-}
-.contact_section .text-center h3{
-    font-weight: bold;
-}
-.contact_img{
-    flex: 1 1 45rem;
-}
-.contact_img img{
-    /* height: 500px;
-    width: 650px */
-    width: 100%;
-}
-.contact_form{
-    box-shadow: 0 0 15px 0 rgb(0 0 0 / 15%);
-    padding: 30px 30px 16px;
-    width: 500px;
-    border-radius: 5px;
-    margin: 0;
-    flex:1 1 30rem;
-}
-.contact_form label {
-    display: block;
-    font-weight: bold;
-    color: #686868;
-}
-.contact_form .contact_row{
-    margin-bottom: 1rem;
-    flex: 0 0 50%;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.contact_form .contact_group{
+.property_info{
     display: flex;
-}
-.login_field.contact{
-    display: inline;
     width: 100%;
-    margin: 0;
+    justify-content: space-between;
+    margin-top: 8px;
 }
-.contact_button{
-    display: flex;
-    justify-content: center;
-}
-.connexion.contact{
-    width: 75px;
-    font-size: 16px;
+.column{
     text-align: center;
 }
-/*CSS for contact page end*/
+.column .column_row{
+    font-weight: bold;
+    font-size: 22px;
+}
+sup{
+    font-size: 13px;
+}
+.column label{
+    color: #767676;
+}
+/**Quick info end/
+
+/*Property Details start*/
+.property_details{
+    display: flex;
+    justify-content: space-between;
+    /* height: 900px; */
+    margin-top: 16px;
+}
+.details_box{
+    display: inline-block;
+    max-width: 730px;
+}
+.details_box h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.details_box .installation{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+.installation .installation_list{
+    column-count: 2;
+}
+.installation li::before{
+    content: "• ";
+}
+.contact_box{
+    position: sticky;
+    top: 2rem;
+    padding: 30px 0;
+    display: inline-block;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    text-align: center;
+    width: 300px;
+    height: 150px;
+}
+.contact_box label{
+    text-align: center;
+    color: orange;
+    font-weight: bold;
+    display: block;
+}
+.contact_btn{
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    height: 36px;
+    padding: 0 5px;
+    background-color: orange;
+    text-decoration: none;
+    border: 1px solid darkorange;
+}
+/*Contact box for mobile users*/
+.mobile_contact_box{
+    display: none;
+    padding: 14px 0px;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    width: 88%;
+    margin: 0 auto;
+    background-color: white;
+    /* border-top: 1px solid #d3cdcd;
+    border-bottom: 1px solid #d3cdcd;  */
+}
+.contact_id{
+    text-align: center;
+}
+.contact_id p{
+    color: orange;
+    font-weight: bold;
+}
+/*Property Details end*/
+/*Property Listing end*/
+@media (max-width:1300px) {
+    .contact_box{
+        min-width: 200px;
+    }
+}
+@media (max-width:900px) {
+    img{
+        width: 100%;
+    }
+    .container{
+        display: none;
+    }
+}
+@media (max-width:500px) {
+    .img_containers{
+        height: 230px;
+    }
+    .property_container{
+        width: 100%;
+        margin: 0;
+    }
+    .property_info{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .property_details{
+        width: 85%;
+        margin: 0 auto;
+        height: 100%;
+    }   
+    .column .column_row{
+        font-weight: normal;
+        font-size: 18px;
+    }
+    .column_row.price {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .column.price{
+        width: 100%;
+        display: flex
+    }
+    .column .price_label{
+        display: none;
+    } 
+    .contact_box{
+        display: none;
+    }
+    .mobile_contact_box{
+        display: flex;
+    }
+}
 
