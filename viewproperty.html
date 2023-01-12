@@ -49,16 +49,32 @@
         <div class="property_container">
             <div class="exit_arrow">
             </div>
-            <div class="img_containers">
-                <img src="assets/living.jpg">
-                <div class="container">
-                    <img src="assets/living.jpg">
-                    <img src="assets/living.jpg">
-                </div>
+            <div class="img_containers" data-slide-container>
+                <ul data-slides>
+                    <li class="slide" data-active><img src="assets/living.jpg" alt=""></li>
+                    <li class="slide"><img src="assets/new-living.jpg" alt=""></li>
+                    <li class="slide"><img src="assets/maison.png" alt=""></li>
+                </ul>
                 <div class="more_photos">
-                    <button>Voir 30 photos</button>
+                    <button>1 sur 30</button>
                 </div>
-            </div>  
+                <button class="slide-btn prev" data-slide-btn="prev">
+                    <svg viewBox="0 0 32 32" 
+                        class="chevron left" 
+                        aria-hidden="true" focusable="false" role="img"><title>Chevron Left</title>
+                        <path stroke="none" d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 
+                        12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"></path>
+                    </svg>
+                </button>
+                <button class="slide-btn next" data-slide-btn="next">
+                    <svg viewBox="0 0 32 32" 
+                        class="chevron right" 
+                        aria-hidden="true" focusable="false" role="img"><title>Chevron Right</title>
+                        <path stroke="none" d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 
+                        12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"></path>
+                    </svg>
+                </button>
+            </div>    
             <div class="adress">Adresse:<span>Lambagny</span></div>  
             <div class="property_info">
                 <div class="column price">
