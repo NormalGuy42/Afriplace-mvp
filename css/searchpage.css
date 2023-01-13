@@ -344,23 +344,17 @@ section .dialog .option .room_row button:last-child{
     .searchresults_list{
         grid-template-columns: repeat(auto-fit,25rem);
     }
-    section .tab .search_field{
-        margin-right: 30px;
-    }
 }
 @media (max-width:475px) {
     section .tab .search_field{
-        width: 200px;
-        margin-right: 20px;
+        width: 65%;
+        margin-right: 0px;
     }
 }
-@media (max-width:370px) {
+@media (max-width:335px) {
     section .tab .search_field{
-        width: 150px;
-        margin-right: 5px;
+        width: 50%;
     }
     .searchresults_list{
         grid-template-columns: repeat(auto-fit,21rem);
     }
-}
-
