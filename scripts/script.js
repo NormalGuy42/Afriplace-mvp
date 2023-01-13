@@ -81,19 +81,27 @@ function add(){
 //   console.log('home was added')
 // }
 
-//Viewproperty code
+//Image slider code code
 const buttons = document.querySelectorAll("[data-slide-btn]");
+//Image counter handler
+const currentImg = document.querySelector('#current_img');
+const totalImg = document.querySelector('#total_img');
+const images = document.querySelector("[data-slides]")
+totalImg.innerText = images.children.length;
+
 buttons.forEach(button =>{
   button.addEventListener("click",()=>{
+    //Find which button was pressed and retrieve data from the slide container
     const offset = button.dataset.slideBtn === "next" ?1:-1
     const slides = button.closest("[data-slide-container]").querySelector("[data-slides]")
     const activeSlide = slides.querySelector("[data-active]")
-
+    //Index
     let newIndex = [...slides.children].indexOf(activeSlide) + offset
     if(newIndex < 0) newIndex = slides.children.length -1
     if(newIndex >= slides.children.length) newIndex = 0
-    
+    //Make changes
     slides.children[newIndex].dataset.active = true
+    currentImg.innerText = newIndex+1
     delete activeSlide.dataset.active
   })
 })
