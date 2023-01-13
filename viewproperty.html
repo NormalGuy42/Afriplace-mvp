@@ -50,14 +50,16 @@
             <div class="exit_arrow">
             </div>
             <div class="img_containers" data-slide-container>
-                <ul data-slides>
-                    <li class="slide" data-active><img src="assets/living.jpg" alt=""></li>
-                    <li class="slide"><img src="assets/new-living.jpg" alt=""></li>
-                    <li class="slide"><img src="assets/maison.png" alt=""></li>
-                </ul>
-                <div class="more_photos">
-                    <button>1 sur 30</button>
-                </div>
+                <a href="fullscreen.html">
+                    <ul data-slides>
+                        <li class="slide" data-active><img src="assets/living.jpg" alt=""></li>
+                        <li class="slide"><img src="assets/new-living.jpg" alt=""></li>
+                        <li class="slide"><img src="assets/maison.png" alt=""></li>
+                    </ul>
+                </a>
+                <a href="fullscreen.html"class="more_photos">
+                    <button><span id="current_img">1</span> sur <span id="total_img">30</span></button>
+                </a>
                 <button class="slide-btn prev" data-slide-btn="prev">
                     <svg viewBox="0 0 32 32" 
                         class="chevron left" 
