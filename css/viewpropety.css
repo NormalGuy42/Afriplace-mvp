@@ -133,13 +133,17 @@ sup{
 .contact_box{
     position: sticky;
     top: 2rem;
-    padding: 30px 0;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
     text-align: center;
     width: 300px;
     height: 150px;
+}
+.contact_box img{
+    height: 50px;
+    width: 50px;
 }
 .contact_box label{
     text-align: center;
