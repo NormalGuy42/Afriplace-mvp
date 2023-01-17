@@ -17,7 +17,8 @@ header{
     box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
 }
 body{
-    font-family: arial;
+    /* font-family: system-ui;  */
+    font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     height: 100%;
     width: 100%;
@@ -126,7 +127,7 @@ svg.burger{
 /* Search input */
 .search_input{   
     width: 100%;
-    min-height: 70vh;
+    min-height: 80%;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -152,6 +153,7 @@ svg.burger{
     display: inline;
     width: 230px;
     height: 34px;
+    flex: 0 0 25%;
     color: #495057;
     font-size: 1.2rem;
     padding-right:20px;
@@ -217,13 +219,20 @@ div.nav{
     height: 300px;
     width: 320px;
 }
+.navigation_container img{
+    height: 5.3rem;
+}
 .navigation_container h3{
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: 22px;
 }
-.navigation_container img{
-    height: 5.3rem;
+.navigation_container p{
+    min-height: 72px;
+    font-size: 20px;
+    line-height: 1.5rem;
+
 }
 .navigation_container a{
     text-decoration: none;
@@ -243,8 +252,10 @@ div.nav{
     color: orange;
     border-color: orange;
     padding: 5px;
+    height: 40px;
     border-radius: 4px;
     font-weight: bold;
+    font-size: 16px;
     margin-top: 15px
 }
 .navigation_container .box button:hover {
@@ -262,7 +273,7 @@ div.nav{
 }
 .listings_container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,24rem);
+    grid-template-columns: repeat(auto-fit, 24rem);
     gap: 4.5rem;
     align-items: flex-start;
     justify-content: center;
@@ -291,7 +302,7 @@ div.nav{
     width: 100%;
     border-radius: .5rem;
     transition: .2s linear;
-    size-adjust: cover; 
+    object-fit: cover;
 }
 /*Thumbnail image end*/
 /*Save button start*/
@@ -527,13 +538,16 @@ a.btn:hover {
     border-radius: 3px;
     margin-top: 10px;
 }
-
+.stats .cont .thumb .caption a{
+    text-decoration: none;
+    color: white;
+}
 /*Footer*/
 .footer{
     background-color: #333;
     bottom: 0;
     width: 100%;
-    margin-top: 7rem;
+    margin-top: 5rem; /*Old value was 7*/
     padding-top: 30px;
     padding-bottom: 4rem;
 }
@@ -569,7 +583,26 @@ a.btn:hover {
 .footer .flex .box:first-child a i{
     margin-right: 1rem;
 }
-
+@media (max-width:1325px) {
+    
+}
+@media (max-width:1280px) {
+    .row{
+        flex-wrap: nowrap;
+    }
+}
+@media (max-width:1130px) {
+    .row{
+        flex-wrap: wrap;
+    }
+    .control{
+        width: 100%;
+        flex: unset;
+    }
+    .row{
+        justify-content: center;
+    }
+}
 @media(max-width:1030px){
     .checkbtn {
         display: block;
@@ -591,14 +624,12 @@ a.btn:hover {
         position: absolute;
         width: 100%;
         z-index: 2;
-        /* height: 35vh; */
         background: white;
         top: 80px;
         left: -100%;
         right: 0;
         margin: 0;
         text-align: center;
-        transition: all .5s;
         border-bottom: 1px solid grey;
         box-shadow: 1px 1px 3px rgb(0 0 0 / 10%)
     }
@@ -625,7 +656,14 @@ a.btn:hover {
     }
     #check:checked ~ .nav_ul{
         left: 0;
-        
+        transition: all .5s
+    }
+    .logo_area{
+        margin-left: -150px;
+        left: 50%;
+    }
+    .listings{
+        margin-bottom: 15vh;
     }
     .login{
         color: black;
@@ -633,6 +671,9 @@ a.btn:hover {
     .login i{
         height: 5px;
         width: 5px;
+    }
+    .footer .flex .box{
+        margin-left: 30px;
     } 
 }
 @media (max-width:760px) {
@@ -640,12 +681,16 @@ a.btn:hover {
         display: grid;
         grid-template-columns: repeat(auto-fit,320px);
         gap: 5rem;
-    }
-    .listings{
-        margin-bottom: 15vh;
-    }
+    } 
+    
 }
 @media(max-width:600px){
+    .prez{
+        height: 480px;
+    }
+    .search_input{
+        min-height: 40vh/*50vh*/; 
+    }
     .stats .cont{
         grid-template-columns: repeat(auto-fit,100%);
         margin: 0px 8px;
@@ -659,13 +704,33 @@ a.btn:hover {
         display: block;
     }
     .listings_container{
-        grid-template-columns: repeat(auto-fit,100%)
+        grid-template-columns: repeat(auto-fit,22rem)
     }
-    .logo_area{
-        margin-left: -200px;
-    }
+    
     .logo_area label{
         font-size: 40px;
+    }
+}
+@media (max-width:500px) {
+    .logo_area{
+        margin-left: -135px;
+    }
+}
+@media (max-width:370px) {
+    .checkbtn{
+        margin-left: 30px;
+    }
+    .logo_area {
+        margin-left: -110px;
+        width: 250px;
+    }
+    .listings_container{
+        grid-template-columns: repeat(auto-fit,100%)
+    }
+    .newsletter .box{
+        padding: 2rem 0px;
+        width: 98%;
+        margin: auto;
     }
 }
 
