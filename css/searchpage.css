@@ -317,11 +317,22 @@ section .dialog .option .room_row button:last-child{
     transform: rotate(-270deg)
 }
 /*Pagination end*/
+@media (max-width:1025px) {
+    .dialog.filter{
+        transform: translate(-300px);
+    }
+}
 @media(max-width:900px) {
     .searchresults_list{
         grid-template-columns: repeat(auto-fit,22rem);
     }
+    .dialog.price_range{
+        transform: translate(-200px);
+    }
 }
+/* @media (max-width:880px) {
+    
+} */
 @media(max-width:755px) {
     #prix{
         display: none;
