@@ -139,6 +139,43 @@ label.logo{
     margin-bottom: 10px;
     font-size: 18px;
 }
+/*Input start*/
+.inputs{
+    display: table;
+    margin: 20px 0px;
+    width: 100%;
+}
+.inputs .container.input{
+    display: table-row;
+}
+.inputs .container.input label{
+    display: table-cell;
+    padding-bottom: 20px;
+    width: 30%;
+}
+.inputs .container.input input{
+    width: 100%;
+}
+.inputs .container.input select{
+    width: 102%;
+}
+.surface{
+    display: table;
+    width: 100%;
+}
+.container.surface{
+    display: table-row;
+}
+.container.surface label{
+    display: table-cell;
+    width: 30%;
+}
+.container.surface input{
+    width: 100%;
+    height: 25px;
+    border: 1px solid;
+}
+/*Input end*/
 .container.input{
     display: flex;
     justify-content: space-between;
@@ -159,6 +196,19 @@ label.logo{
     height: 30px;
     border: 1px solid black;
 }
+/*Button container start*/
+.btn_input{
+    display: table;
+}
+.btn_input .container{
+    display: table-row;
+}
+.btn_input .container label{
+    display: table-cell;
+    padding-right: 20px;
+    padding-bottom: 8px ;
+}
+/*Button container end*/
 .container textarea{
     width: 100%;
     height: 150px;
