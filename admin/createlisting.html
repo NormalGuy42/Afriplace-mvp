@@ -36,8 +36,16 @@
             <form class="create_listing">
                 <div class="inputs">
                     <div class="container input">
+                        <label>Titre</label>
+                        <input class="titre" placeholder="Titre de l'annonce">
+                    </div>
+                    <div class="container input">
+                        <label>Prix</label>
+                        <input class="prix" placeholder="Prix du bien">
+                    </div>
+                    <div class="container input">
                         <label>Nom</label>
-                        <input class="titre">
+                        <input class="titre" placeholder="Nom de l'annonçeur">
                     </div>
                     <div class="container input">
                         <label>Statut</label>
@@ -48,16 +56,24 @@
                         </select>
                     </div>
                     <div class="container input">
-                        <label>Link</label>
-                        <input>
+                        <label>Type de bien</label>
+                        <select>
+                            <option>Maison</option>
+                            <option>Appart</option>
+                            <option>Terrain</option>
+                            <option>Bureaux</option>
+                        </select>
                     </div>
                     <div class="container input">
-                        <label>Titre</label>
-                        <input class="titre">
+                        <label>Statut du bien</label>
+                        <select>
+                            <option>A acheter</option>
+                            <option>A louer</option>
+                        </select>
                     </div>
                     <div class="container input">
-                        <label>Prix</label>
-                        <input class="prix">
+                        <label>Lien</label>
+                        <input placeholder="Lien du bien">
                     </div>
                 </div>
                 <div class="btn_input">
@@ -78,9 +94,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="container input">
-                    <label>Surface</label>
-                    <input placeholder="Entre la surface">
+                <div class="surface">
+                    <div class="container surface">
+                        <label>Surface</label>
+                        <input placeholder="Entre la surface">
+                    </div>
                 </div>
                 <div class="container">
                     <h4>Description</h4>
