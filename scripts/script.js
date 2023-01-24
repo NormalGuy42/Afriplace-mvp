@@ -13,24 +13,16 @@ function toggleFilter() {
 }
 //toggle tabs end
 
-// window.onclick = function(event) {
-//   var dialog = document.querySelector('.dialog home_type');
-//   if (!event.target.matches(dialog)){
-//     console.log('Clicked Inside');
+
+// document.addEventListener('click',function(e){
+//   var dialog = document.getElementById('home_section');
+//   if(e.target.closest("#home_section")){
+//     console.log('Clicked inside')
 //   }else{
-//     console.log('Clicked Outside');
+//     console.log('Clicked outside');
+//     console.log(dialog.style.display);
 //   }
-// }
-;
-document.addEventListener('click',function(e){
-  var dialog = document.getElementById('home_section');
-  if(e.target.closest("#home_section")){
-    console.log('Clicked inside')
-  }else{
-    console.log('Clicked outside');
-    console.log(dialog.style.display);
-  }
-})
+// })
 
 var dialog = document.querySelector('#results_title');
 
@@ -43,7 +35,7 @@ var filterInput = document.getElementById('filter_input');
 var filterSection = document.getElementById('filter_section');
 
 //Creating an adding Price section
-function addPriceSection(input,text){
+function addSection(input,text){
   //Create div and label section
   const div = document.createElement('div');
   const label = document.createElement('label')
@@ -55,31 +47,15 @@ function addPriceSection(input,text){
   div.innerHTML += input.innerHTML;
   filterInput.prepend(div);
 }
-function add(){
-  const div = document.createElement('div');
-  const label = document.createElement('label')
-  //Configure div and label
-  label.innerText = 'Maison'
-  div.classList.add('option');
-  div.appendChild(label)
-  //Append elements to filter section
-  div.innerHTML += homeInput.innerHTML;
-  filterInput.prepend(div);
-}
+const action = document.querySelector('#price_section');
+
+// addSection(priceInput,'Prix');
+// addSection(actionInput,"Type d'action");
+// addSection(homeInput,"Type d'habitat");
 
 
 
-// filter.innerHTML += priceSection.innerHTML;
-// if(priceBtn.style.display == 'none' ){
-//   filter.innerHTML += priceBtn.innerHTML;
-//   console.log('price was added')
-// }else if(actionBtn.style.display == 'none'){
-//   filter.innerHTML += actionBtn.innerHTML;
-//   console.log('action was added')
-// }else if(homeBtn.style.display == 'none'){
-//   filter.innerHTML += homeBtn.innerHTML;
-//   console.log('home was added')
-// }
+
 
 //Image slider code code
 const buttons = document.querySelectorAll("[data-slide-btn]");
@@ -105,4 +81,3 @@ buttons.forEach(button =>{
     delete activeSlide.dataset.active
   })
 })
-
