@@ -59,6 +59,9 @@ label.logo{
 .admin_nav{
     background-color: orange;
     display: inline;
+    min-height:100vh;
+    width: 285px;
+    min-width: 285px;
     /* height: 100%;
     width: 180px; */
 }
@@ -77,9 +80,14 @@ label.logo{
 .admin_nav li{
     width: 100%;
 }
+.admin_nav li img{
+    height: 56px;
+}
 .admin_nav li a{
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
 }
 /*Nav bar end*/
 /*Admin page start*/
@@ -88,6 +96,15 @@ label.logo{
     margin: 0 auto;
     width: 60%;
     margin-bottom: 30px;
+}
+.userpage h1{
+    margin:20px 0;
+}
+.userpage .stat_page h3{
+    color: gray;
+}
+.userpage .stat_page h4{
+    color: gray;
 }
 .userpage .stats{
     display: flex;
@@ -99,6 +116,29 @@ label.logo{
     flex-wrap: nowrap;
     justify-content: space-between;
     text-align: center;
+}
+.userpage .properties img{
+    height: 80px;
+}
+.userpage .new_listings_title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px ;
+}
+.userpage .new_listings_title h1{
+    margin: 0;
+}
+.userpage .new_listings_title svg{
+    height: 30px;
+    width: 30px;
+}
+.userpage .property_box button{
+    padding: 0 10px;
+}
+.userpage .property_box button svg{
+    margin: auto 0;
+    height: 50px;
 }
 /*Admin page end*/
 /*Create Listing start*/
@@ -127,6 +167,20 @@ label.logo{
     padding: 5px;
     font-size: 17px;
 }
+.image_send{
+    margin: 20px 0;
+}
+.image_send .images{
+    background: url(../assets/picture\ icon.png) no-repeat;
+    background-size: 200px;
+    background-color: #d2d2db;
+    background-position: center;
+    margin-bottom: 10px;
+}
+.images{
+    height: 350px;
+    width: 100%;
+}
 /*Images upload end*/
 .main_body .container{
     margin-top: 10px;
@@ -142,7 +196,7 @@ label.logo{
 /*Input start*/
 .inputs{
     display: table;
-    margin: 20px 0px;
+    margin: 10px 0px;
     width: 100%;
 }
 .inputs .container.input{
@@ -199,6 +253,7 @@ label.logo{
 /*Button container start*/
 .btn_input{
     display: table;
+    margin-bottom: 10px;
 }
 .btn_input .container{
     display: table-row;
@@ -207,6 +262,11 @@ label.logo{
     display: table-cell;
     padding-right: 20px;
     padding-bottom: 8px ;
+}
+.btn_input input{
+    width: 80%;
+    height:25px;
+    border:1px solid;
 }
 /*Button container end*/
 .container textarea{
@@ -223,6 +283,9 @@ label.logo{
 }
 .container ul li{
     font-size: 18px;
+}
+.container ul li input{
+    margin-right: 5px;
 }
 .btn_container{
     margin: 30px 0;
@@ -247,6 +310,7 @@ label.logo{
 .property_section .title{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 3px;
     border-bottom: 3px solid gray;
 }
@@ -293,5 +357,29 @@ label.logo{
     overflow: hidden;
     max-height: 35px;
 }
+.btn_section{
+    display:none;
+    position: absolute;
+    right:5%;
+    top:35%;
+    box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+    background-color:white;
+    padding: 10px;
+}
+.show{display:block;}
+
+.property_box .btn_section label{
+    display: block;
+}
 /**Propety box end/
 /*Properties list end*/
+/*Property start*/
+.action_btns{
+    display:flex;
+    width:100%
+}
+.action_btns svg{
+    height:20px;
+}
+/*Property end*/
+
