@@ -317,6 +317,25 @@ section .dialog .option .room_row button:last-child{
     transform: rotate(-270deg)
 }
 /*Pagination end*/
+/*No results start*/
+.no_results{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 40vh;
+}
+.no_results img{
+    max-height: 150px;
+    min-height: 100px;
+}
+.no_results .p-container{
+    width: 100%;
+}
+.no_results p{
+    text-align: center;
+}
+/*No results end*/
 @media (max-width:1025px) {
     .dialog.filter{
         transform: translate(-300px);
