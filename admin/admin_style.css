@@ -97,6 +97,10 @@ label.logo{
     width: 60%;
     margin-bottom: 30px;
 }
+.userpage .title{
+    font-size: 35px;
+    margin-top: 20px;
+}
 .userpage h1{
     margin:20px 0;
 }
@@ -108,8 +112,10 @@ label.logo{
 }
 .userpage .stats{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    width: 16%;
 }
 .userpage .properties{
     display: flex;
@@ -138,7 +144,8 @@ label.logo{
 }
 .userpage .property_box button svg{
     margin: auto 0;
-    height: 50px;
+    height: 30px;
+    width: 30px;
 }
 /*Admin page end*/
 /*Create Listing start*/
@@ -382,4 +389,3 @@ label.logo{
     height:20px;
 }
 /*Property end*/
-
