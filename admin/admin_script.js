@@ -1,8 +1,11 @@
 //Properties start
-function toggleSection(){
-    document.querySelector('.btn_section').classList.toggle("show");
-    console.log(document.querySelectorAll('.btn_section'));
-}
+var buttons = document.querySelectorAll('.more_actions');
+buttons.forEach(button =>{
+    button.addEventListener("click",()=>{
+        const menu = button.nextElementSibling;
+        menu.classList.toggle('show');
+    })
+})
 //Properties end
 
 //Create Listing start
