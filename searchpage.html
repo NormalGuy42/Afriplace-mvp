@@ -146,7 +146,15 @@
                 </button>
                 <section class="dialog filter" id="filter_section">
                     <form class="option_container">
-                        <div class="dialog_header">Filtres</div>
+                        <div class="dialog_header">
+                            Filtres
+                            <div class="svg_container">
+                                <svg onclick ="toggleFilter()"viewBox="0 0 20 20" class="return"xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.8 11.8L4 4l7.8 7.8L4 19.6l7.8-7.8zm0 0l7.8 7.8-7.8-7.8L19.6 4l-7.8 7.8z" stroke="black" 
+                                    stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </div>
                         <div id="filter_input">
                             <div class="option home">
                                 <label>Type de bien</label>
@@ -181,23 +189,23 @@
                             <div class="option">
                                 <label for="">Lits</label>
                                 <div class="room_row">
-                                    <button>Tout</button>
-                                    <button>1</button>
-                                    <button>2</button>
-                                    <button>3</button>
-                                    <button>4</button>
-                                    <button>5+</button>
+                                    <button type="button">Tout</button>
+                                    <button type="button">1</button>
+                                    <button type="button"data-active>2</button>
+                                    <button type="button"data-active>3</button>
+                                    <button type="button"data-active>4</button>
+                                    <button type="button">5+</button>
                                 </div>
                             </div>
                             <div class="option">
                                 <label>Toilettes</label>
                                 <div class="room_row">
-                                    <button>Tout</button>
-                                    <button>1</button>
-                                    <button>2</button>
-                                    <button>3</button>
-                                    <button>4</button>
-                                    <button>5+</button>
+                                    <button type="button">Tout</button>
+                                    <button type="button">1</button>
+                                    <button type="button">2</button>
+                                    <button type="button">3</button>
+                                    <button type="button">4</button>
+                                    <button type="button">5+</button>
                                 </div>
                             </div>
                             <div class="option">
@@ -230,7 +238,20 @@
                     <div class="apply_container"><button class="apply_btn">Appliquer</button></div>
                 </section>
             </div>
-        </div>
+            <!-- <div class="tab_index mobile_filter">
+                <a href="mobile_filter.html">
+                    <button class="search_btn filter">
+                        <div class="btn_description">
+                            <div>Filtrer</div>
+                            <div><svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 0 30 28" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.961 18.183l7.056-7.147 1.893 1.868-8.951 9.068-8.927-9.069 1.896-1.866z" fill="black">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+                </a>
+            </div> -->
         <div class="searchresults_container">
             <div class="searchresults_header">
                 <!--Lieu + Type + Bien-->
