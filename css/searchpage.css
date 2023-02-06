@@ -76,7 +76,7 @@ section .input_group{
     padding: 0px 10px 10px;
 }
 section .input_group .input_row{
-    flex: 0 0 40%;
+    flex: 0 0 35%;
 }
 section .input_group .input_row label{
     display: block;
@@ -151,6 +151,7 @@ section .dialog .option .room_row button{
     font-weight: bold;
     margin-left: -1px
 }
+/*Room buttons start*/
 section .dialog .option .room_row button:first-child{
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -158,6 +159,20 @@ section .dialog .option .room_row button:first-child{
 section .dialog .option .room_row button:last-child{
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+}
+button[data-active]{
+    color: white;
+    background-color: orange !important;
+    border-color: #333 !important
+}
+/*Room buttons end*/
+.dialog .svg_container{
+    display: none;
+}
+.dialog .svg_container svg{
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
 }
 /*Filter button end*/
 /*Dialog box end*/
@@ -390,19 +405,85 @@ section .dialog .option .room_row button:last-child{
         width: 65%;
         margin-right: 0px;
     }
+    /*Mobile filter start*/
     .dialog.filter{
-        transform: translate(-250px);
+        /* transform: translate(-250px); */
+        position: fixed;
+        z-index: 300;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 100%;
     }
-    .tab_index.filter{
-        display: none;
+    section .tab .dialog_header{
+        display: flex;
+        margin-bottom: 8px;
+        padding: 8px 10px;
+        width: 100%;
+        height: 55px;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 28px;
+        background-color: rgb(246, 246, 250);
+        color: rgb(89, 107, 130);
+        font-weight: bold;
     }
-    .tab_index.mobile_filter{
-        display: inline-block;
+    .dialog .svg_container{
+        display: inline;
+    }
+    /*Inputs start*/
+    input[type="checkbox"]{
+        height: 18px;
+        width:18px;
+    }
+    input[type="radio"]{
+        height: 18px;
+        width:18px;
+    }
+    /*Inputs end*/
+    section .dialog.filter form{
+        overflow: auto;
+        max-height: 90%;
+    }
+    .dialog label{
+        font-size: 22px;
+    }
+    section .tab .dialog li{
+        font-size: 22px;
+        align-items: center;
+    }
+    section .dialog .option .room_row button{
+        height: 50px;
+        width: 60px;
+        font-size: 17px;
+    }
+    section .input_group .input_row .input_field{
+        height: 44px;
+        width: 180px;
+    }
+    section .input_group{
+        justify-content: center;
+    }
+    .apply_container{
+        border-top: 1px solid #eee;
+        height: 10%;
+        align-items: center;
+        background-color: white;
+    }
+    /*Mobile Filter end*/
+}
+@media (max-width:390px) {
+    section .input_group .input_row .input_field{
+        width: 150px;
     }
 }
 @media (max-width:335px) {
     section .tab .search_field{
         width: 50%;
+    }
+    section .input_group .input_row .input_field{
+        width: 130px;
     }
     /* .searchresults_list{
         grid-template-columns: repeat(auto-fit,20rem);
