@@ -401,16 +401,16 @@ label.logo{
 .btn_section{
     display:none;
     position: absolute;
-    right:5%;
-    top:35%;
+    right:60px;
+    margin-top: 50px;
     box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
     background-color:white;
     padding: 10px;
 }
-.show{display:block;}
-
+.show{display: block;}
 .property_box .btn_section label{
     display: block;
+    cursor: pointer;
 }
 /**Propety box end/
 /*Properties list end*/
