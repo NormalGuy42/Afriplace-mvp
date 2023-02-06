@@ -162,7 +162,7 @@ section .dialog .option .room_row button:last-child{
 }
 button[data-active]{
     color: white;
-    background-color: orange !important;
+    background-color: darkorange !important;
     border-color: #333 !important
 }
 /*Room buttons end*/
