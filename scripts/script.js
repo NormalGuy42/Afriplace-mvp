@@ -1,3 +1,8 @@
+//Index script start
+//Show navigation menu
+//Index script end
+
+//Searchpage script start
 //toggle tabs start
 function toggleHome() {
   document.getElementById("home_section").classList.toggle("show");
@@ -13,7 +18,20 @@ function toggleFilter() {
 }
 //toggle tabs end
 
-
+function activateButton(){
+  const rooms = document.querySelectorAll('.room_row');
+  rooms.forEach(room =>{
+    room.closest('button').addEventListener('click',()=>{
+      const buttons = document.querySelectorAll('button')
+      buttons.forEach(button =>{
+        button.addEventListener('click',()=>{
+            button.dataset.active = true
+        })
+      })
+    })
+  })
+}
+activateButton();
 // document.addEventListener('click',function(e){
 //   var dialog = document.getElementById('home_section');
 //   if(e.target.closest("#home_section")){
@@ -23,40 +41,9 @@ function toggleFilter() {
 //     console.log(dialog.style.display);
 //   }
 // })
+//Searchpage script end
 
-var dialog = document.querySelector('#results_title');
-
-//All the input sections
-var homeInput = document.querySelector('#homeInput');
-var actionInput = document.querySelector('#actionInput');
-var priceInput = document.querySelector('#priceInput');
-//filter
-var filterInput = document.getElementById('filter_input');
-var filterSection = document.getElementById('filter_section');
-
-//Creating an adding Price section
-function addSection(input,text){
-  //Create div and label section
-  const div = document.createElement('div');
-  const label = document.createElement('label')
-  //Configure div and label
-  label.innerText = text
-  div.classList.add('option');
-  div.appendChild(label)
-  //Append elements to filter section
-  div.innerHTML += input.innerHTML;
-  filterInput.prepend(div);
-}
-const action = document.querySelector('#price_section');
-
-// addSection(priceInput,'Prix');
-// addSection(actionInput,"Type d'action");
-// addSection(homeInput,"Type d'habitat");
-
-
-
-
-
+//View property start
 //Image slider code code
 const buttons = document.querySelectorAll("[data-slide-btn]");
 //Image counter handler
@@ -81,3 +68,4 @@ buttons.forEach(button =>{
     delete activeSlide.dataset.active
   })
 })
+//View property end
