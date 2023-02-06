@@ -172,6 +172,7 @@ label.logo{
 .userpage .new_listings_title svg{
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 .userpage .property_box button{
     padding: 0 10px;
