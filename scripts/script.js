@@ -4,6 +4,7 @@
 
 //Searchpage script start
 //toggle tabs start
+//Fix this
 function toggleHome() {
   document.getElementById("home_section").classList.toggle("show");
 }
@@ -18,29 +19,41 @@ function toggleFilter() {
 }
 //toggle tabs end
 
-function activateButton(){
-  const rooms = document.querySelectorAll('.room_row');
-  rooms.forEach(room =>{
-    room.closest('button').addEventListener('click',()=>{
-      const buttons = document.querySelectorAll('button')
-      buttons.forEach(button =>{
-        button.addEventListener('click',()=>{
-            button.dataset.active = true
-        })
-      })
-    })
-  })
-}
-activateButton();
-// document.addEventListener('click',function(e){
-//   var dialog = document.getElementById('home_section');
-//   if(e.target.closest("#home_section")){
-//     console.log('Clicked inside')
-//   }else{
-//     console.log('Clicked outside');
-//     console.log(dialog.style.display);
-//   }
-// })
+// function activateButton(){
+//   const rooms = document.querySelectorAll('.room_row');
+//   rooms.forEach(room =>{
+//     room.closest('button').addEventListener('click',()=>{
+//       const buttons = document.querySelectorAll('button')
+//       buttons.forEach(button =>{
+//         button.addEventListener('click',()=>{
+//             button.dataset.active = true
+//         })
+//       })
+//     })
+//   })
+// }
+// activateButton();
+
+//When user clicks outside menu closes
+//Fix this it's not good
+document.addEventListener('click',function(e){
+  var dialogHome = document.getElementById('home_section');
+  var dialogAction = document.getElementById('action_section');
+  var dialogPrice = document.getElementById('price_section')
+  var dialogFilter = document.getElementById('filter_section')
+  if(!e.target.closest('#home_type') && dialogHome.classList.contains('show') ){ 
+    dialogHome.classList.remove('show');
+  }
+  else if(!e.target.closest('#action_type') && dialogAction.classList.contains('show')){
+    dialogAction.classList.remove('show');
+  }
+  else if(!e.target.closest('#prix') && dialogPrice.classList.contains('show')){
+    dialogPrice.classList.remove('show');
+  }
+  else if(!e.target.closest('#filter') && dialogFilter.classList.contains('show')){
+    dialogFilter.classList.remove('show');
+  }  
+})
 //Searchpage script end
 
 //View property start
