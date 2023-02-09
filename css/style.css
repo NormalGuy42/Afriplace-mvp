@@ -91,6 +91,7 @@ nav ul li a:hover{
     transition: .5s;
     text-decoration: none;
 }
+nav ul li:first-child{display: none;}
 .account{
     float: right;
     margin-right:20px;
@@ -642,7 +643,7 @@ a.btn:hover {
         line-height: 30px;
         float: none;
     }
-    
+    nav ul li:first-child{display: block;}
     nav ul li img{
         margin: 0;
         position: unset
