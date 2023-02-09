@@ -19,20 +19,54 @@ function toggleFilter() {
 }
 //toggle tabs end
 
-// function activateButton(){
-//   const rooms = document.querySelectorAll('.room_row');
-//   rooms.forEach(room =>{
-//     room.closest('button').addEventListener('click',()=>{
-//       const buttons = document.querySelectorAll('button')
-//       buttons.forEach(button =>{
-//         button.addEventListener('click',()=>{
-//             button.dataset.active = true
-//         })
-//       })
-//     })
-//   })
-// }
-// activateButton();
+//Filter Button start
+//Acivate room filter button on click start
+//Bedroom
+function activateBedButton(){
+  const rooms = document.querySelector('.room_row');
+  const roomBtn = rooms.querySelectorAll('button');
+  roomBtn.forEach(button =>{
+    button.addEventListener('click',()=>{
+      if(button.dataset.active = false){
+        button.dataset.active = true;
+      }
+      if(button.dataset.active = true){
+        button.dataset.active = false;
+        console.log('false');
+      }
+      // else{
+      //   button.dataset.active = true;
+      //   console.log('true');
+      // }
+
+
+        var activeBtns = rooms.querySelectorAll('[data-active]');
+      // if(button.dataset.active == false){
+      //   delete button.dataset.active;
+      // }
+    })
+  })
+}
+//Bathroom
+function activateBathButton(){
+  const rooms = document.querySelector('#tlts_selector');
+  const roomBtn = rooms.querySelectorAll('button');
+  roomBtn.forEach(button =>{
+    button.addEventListener('click',()=>{
+      if(button.dataset.active = true){
+        button.dataset.active = false;
+      }
+      else if(button.dataset.active = false){
+        button.dataset.active = true
+      }
+    })
+  })
+}
+activateBedButton();
+activateBathButton();
+//Acivate room filter button on click end
+//Filter Button end
+
 
 //When user clicks outside menu closes
 //Fix this it's not good
