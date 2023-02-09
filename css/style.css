@@ -568,6 +568,10 @@ a.btn:hover {
 .footer .flex .box a i{
     color: white;
 }
+.footer .flex .box svg {
+    height: 16px;
+    width: 20px;
+}
 .footer .flex .box a span{ 
     color: white;
     text-decoration: none;
