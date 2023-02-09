@@ -54,6 +54,7 @@
     color: white;
     font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif;
 }
+.more_photos button span{ font-weight: bold;   }
 .img_containers .slide-btn{
     position: absolute;
     top:45%;
@@ -130,6 +131,8 @@ sup{
 .installation li::before{
     content: "• ";
 }
+/*Contact start*/
+.contact_title{display: none;}
 .contact_box{
     position: sticky;
     top: 2rem;
@@ -141,15 +144,15 @@ sup{
     width: 300px;
     height: 150px;
 }
-.contact_box img{
-    height: 50px;
-    width: 50px;
-}
 .contact_box label{
     text-align: center;
     color: orange;
     font-weight: bold;
     display: block;
+}
+.contact_box img{
+    height: 50px;
+    width: 50px;
 }
 .contact_btn{
     color: white;
@@ -164,7 +167,7 @@ sup{
 /*Contact box for mobile users*/
 .mobile_contact_box{
     display: none;
-    padding: 14px 0px;
+    padding: 14px 0px; 
     justify-content: space-between;
     position: sticky;
     bottom: 0;
@@ -182,6 +185,7 @@ sup{
     color: orange;
     font-weight: bold;
 }
+/*Contact end*/
 /*Property Details end*/
 /*Property Listing end*/
 @media (max-width:1300px) {
@@ -197,7 +201,7 @@ sup{
         display: none;
     }
 }
-@media (max-width:500px) {
+@media (max-width:700px) {
     .img_containers{
         height: 230px;
     }
@@ -239,5 +243,6 @@ sup{
     .mobile_contact_box{
         display: flex;
     }
+    .contact_title{display: block;}
 }
 
