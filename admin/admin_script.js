@@ -41,3 +41,4 @@ function bathCounter(){
 }
 bedCounter();
 bathCounter();
+//Create Listing end

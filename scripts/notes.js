@@ -1,3 +1,4 @@
+'SearchPage templates start'
 'This is for changing the inputs inside the Filter Button'
 /*function handleFilterInputs(){
     var homeInput = document.querySelector('#homeInput');
@@ -29,3 +30,5 @@
     })
   }
   handleFilterInputs();*/
+
+'SearchPage templates end'

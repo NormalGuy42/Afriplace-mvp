@@ -149,7 +149,8 @@ section .dialog .option .room_row button{
     height: 38px;
     border: 1px solid rgb(167, 166, 171);
     font-weight: bold;
-    margin-left: -1px
+    margin-left: -1px;
+    cursor: pointer;
 }
 /*Room buttons start*/
 section .dialog .option .room_row button:first-child{
@@ -330,6 +331,16 @@ button[data-active]{
     margin: 0 auto;
     justify-content: space-evenly;
 }
+.searchresult_pagination li{
+    cursor: pointer;
+}
+.searchresult_pagination li[data-active]{
+    color: #ff8d00;
+    font-weight: bold;
+}
+.searchresult_pagination li:hover{
+    color: orangered;
+}
 .searchresult_pagination svg{
     height: 16px;
     width: 16px;
@@ -337,6 +348,9 @@ button[data-active]{
 }
 .searchresult_pagination svg.chevron.left{
     transform: rotate(-270deg)
+}
+.searchresult_pagination svg:hover{
+    fill:orange;
 }
 /*Pagination end*/
 /*No results start*/

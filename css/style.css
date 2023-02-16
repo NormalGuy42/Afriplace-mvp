@@ -6,16 +6,9 @@
     box-sizing: border-box;
     font-weight: normal;
 }
-:root{}
-header{
-    background: white;
-}
-.header_container{
-    border-bottom: 1px solid rgb(216, 216, 216);
-    /* position: fixed; */
-    width: 100%;
-    z-index: 30;
-    box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+:root{
+    --main-color: rgb(255 ,165, 0);
+    --grey: rgb(216, 216, 216);
 }
 body{
     /* font-family: system-ui;  */
@@ -26,6 +19,16 @@ body{
 }
 
 /*Header*/
+header{
+    background: white;
+}
+.header_container{
+    border-bottom: 1px solid rgb(216, 216, 216);
+    /* position: fixed; */
+    width: 100%;
+    z-index: 30;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+}
 nav{
     height: 80px;
     width: 100%;
@@ -33,7 +36,7 @@ nav{
     position: relative;
 }
 label.logo{
-    color: orange;
+    color: var(--main-color); /*255 165 0*/
     font-size: 45px;
     line-height: 80px;
     font-weight: bold;
@@ -88,7 +91,7 @@ nav ul li a{
     display: block;
 }
 nav ul li a:hover{
-    color: orange; 
+    color: var(--main-color); 
     transition: .5s;
     text-decoration: none;
 }
@@ -149,7 +152,6 @@ svg.burger{
     display: flex;
     flex-wrap: wrap;
     margin-left: -15px;
-    margin-left: -15px;
 }
 .control {
     display: inline;
@@ -172,7 +174,7 @@ svg.burger{
     border-radius: 4px;
     font-size: 1.2rem; 
     color: white;
-    background-color: orange;
+    background-color: var(--main-color);
     margin-left: 30px;
 }
 .form-control-button span{
@@ -251,8 +253,8 @@ div.nav{
 }
 .navigation_container .box button{
     background-color: white;
-    color: orange;
-    border-color: orange;
+    color: var(--main-color);
+    border-color: var(--main-color);
     padding: 5px;
     height: 40px;
     border-radius: 4px;
@@ -261,7 +263,7 @@ div.nav{
     margin-top: 15px
 }
 .navigation_container .box button:hover {
-    background: orange;
+    background: var(--main-color);
     color: white;
     transition: .3s;
 }
@@ -402,8 +404,8 @@ div.nav{
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    padding-left: 45px;
-    padding-right: 45px;
+    padding-left: 40px;
+    padding-right: 40px;
     border-radius: 3px;
     /* text-transform: capitalize; 
     font-size: 20px;
@@ -412,7 +414,7 @@ div.nav{
     */
 }
 a.btn {
-    background-color: orange;
+    background-color: var(--main-color);
     color: white;
     font-size: 1.5rem;
 }
@@ -428,7 +430,7 @@ a.btn:hover {
     justify-content: center;
 }
 .listings .more a{
-    color: orange;
+    color: var(--main-color);
     font-size: 20px;
 }
 .listings .more i{
@@ -441,7 +443,7 @@ a.btn:hover {
     justify-content: center;
     display: flex;
     position: relative;
-    top: -50px;
+    /* top: -50px; */
 }
 .newsletter .box{
     text-align: center;
@@ -464,7 +466,7 @@ a.btn:hover {
     height: 100%;
     width: 420px;
     background-color: #f3f5f6;
-    margin-right: 5px;
+    margin-right: -5px;
     padding: 7px;
     border: 2px;
     border-radius: 3px;
@@ -473,6 +475,7 @@ a.btn:hover {
 }
 .newsletter .box .subbox .sub{
     height: 100%;
+    min-width: 100px;
     border-radius: 3px;
     background-color: white;
     padding: 7px;
@@ -532,7 +535,7 @@ a.btn:hover {
     font-weight: 100;
 }
 .stats .cont .thumb .caption button{
-    background-color: orange;
+    background-color: var(--main-color);
     color: white;
     font-size: 1.3rem;
     border: none;
@@ -570,7 +573,7 @@ a.btn:hover {
 .footer .flex .box a i{
     color: white;
 }
-.footer .flex .box svg {
+.footer .flex .box svg{
     height: 16px;
     width: 20px;
 }
@@ -579,7 +582,7 @@ a.btn:hover {
     text-decoration: none;
 }
 .footer .flex .box a:hover{
-    color: orange;
+    color: var(--main-color);
     transition: .5s;
     text-decoration: none;
 }
@@ -608,6 +611,15 @@ a.btn:hover {
     .row{
         justify-content: center;
     }
+    /*Form container start*/
+    .row{margin: 0;}
+    .control{
+        margin: 0 0 5px;
+    }
+    .form-control-button{
+        margin: 0;
+    }
+    /*Form container end*/
 }
 @media(max-width:1030px){
     .checkbtn {
@@ -623,7 +635,6 @@ a.btn:hover {
         width: 5px;
     } 
     label.logo {
-        color: orange;
         font-size: 45px;
     }
     nav ul{
@@ -658,7 +669,7 @@ a.btn:hover {
         max-height: 44px;
     }
     a:hover{
-        color: orange;
+        color: var(--main-color);
     }
     #check:checked ~ .nav_ul{
         left: 0;
@@ -669,7 +680,7 @@ a.btn:hover {
         left: 50%;
     }
     .listings{
-        margin-bottom: 15vh;
+        margin-bottom: 8vh;
     }
     .login{
         color: black;
@@ -730,13 +741,32 @@ a.btn:hover {
         margin-left: -110px;
         width: 250px;
     }
+    /*Navigation cards*/
+    .navigation_container{
+        grid-template-columns: repeat(auto-fit,95%);
+    }
+    .navigation_container .box{
+        width: 100%;
+    }
+    /*Listings*/
     .listings_container{
         grid-template-columns: repeat(auto-fit,100%)
     }
+    .listings .btn{
+        width: 200px;
+        margin: 5px auto 10px;
+        padding: 0;
+    }
+    /*Newsletter*/
     .newsletter .box{
         padding: 2rem 0px;
         width: 98%;
-        margin: auto;
+        margin: 0 auto;
+    }
+    .newsletter .box .subbox .mailbox{
+        width: 90%;
+    }
+    .newsletter .box .subbox .mailbox:focus-visible{
+        outline: none;
     }
 }
-

@@ -27,23 +27,12 @@ function activateBedButton(){
   const roomBtn = rooms.querySelectorAll('button');
   roomBtn.forEach(button =>{
     button.addEventListener('click',()=>{
-      if(button.dataset.active = false){
-        button.dataset.active = true;
+      if(!button.dataset.active){
+       button.dataset.active = true;
       }
-      if(button.dataset.active = true){
-        button.dataset.active = false;
-        console.log('false');
+      else if(button.dataset.active = true){
+        delete button.dataset.active;
       }
-      // else{
-      //   button.dataset.active = true;
-      //   console.log('true');
-      // }
-
-
-        var activeBtns = rooms.querySelectorAll('[data-active]');
-      // if(button.dataset.active == false){
-      //   delete button.dataset.active;
-      // }
     })
   })
 }
@@ -53,11 +42,11 @@ function activateBathButton(){
   const roomBtn = rooms.querySelectorAll('button');
   roomBtn.forEach(button =>{
     button.addEventListener('click',()=>{
-      if(button.dataset.active = true){
-        button.dataset.active = false;
+      if(!button.dataset.active){
+       button.dataset.active = true;
       }
-      else if(button.dataset.active = false){
-        button.dataset.active = true
+      else if(button.dataset.active = true){
+        delete button.dataset.active;
       }
     })
   })
@@ -66,7 +55,6 @@ activateBedButton();
 activateBathButton();
 //Acivate room filter button on click end
 //Filter Button end
-
 
 //When user clicks outside menu closes
 //Fix this it's not good
