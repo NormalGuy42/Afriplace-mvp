@@ -17,7 +17,10 @@ body{
     height: 100%;
     width: 100%;
 }
-
+/*Important classes start*/
+.hide{display: none;}
+.show{display: block;}
+/*Important classes end*/
 /*Header*/
 header{
     background: white;
@@ -200,14 +203,14 @@ div.nav{
     font-weight: normal
 }
 .navigation_container{
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit,20rem);
-    gap: 5.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,320px);
+    gap: 5rem;
     justify-content: center;
     align-items: flex-start;
-    border-radius: 5px; */
-    display: flex;
-    justify-content: space-evenly;
+    border-radius: 5px;
+    /* display: flex;
+    justify-content: space-evenly; */
     
 }
 .navigation_container .box{
@@ -222,6 +225,9 @@ div.nav{
     border-radius: 7px;
     height: 300px;
     width: 320px;
+}
+.navigation_container .box:hover{
+    transform: scale(1.05);
 }
 .navigation_container img{
     height: 5.3rem;
@@ -473,6 +479,10 @@ a.btn:hover {
     color: black;
     font-size: 17px;
 }
+.mailbox:focus-visible{
+    outline:none;
+    background-color: rgb(252, 252, 252) !important;
+}
 .newsletter .box .subbox .sub{
     height: 100%;
     min-width: 100px;
@@ -481,6 +491,7 @@ a.btn:hover {
     padding: 7px;
     border: none;
     font-weight: bold;
+    cursor: pointer;
 }
 /*Stats*/
 .stats{

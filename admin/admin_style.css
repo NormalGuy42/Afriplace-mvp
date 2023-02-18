@@ -362,6 +362,24 @@ label.logo{
 .property_section .title svg{
     height: 30px;
 }
+.property_section .advanced_search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.property_section .advanced_search input{
+    height: 28px;
+    font-size: 18px;
+}
+.property_section .advanced_search button{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid;
+    height: 28px;
+    font-size: 18px;
+}
 /*Property box start*/
 .property_box{
     margin-top: 20px;

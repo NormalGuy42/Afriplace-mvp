@@ -6,6 +6,17 @@ buttons.forEach(button =>{
         menu.classList.toggle('show');
     })
 })
+//Hide Menu when click outside
+document.addEventListener('click',function(e){
+    var menus = document.querySelectorAll('.btn_section');
+    menus.forEach(menu =>{
+        if(!e.target.closest('button') && menu.classList.contains('show')){ 
+            menu.classList.remove('show');
+          }
+    }) 
+}
+)
+
 //Properties end
 
 //Create Listing start

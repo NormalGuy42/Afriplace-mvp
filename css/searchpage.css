@@ -331,6 +331,7 @@ button[data-active]{
     margin: 0 auto;
     justify-content: space-evenly;
 }
+
 .searchresult_pagination li{
     cursor: pointer;
 }
