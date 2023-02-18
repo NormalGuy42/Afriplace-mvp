@@ -203,15 +203,14 @@ div.nav{
     font-weight: normal
 }
 .navigation_container{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit,320px);
     gap: 5rem;
     justify-content: center;
     align-items: flex-start;
-    border-radius: 5px;
-    /* display: flex;
-    justify-content: space-evenly; */
-    
+    border-radius: 5px; */
+    display: flex;
+    justify-content: space-evenly;
 }
 .navigation_container .box{
     text-align: center;
