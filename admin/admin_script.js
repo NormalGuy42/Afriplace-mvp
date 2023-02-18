@@ -1,9 +1,24 @@
 //Properties start
 var buttons = document.querySelectorAll('.more_actions');
+//Open Menu onclick
 buttons.forEach(button =>{
     button.addEventListener("click",()=>{
         const menu = button.nextElementSibling;
+        const activeMenu = document.querySelector('[data-active]');
         menu.classList.toggle('show');
+        
+        // if(!menu.dataset.active){
+        //     menu.dataset.active = true;
+        //     // menu.classList.add('show');
+        // }
+        // else if(menu.dataset.active = true){
+        //     delete menu.dataset.active;
+        //     // menu.classList.remove('show');
+        // }
+        // if(menu.dataset.active = true){menu.classList.add('show');}
+        // else if(menu.dataset.active && menu.classList.contains('show')){
+        //     menu.classList.remove('show');
+        // }
     })
 })
 //Hide Menu when click outside

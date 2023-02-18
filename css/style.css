@@ -108,21 +108,12 @@ nav ul li:first-child{display: none;}
     line-height: 80px;
     margin: 0 5px;
 }
-.checkbtn{
-    font-size: 30px;
-    color: black;
-    float: left;
-    line-height: 80px;
-    margin-left: 32px;
-    cursor: pointer;
-    display: none;
-}
-#check{
-    display: none;
-}
 svg.burger{
     height: 45px;
     width: 45px;
+    float: left;
+    margin: 20px 0 0 32px;
+    cursor: pointer;
 }
 .prez{
     /* background: url('../assets/living.jpg') no-repeat;
@@ -650,10 +641,11 @@ a.btn:hover {
     nav ul{
         position: absolute;
         width: 100%;
+        display: none;
         z-index: 2;
         background: white;
         top: 80px;
-        left: -100%;
+        /* left: -100%; */
         right: 0;
         margin: 0;
         text-align: center;
@@ -681,10 +673,10 @@ a.btn:hover {
     a:hover{
         color: var(--main-color);
     }
-    #check:checked ~ .nav_ul{
+    /* #check:checked ~ .nav_ul{
         left: 0;
         transition: all .5s
-    }
+    } */
     .logo_area{
         margin-left: -150px;
         left: 50%;
