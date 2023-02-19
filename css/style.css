@@ -18,7 +18,7 @@ body{
     width: 100%;
 }
 /*Important classes start*/
-.show{display: block;}
+.show{left:0; transition: all .5s;}
 /*Important classes end*/
 /*Header*/
 header{
@@ -113,6 +113,7 @@ svg.burger{
     float: left;
     margin: 20px 0 0 32px;
     cursor: pointer;
+    display: none;
 }
 .prez{
     /* background: url('../assets/living.jpg') no-repeat;
@@ -622,29 +623,19 @@ a.btn:hover {
     /*Form container end*/
 }
 @media(max-width:1030px){
-    .checkbtn {
+    svg.burger{
         display: block;
-        /* background-color: yellow; */
-        color: black;
-        margin-top: 20px; /*old value was 25*/
-        height: 20px;
-        line-height: 20px;
-        width: 20px;
     }
-    .checkbtn i {
-        width: 5px;
-    } 
     label.logo {
         font-size: 45px;
     }
     nav ul{
         position: absolute;
         width: 100%;
-        display: none;
         z-index: 2;
         background: white;
         top: 80px;
-        /* left: -100%; */
+        left: -100%;
         right: 0;
         margin: 0;
         text-align: center;
