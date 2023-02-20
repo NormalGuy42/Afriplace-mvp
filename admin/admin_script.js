@@ -16,13 +16,6 @@ buttons.forEach(button =>{
                 menu.classList.remove('show');
             }
         }
-        
-        // if(menu.dataset.active = true && !menu.classList.contains('show')){
-        //     menu.classList.add('show');
-        // }
-        // else if(menu.dataset.active && menu.classList.contains('show')){
-        //     menu.classList.remove('show');
-        // }
         if(activeMenu != null){
             if(0< activeMenu.length < 2){
                 activeMenu[0].classList.remove('show');
@@ -38,6 +31,9 @@ document.addEventListener('click',function(e){
     menus.forEach(menu =>{
         if(!e.target.closest('button') && menu.classList.contains('show')){ 
             menu.classList.remove('show');
+            if(menu.dataset.active){
+                delete menu.dataset.active
+            }
           }
     }) 
 }
