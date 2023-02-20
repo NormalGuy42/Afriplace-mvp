@@ -3,10 +3,10 @@ var nav_list = document.querySelector('.nav_ul');
 document.addEventListener('click',function(e){
   
   if(e.target.closest('.burger')){
-    nav_list.classList.toggle('show');
+    nav_list.classList.toggle('showNav');
   }
-  else if(!e.target.closest('.burger') && nav_list.classList.contains('show')){
-    nav_list.classList.remove('show');
+  else if(!e.target.closest('.burger') && nav_list.classList.contains('showNav')){
+    nav_list.classList.remove('showNav');
   }
 })
 //Show navigation menu

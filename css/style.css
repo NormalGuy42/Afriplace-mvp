@@ -18,7 +18,7 @@ body{
     width: 100%;
 }
 /*Important classes start*/
-.show{left:0; transition: all .5s;}
+.showNav{left:0; transition: all .5s;}
 /*Important classes end*/
 /*Header*/
 header{
