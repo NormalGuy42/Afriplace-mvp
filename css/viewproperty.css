@@ -4,6 +4,8 @@
     margin-top: 20px;
     width: 70%;
 }
+/*Important class*/
+.show{display: flex !important;}
 /*Image containers start*/
 .img_containers{
     height: 300px;
@@ -132,7 +134,9 @@ sup{
     content: "• ";
 }
 /*Contact start*/
-.contact_title{display: none;}
+.contact_title{
+    display: none;
+}
 .contact_box{
     position: sticky;
     top: 2rem;
@@ -141,8 +145,9 @@ sup{
     border: 1px solid #e2e2e2;
     border-radius: 3px;
     text-align: center;
-    width: 300px;
-    height: 150px;
+    min-width: 300px;
+    min-height: 150px;
+    height: fit-content;
 }
 .contact_box label{
     text-align: center;
@@ -163,12 +168,13 @@ sup{
     background-color: orange;
     text-decoration: none;
     border: 1px solid darkorange;
+    cursor: pointer;
 }
 /*Contact box for mobile users*/
 .mobile_contact_box{
     display: none;
     padding: 14px 0px; 
-    justify-content: space-between;
+    
     position: sticky;
     bottom: 0;
     z-index: 5;
@@ -178,6 +184,12 @@ sup{
     /* border-top: 1px solid #d3cdcd;
     border-bottom: 1px solid #d3cdcd;  */
 }
+.mobile_contact_info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .contact_id{
     text-align: center;
 }
@@ -185,14 +197,55 @@ sup{
     color: orange;
     font-weight: bold;
 }
+/*Contact form start*/
+.contact_form{
+    display: none;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+.contact_form  form{
+    margin-top: 15px;
+    padding: 5px 10px;
+    max-width: 400px;
+    min-width: 300px;
+}
+.contact_form  select{
+    width: 100%;
+    height: 35px;
+    font-size: 17px;
+    border: 1px solid #767676;
+}
+.contact_form  input{
+    margin-top: 8px;
+    height: 35px;
+    width: 100%;
+    font-size: 17px;
+    padding: 8px;
+    border: 1px solid #767676;
+}
+.contact_form  textarea{
+    width: 100%;
+    height: 120px;
+    margin-top: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    padding: 8px;
+    border: 1px solid #767676;
+}
+.contact_form button{
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    height: 36px;
+    background-color: orange;
+    text-decoration: none;
+    border: 1px solid darkorange;
+}
+/*Contact form end*/
 /*Contact end*/
 /*Property Details end*/
 /*Property Listing end*/
-@media (max-width:1300px) {
-    .contact_box{
-        min-width: 200px;
-    }
-}
 @media (max-width:900px) {
     img{
         width: 100%;
@@ -241,7 +294,7 @@ sup{
         display: none;
     }
     .mobile_contact_box{
-        display: flex;
+        display: block;
     }
     .contact_title{display: block;}
 }
