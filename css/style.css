@@ -292,6 +292,9 @@ div.nav{
     border-radius: 7px;
     cursor: pointer;
 }
+.listings .box a{
+    color: black;
+}
 /*Thumbnail image start*/
 .listings .box .thumb{
     position: relative;
@@ -411,7 +414,7 @@ div.nav{
 }
 a.btn {
     background-color: var(--main-color);
-    color: white;
+    color: white !important;
     font-size: 1.5rem;
 }
 a.btn:hover {

@@ -4,21 +4,32 @@ var buttons = document.querySelectorAll('.more_actions');
 buttons.forEach(button =>{
     button.addEventListener("click",()=>{
         const menu = button.nextElementSibling;
-        const activeMenu = document.querySelector('[data-active]');
-        menu.classList.toggle('show');
+        const activeMenu = document.querySelectorAll('[data-active="true"]');
         
-        // if(!menu.dataset.active){
-        //     menu.dataset.active = true;
-        //     // menu.classList.add('show');
+        if(!menu.dataset.active ){
+            menu.dataset.active = true;
+            menu.classList.add('show')
+        }
+        else if(menu.dataset.active = true){
+            delete menu.dataset.active;
+            if(menu.classList.contains('show')){
+                menu.classList.remove('show');
+            }
+        }
+        
+        // if(menu.dataset.active = true && !menu.classList.contains('show')){
+        //     menu.classList.add('show');
         // }
-        // else if(menu.dataset.active = true){
-        //     delete menu.dataset.active;
-        //     // menu.classList.remove('show');
-        // }
-        // if(menu.dataset.active = true){menu.classList.add('show');}
         // else if(menu.dataset.active && menu.classList.contains('show')){
         //     menu.classList.remove('show');
         // }
+        if(activeMenu != null){
+            if(0< activeMenu.length < 2){
+                activeMenu[0].classList.remove('show');
+                delete activeMenu[0].dataset.active
+                console.log(activeMenu);
+            };
+        }
     })
 })
 //Hide Menu when click outside
