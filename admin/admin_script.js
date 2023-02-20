@@ -5,7 +5,7 @@ buttons.forEach(button =>{
     button.addEventListener("click",()=>{
         const menu = button.nextElementSibling;
         const activeMenu = document.querySelectorAll('[data-active="true"]');
-        
+        //Make button active on click
         if(!menu.dataset.active ){
             menu.dataset.active = true;
             menu.classList.add('show')
@@ -16,11 +16,13 @@ buttons.forEach(button =>{
                 menu.classList.remove('show');
             }
         }
+        //Make previous button inactive
         if(activeMenu != null){
-            if(0< activeMenu.length < 2){
-                activeMenu[0].classList.remove('show');
-                delete activeMenu[0].dataset.active
-                console.log(activeMenu);
+            if(activeMenu.length = 1 ){
+                try{
+                    activeMenu[0].classList.remove('show');
+                    delete activeMenu[0].dataset.active
+                }catch(e){}
             };
         }
     })
