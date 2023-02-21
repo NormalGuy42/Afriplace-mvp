@@ -215,6 +215,7 @@ sup{
     height: 35px;
     font-size: 17px;
     border: 1px solid #767676;
+    background-color: white;
 }
 .contact_form  input{
     margin-top: 8px;
