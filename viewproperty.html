@@ -293,6 +293,14 @@
                 })
             })
         })
+        document.addEventListener('click',(e)=>{
+            contact = document.querySelector('.contact_form')
+            if(!e.target.closest('.contact_form')){
+                console.log('o')
+            }
+        }
+
+        )
         //Function for returning property ID
         function returnID(){
             return console.log('Yijeiei3');
