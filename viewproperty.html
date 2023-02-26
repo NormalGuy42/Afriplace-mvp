@@ -128,20 +128,20 @@
                         <h3>User</h3>
                         <label>Propiétaire</label>
                         <button class="contact_btn">Mettre en contact</button>
-                    <div class="contact_form">
-                        <form>
-                            <select>
-                                <option>Je suis intéressé(e) par votre bien</option>
-                                <option>Je souhaite visiter ce bien</option>
-                                <option>Je veux me renseigner</option>
-                            </select>
-                            <input type="text" placeholder="Nom et Prénom">
-                            <input type="email" placeholder="Email">
-                            <input type="number" placeholder="Numéro de télephone">
-                            <textarea cols="20" placeholder="Votre message"></textarea>
-                            <button class="contact_form_btn">Envoyer</button>
-                        </form>
-                    </div>
+                        <div class="contact_form">
+                            <form>
+                                <select>
+                                    <option>Je suis intéressé(e) par votre bien</option>
+                                    <option>Je souhaite visiter ce bien</option>
+                                    <option>Je veux me renseigner</option>
+                                </select>
+                                <input type="text" placeholder="Nom et Prénom">
+                                <input type="email" placeholder="Email">
+                                <input type="number" placeholder="Numéro de télephone">
+                                <textarea cols="20" placeholder="Votre message"></textarea>
+                                <button class="contact_form_btn">Envoyer</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,16 +291,19 @@
                 forms.forEach(form=>{
                     form.classList.toggle('show');
                 })
+                
             })
         })
-        document.addEventListener('click',(e)=>{
-            contact = document.querySelector('.contact_form')
-            if(!e.target.closest('.contact_form')){
-                console.log('o')
+        forms.forEach(form=>{
+            document.addEventListener('click',(e)=>{
+            if(!e.target.closest('.contact_btn') && form.classList.contains('show')){
+                if(!e.target.closest('.contact_form')){
+                    form.classList.remove('show');
+                }
             }
         }
-
         )
+        })
         //Function for returning property ID
         function returnID(){
             return console.log('Yijeiei3');
