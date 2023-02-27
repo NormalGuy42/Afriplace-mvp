@@ -557,29 +557,42 @@ a.btn:hover {
     bottom: 0;
     width: 100%;
     margin-top: 5rem; /*Old value was 7*/
-    padding-top: 30px;
-    padding-bottom: 4rem;
+    padding: 30px;
 }
 .footer .flex{
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 30px;
    
 }
 .footer .flex .box{
-    flex: 1 1 30rem;
+    width: 240px;
+}
+.footer .flex .social_links{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.footer .flex .social_links svg{
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+}
+.footer .flex .box h2{
+    color: grey;
 }
 .footer .flex .box a{
     display: block;
     /* font-size: 1.8 rem; */
     padding: .5rem 0;
 }
-.footer .flex .box a i{
-    color: white;
-}
 .footer .flex .box svg{
     height: 16px;
-    width: 20px;
+    width: 16px;
+}
+.footer .flex .box a i{
+    color: white;
 }
 .footer .flex .box a span{ 
     color: white;
@@ -684,9 +697,6 @@ a.btn:hover {
         height: 5px;
         width: 5px;
     }
-    .footer .flex .box{
-        margin-left: 30px;
-    } 
 }
 @media (max-width:760px) {
     .navigation_container{
