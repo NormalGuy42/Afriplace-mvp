@@ -431,8 +431,8 @@ a.btn:hover {
     color: var(--main-color);
     font-size: 20px;
 }
-.listings .more i{
-    font-size: 35px;
+.listings .more svg{
+    height: 35px;
 }
 /*Newsletter*/
 .newsletter{
