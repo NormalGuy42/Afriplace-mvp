@@ -61,7 +61,7 @@ label i{
     text-align: center;
 }
 
-li img{
+nav li img{
     height: 30px;
     width: 30px;
     height: 30px;
@@ -87,7 +87,7 @@ nav ul li{
 
 nav ul li a{
     color: #484242;
-    padding: 7px 13px;
+    padding: 5px 13px 0;
     font-size: 17px;
     font-weight: bold;
     display: block;
