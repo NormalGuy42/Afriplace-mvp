@@ -149,12 +149,12 @@ h3{
     align-items: center;
 }
 .showSideBarNav{
-    display: block !important;
-    position: absolute;
-    z-index: 3;
-    height: 100%;
+    /* display: block !important; */
     width: 240px !important;
-    min-width: unset;
+}
+.sidebar_nav.showSideBarNav ul{
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 /*sidebar end*/
 .userpage_content{
@@ -162,10 +162,23 @@ h3{
 }
 
 @media (max-width:1030px) {
+    .header_container{
+        position: fixed;
+    }
     .sidebar_nav{
-        display: none;
+        position: fixed;
+        z-index: 3;
+        width: 0;
+        min-width: unset;
+        transition: width .3s;
+        height: 100%;
     }
     .sidebar_nav ul{
+        opacity: 0;
         padding: 40px 0 0 15px;
+        /* display: none; */
+    }
+    .userpage{
+        padding-top: 80px;
     }
 }
