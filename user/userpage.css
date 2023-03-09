@@ -148,6 +148,14 @@ h3{
     display: flex;
     align-items: center;
 }
+.showSideBarNav{
+    display: block !important;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 240px !important;
+    min-width: unset;
+}
 /*sidebar end*/
 .userpage_content{
     width: 80%;
@@ -156,5 +164,8 @@ h3{
 @media (max-width:1030px) {
     .sidebar_nav{
         display: none;
+    }
+    .sidebar_nav ul{
+        padding: 40px 0 0 15px;
     }
 }
