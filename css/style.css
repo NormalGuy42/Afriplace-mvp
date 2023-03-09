@@ -661,6 +661,7 @@ a.btn:hover {
         display: block;
         line-height: 30px;
         float: none;
+        margin-bottom: 15px;
     }
     nav ul li:first-child{display: block;}
     nav ul li img{
