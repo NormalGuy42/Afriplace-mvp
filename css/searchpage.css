@@ -104,7 +104,8 @@ section .dialog .apply_btn{
     text-align: center;
     color: white;
     font-weight: bold;
-    background-color: orange;
+    /* background-color: orange; */
+    background-color: var(--main-color);
     border-radius: 4px;
     height: 40px;
     padding: 2px 30px;

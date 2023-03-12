@@ -7,7 +7,9 @@
     font-weight: normal;
 }
 :root{
-    --main-color: rgb(255 ,165, 0);
+    /* --main-color: rgb(255 ,165, 0); */
+    /* --main-color: rgb(255 144 7); */
+    --main-color: rgb(255 121 7);
     --grey: rgb(216, 216, 216);
 }
 body{

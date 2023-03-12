@@ -1,3 +1,9 @@
+:root{
+    /* --main-color: rgb(255 ,165, 0); */
+    /* --main-color: rgb(255 144 7); */
+    --main-color: rgb(255 121 7);
+    --grey: rgb(216, 216, 216);
+}
 body{
     font-family: arial; /*system ui*/
     background-color: white;
@@ -57,7 +63,8 @@ label.logo{
 }
 /*Nav bar start*/
 .admin_nav{
-    background-color: orange;
+    /* background-color: orange; */
+    background-color: var(--main-color);
     display: inline;
     min-height:100vh;
     width: 285px;

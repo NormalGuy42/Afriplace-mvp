@@ -165,7 +165,8 @@ sup{
     border-radius: 3px;
     height: 36px;
     padding: 0 5px;
-    background-color: orange;
+    /* background-color: orange; */
+    background-color: var(--main-color);
     text-decoration: none;
     border: 1px solid darkorange;
     cursor: pointer;
