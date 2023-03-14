@@ -151,7 +151,7 @@ h3{
 }
 .sidebar_nav.showSideBarNav ul{
     opacity: 1;
-    transition: opacity 0.5s;
+    transition: opacity 0.9s;
 }
 /*sidebar end*/
 /*Userpage start*/

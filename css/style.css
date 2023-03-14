@@ -220,6 +220,10 @@ div.nav{
 .navigation_container .box:hover{
     transform: scale(1.05);
 }
+.navigation_container .box:hover button{
+    background-color: var(--main-color);
+    color: white;
+}
 .navigation_container img{
     height: 5.3rem;
 }
