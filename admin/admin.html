@@ -6,6 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link rel="stylesheet" href="admin_style.css">
+    <script src="admin_script.js" defer></script>
+    <style>
+    .userpage .title{
+        font-size: 35px;
+        margin: 20px 0; 
+    }
+    .userpage h1{
+        margin:20px 0;
+        font-size: 26px;
+    }
+    .userpage .stat_page h3{
+        color: gray;
+    }
+    .userpage .stat_page h4{
+        color: gray;
+    }
+    .userpage .stats{
+        display: flex;
+        gap: 25px;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        text-align: center;
+        width: 100%;
+        margin-bottom:30px;
+    }
+    .userpage .stats .column{
+        padding: 8px;
+        width: 120px;
+        height: 70px;
+        box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+    }
+    .userpage .stats .column label{
+        font-size: 40px;
+    }
+    /*Other statistiques start*/
+    .userpage h2{
+        margin: 20px 0;
+        font-size: 21px;
+        color: #6d6d6e;
+    }
+    .userpage .sub_stats{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,136px);
+        width: 100%;
+        justify-content: space-around;
+        gap: 40px;
+    }
+    .userpage .sub_stats .column{
+        padding: 8px;
+        width: 120px;
+        height: 100px;
+        text-align: center;
+        box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .userpage .sub_stats label{
+        font-size: 35px;
+    }
+    .userpage .sub_stats .line{
+        height: 5px;
+        width: 100%;
+        background-color: black;
+        margin-top: 20px;
+    }
+    #facebook .line{
+        background-color: darkblue;
+    }
+    #instagram .line{
+        background-color: rgb(204, 6, 161);
+    }
+    #twitter .line{
+        background-color: rgb(0, 140, 255);
+    }
+    #youtube .line{
+        background-color: rgb(255, 0, 0);
+    }
+    /*Other statistiques end*/
+    .userpage .column img{
+        display: block;
+        height: 40px;
+        width: 40px;
+        margin: 0 auto;
+    }
+    .userpage .new_listings_title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px ;
+    }
+    .userpage .new_listings_title h1{
+        margin: 0;
+    }
+    .userpage .new_listings_title svg{
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+    .userpage .property_box button{
+        padding: 0 10px;
+    }
+    .userpage .property_box button svg{
+        margin: auto 0;
+        height: 30px;
+        width: 30px;
+    }
+    /*Admin page end*/
+    </style>
 </head>
 <body>
     <header class="header_container">
@@ -13,6 +122,23 @@
             <div class="admin_logo_area">
                 <a href="admin.html"><span><label class="logo">afriplace</label></span></a>
             </div>
+            <svg class="burger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="burger_svg" version="1.1" 
+                width="400" height="400" viewBox="0, 0, 400,400">
+                    <g id="svgg" class="burger">
+                        <path id="path0" d="M60.169 74.148 C 47.307 78.873,46.513 97.065,58.895 103.329 L 61.011 104.400 204.800 104.400 
+                        L 348.589 104.400 350.794 103.303 C 353.391 102.011,356.886 98.629,357.821 
+                        96.503 C 358.184 95.676,358.682 94.579,358.928 94.064 C 359.575 92.705,359.507 
+                        86.134,358.823 84.000 C 357.606 80.200,354.434 76.679,350.535 74.798 L 348.050 
+                        73.600 204.725 73.648 C 99.229 73.683,61.075 73.815,60.169 74.148 M62.200 170.182 C 47.700 173.758,45.600 193.882,59.041 
+                        200.451 L 61.800 201.800 204.800 201.800 L 347.800 201.800 350.479 200.490 C 356.965 
+                        197.317,360.468 190.657,359.400 183.529 C 359.180 182.061,358.865 180.726,358.700 180.563 C 358.535 180.400,358.400 180.017,358.400 
+                        179.711 C 358.400 176.719,352.298 171.459,347.325 170.164 C 344.316 169.380,65.379 169.398,62.200 170.182 M60.973 267.526 
+                        C 46.699 272.270,46.388 293.278,60.515 298.442 C 63.768 299.631,345.832 299.631,349.085 298.442 
+                        C 363.245 293.266,362.974 272.618,348.681 267.595 C 345.416 266.447,64.422 266.380,60.973 267.526 "stroke="none" 
+                        fill="#040404" fill-rule="evenodd" class="burger">
+                        </path>
+                    </g>
+                </svg>
         </nav>
     </header>
     <section class="admin_section">
@@ -20,19 +146,20 @@
             <ul>
                 <li>
                     <a href="admin.html">
-                        <img src="../assets/person_icon.svg">
-                        User
+                        <!-- <img src="../assets/person_icon.svg"> -->
+                        <img src="../assets/dashboard.svg" alt="" class="resize">
+                        Acceuil
                     </a>
                 </li>
                 <li>
                     <a href="inbox.html">
-                        <img src="" alt="">
+                        <img src="../assets/message.svg" alt=""class="resize">
                         Messages
                     </a>
                 </li>
                 <li>
                     <a href="ad_manager.html">
-                        <img src="" alt="">
+                        <img src="../assets/ads.svg" alt="" class="resize">
                         Ads
                     </a>
                 </li> 
@@ -56,7 +183,7 @@
                 </li>
                 <li>
                     <a href="settings.html">
-                        <img src="" alt="">
+                        <img src="../assets/gear.svg" alt="" class="resize">
                         Settings
                     </a>
                 </li>
@@ -64,32 +191,42 @@
         </nav>
         <div class="userpage">
             <div class="title">Hello Admin</div>
-            <h1>Statistiques</h1>
             <div class="stat_page">
                 <div class="stats">
                     <div class="column">
                         <label for="" id="daily_visits">0</label>
-                        <h3>Visites</h3>
+                        <h3>Visits</h3>
                     </div>
                     <div class="column">
                         <label for="" id="current_visits">0</label>
-                        <h3>Visites</h3>
+                        <h3>Properties</h3>
                     </div>
                     <div class="column">
                         <label id="daily_signups">0</label>
-                        <h3>Inscriptions</h3>
+                        <h3>Users</h3>
                     </div>
+                    <div class="column">
+                        <label>0</label>
+                        <h3>Revenue</h3>
+                    </div>
+                </div>
+                <div class="graph">
+
                 </div>
                 <div class="monthly_stats">
                     <h2>Ce mois-ci</h2>
                     <div class="sub_stats">
                         <div class="column">
                             <label for="">0</label>
-                            <h3>Visites</h3>
+                            <h3>Visits</h3>
                         </div>
                         <div class="column">
                             <label>0</label>
-                            <h3>Inscriptions</h3>
+                            <h3>Properties</h3>
+                        </div>
+                        <div class="column">
+                            <label>0</label>
+                            <h3>Users</h3>
                         </div>
                     </div>
                 </div>
@@ -98,17 +235,44 @@
                     <div class="sub_stats">
                         <div class="column">
                             <label for="">0</label>
-                            <h3>Visites</h3>
+                            <h3>Visits</h3>
                         </div>
                         <div class="column">
                             <label>0</label>
-                            <h3>Inscriptions</h3>
+                            <h3>Properties</h3>
                         </div>
-                    </div>
-                </div>
-                <div class="property_stats">
-                    <h2>Propriétés</h2>
-                    <div class="properties">
+                        <div class="column">
+                            <label>0</label>
+                            <h3>Users</h3>
+                        </div>
+                        <div class="column">
+                            <label>0</label>
+                            <h3>Revenue</h3>
+                        </div>
+                        <div class="column">
+                            <label>0</label>
+                            <h3>Subscriptions</h3>
+                        </div>
+                        <div class="column" id="facebook">
+                            <label>0</label>
+                            <h3>Facebook</h3>
+                            <div class="line"></div>
+                        </div>
+                        <div class="column" id="instagram">
+                            <label>0</label>
+                            <h3>Instagram</h3>
+                            <div class="line"></div>
+                        </div>
+                        <div class="column" id="twitter">
+                            <label>0</label>
+                            <h3>Twitter</h3>
+                            <div class="line"></div>
+                        </div>
+                        <div class="column" id="youtube">
+                            <label>0</label>
+                            <h3>Twitter</h3>
+                            <div class="line"></div>
+                        </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Maisons</h4>

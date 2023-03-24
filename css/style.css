@@ -19,8 +19,15 @@ body{
     height: 100%;
     width: 100%;
 }
+/*General selectors*/
+select{
+    background-color: white;
+}
+select:focus-visible{
+    outline: orange auto 2px;
+}
 /*Important classes start*/
-.showNav{left:0; transition: all .5s;}
+.showNav{left:0;}
 /*Important classes end*/
 /*Header*/
 header{
@@ -439,10 +446,11 @@ a.btn:hover {
 }
 .listings .more svg{
     height: 35px;
+    fill: var(--main-color)
 }
 /*Newsletter*/
 .newsletter{
-    background-color: darkorange;
+    background-color: var(--main-color);
     min-height: 230px;
     justify-content: center;
     display: flex;
@@ -614,9 +622,6 @@ a.btn:hover {
 .footer .flex .box:first-child a i{
     margin-right: 1rem;
 }
-@media (max-width:1325px) {
-    
-}
 @media (max-width:1280px) {
     .row{
         flex-wrap: nowrap;
@@ -661,7 +666,8 @@ a.btn:hover {
         margin: 0;
         text-align: center;
         border-bottom: 1px solid grey;
-        box-shadow: 1px 1px 3px rgb(0 0 0 / 10%)
+        box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+        transition: all .5s;
     }
     nav ul li{
         display: block;
@@ -744,14 +750,13 @@ a.btn:hover {
         margin-left: -135px;
     }
 }
+@media (max-width:415px) {
+    .logo_area{
+        width: 180px;
+        margin-left: -80px;
+    }
+}
 @media (max-width:370px) {
-    .checkbtn{
-        margin-left: 30px;
-    }
-    .logo_area {
-        margin-left: -110px;
-        width: 250px;
-    }
     /*Navigation cards*/
     .navigation_container{
         grid-template-columns: repeat(auto-fit,95%);

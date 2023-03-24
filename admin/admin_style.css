@@ -34,7 +34,7 @@ header{
 .header_container nav{
     height: 80px;
     width: 100%;
-    justify-content: center;
+    display: flex;
     position: relative;
 }
 .admin_logo_area{
@@ -49,11 +49,14 @@ header{
     text-decoration: none
 }
 label.logo{
-    color: orange;
-    font-size: 45px;
+    color: var(--main-color);
+    font-size: 52px;
     line-height: 80px;
     font-weight: bold;
     cursor: pointer;
+}
+.burger{
+    display: none;
 }
 /*Header end*/
 .admin_section{
@@ -62,6 +65,9 @@ label.logo{
     display: flex;
 }
 /*Nav bar start*/
+.showNav{
+    width: 280px !important;
+}
 .admin_nav{
     /* background-color: orange; */
     background-color: var(--main-color);
@@ -88,7 +94,11 @@ label.logo{
     width: 100%;
 }
 .admin_nav li img{
-    height: 56px;
+    height: 65px;
+}
+.admin_nav li img.resize{
+    width: 40px;
+    margin: 0 15px;
 }
 .admin_nav li a{
     text-decoration: none;
@@ -457,3 +467,43 @@ label.logo{
     height:20px;
 }
 /*Property end*/
+@media (max-width:1000px) {
+    .burger{
+        display: block;
+        height: 65px;
+        width: 65px;
+        margin: 5px 0 0 35px;
+        cursor: pointer;
+    }
+    .admin_logo_area{
+        width: 200px;
+    }
+    .admin_nav{
+        position: absolute;
+        z-index: 2;
+        width: 0;
+        min-width: 0;
+        overflow: hidden;
+        transition: all .5s;
+    }
+    .admin_nav ul{
+        padding: 20px 0 0 20px;
+    }
+}
+@media (max-width:520px) {
+    .admin_logo_area{
+        margin-left: -60px;
+    }
+    label.logo{
+        font-size: 50px;
+    }
+    .userpage{
+        width: 100%;
+        padding: 20px 0;
+    }
+}
+@media (max-width:390px) {
+    .burger{
+        margin: 5px 0 0 20px;
+    }
+}

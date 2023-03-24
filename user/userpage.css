@@ -124,6 +124,7 @@ h3{
     background-color: var(--main-color);
     width: 20%;
     min-width: 300px;
+    overflow: hidden;
 }
 .sidebar_nav ul{
     padding: 40px 0 0 40px;
@@ -136,7 +137,11 @@ h3{
     margin-bottom: 20px;
 }
 .sidebar_nav li img{
-    height: 56px;
+    height: 70px;
+}
+.sidebar_nav li img.resize{
+    width: 38px;
+    margin: 0 15px;
 }
 .sidebar_nav a{
     color:white;
@@ -149,10 +154,10 @@ h3{
     /* display: block !important; */
     width: 240px !important;
 }
-.sidebar_nav.showSideBarNav ul{
+/* .sidebar_nav.showSideBarNav ul{
     opacity: 1;
     transition: opacity 0.9s;
-}
+} */
 /*sidebar end*/
 /*Userpage start*/
 .userpage{
@@ -182,7 +187,6 @@ h3{
         height: 100%;
     }
     .sidebar_nav ul{
-        opacity: 0;
         padding: 40px 0 0 15px;
         /* display: none; */
     }

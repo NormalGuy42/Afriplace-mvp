@@ -1,3 +1,18 @@
+//Toggle menu start
+document.addEventListener('click',(e)=>{
+    var sidebar = document.querySelector(".admin_nav");
+    if(e.target.closest('.burger')){
+        sidebar.classList.toggle('showNav');
+    }
+    if(!e.target.closest('.burger') && sidebar.classList.contains('show')){
+        if(!e.target.closest(".admin_nav")){
+            sidebar.classList.remove('showNav');
+        }
+    }
+})
+
+//Toggle menu end
+
 //Properties start
 var buttons = document.querySelectorAll('.more_actions');
 //Open Menu onclick
@@ -40,40 +55,5 @@ document.addEventListener('click',function(e){
     }) 
 }
 )
-
 //Properties end
 
-//Create Listing start
-//Couldn't find a way for both of them to work at the same time
-//Fix this
-function bedCounter(){
-    const bedButtons = document.querySelectorAll("[data-bed-btn]");
-    const spanBed = document.getElementById('num_lits');
-    let num = 0;
-    bedButtons.forEach(button =>{
-    button.addEventListener("click",()=>{
-        var value = button.dataset.bedBtn;
-        if(value==="increment"){num++}
-        else{num--}
-        if(num<0){num = 0}
-        spanBed.innerText = num;
-        })
-    })
-}
-function bathCounter(){
-    const bedButtons = document.querySelectorAll("[data-bath-btn]");
-    const spanBed = document.getElementById('num_toilettes');
-    let num = 0;
-    bedButtons.forEach(button =>{
-    button.addEventListener("click",()=>{
-        var value = button.dataset.bathBtn;
-        if(value==="increment"){num++}
-        else{num--}
-        if(num<0){num = 0}
-        spanBed.innerText = num;
-        })
-    })
-}
-bedCounter();
-bathCounter();
-//Create Listing end

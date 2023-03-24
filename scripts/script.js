@@ -5,8 +5,10 @@ document.addEventListener('click',function(e){
   if(e.target.closest('.burger')){
     nav_list.classList.toggle('showNav');
   }
-  else if(!e.target.closest('.burger') && nav_list.classList.contains('showNav')){
-    nav_list.classList.remove('showNav');
+  if(!e.target.closest('.burger') && nav_list.classList.contains('showNav')){
+    if(!e.target.closest(".nav_ul")){
+      nav_list.classList.remove('showNav');
+    }
   }
 })
 //Show navigation menu

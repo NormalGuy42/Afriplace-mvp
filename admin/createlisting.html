@@ -27,13 +27,13 @@
                 </li>
                 <li>
                     <a href="inbox.html">
-                        <img src="" alt="">
+                        <img src="../assets/message.svg" alt="">
                         Messages
                     </a>
                 </li>
                 <li>
                     <a href="ad_manager.html">
-                        <img src="" alt="">
+                        <img src="../assets/ads.svg" alt="">
                         Ads
                     </a>
                 </li> 
@@ -57,7 +57,7 @@
                 </li>
                 <li>
                     <a href="settings.html">
-                        <img src="" alt="">
+                        <img src="../assets/gear.svg" alt="">
                         Settings
                     </a>
                 </li>
@@ -180,6 +180,41 @@
             <!--Form end-->
         </div>
     </section>
-
 </body>
+<script defer>
+    //Create Listing start
+    //Couldn't find a way for both of them to work at the same time
+    //Fix this
+    function bedCounter(){
+        const bedButtons = document.querySelectorAll("[data-bed-btn]");
+        const spanBed = document.getElementById('num_lits');
+        let num = 0;
+        bedButtons.forEach(button =>{
+        button.addEventListener("click",()=>{
+            var value = button.dataset.bedBtn;
+            if(value==="increment"){num++}
+            else{num--}
+            if(num<0){num = 0}
+            spanBed.innerText = num;
+            })
+        })
+    }
+    function bathCounter(){
+        const bedButtons = document.querySelectorAll("[data-bath-btn]");
+        const spanBed = document.getElementById('num_toilettes');
+        let num = 0;
+        bedButtons.forEach(button =>{
+        button.addEventListener("click",()=>{
+            var value = button.dataset.bathBtn;
+            if(value==="increment"){num++}
+            else{num--}
+            if(num<0){num = 0}
+            spanBed.innerText = num;
+            })
+        })
+    }
+    bedCounter();
+    bathCounter();
+    //Create Listing end
+</script>
 </html>

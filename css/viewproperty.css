@@ -5,7 +5,7 @@
     width: 70%;
 }
 /*Important class*/
-.show{display: flex !important;}
+.show{height: 360px !important;}
 /*Image containers start*/
 .img_containers{
     height: 300px;
@@ -200,10 +200,13 @@ sup{
 }
 /*Contact form start*/
 .contact_form{
-    display: none;
+    display: flex;
     justify-content: center;
     width: 100%;
     text-align: center;
+    height: 0;
+    overflow: hidden;
+    transition: all .6s;
 }
 .contact_form  form{
     margin-top: 15px;
@@ -240,9 +243,10 @@ sup{
     font-weight: bold;
     border-radius: 3px;
     height: 36px;
-    background-color: orange;
+    background-color: var(--main-color);
     text-decoration: none;
     border: 1px solid darkorange;
+    padding: 5px;
 }
 /*Contact form end*/
 /*Contact end*/
