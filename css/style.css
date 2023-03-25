@@ -23,7 +23,7 @@ body{
 select{
     background-color: white;
 }
-select:focus-visible{
+*:focus-visible{
     outline: orange auto 2px;
 }
 /*Important classes start*/

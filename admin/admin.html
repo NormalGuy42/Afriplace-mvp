@@ -34,11 +34,18 @@
     .userpage .stats .column{
         padding: 8px;
         width: 120px;
-        height: 70px;
+        height: 100px;
         box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .userpage .stats .column label{
         font-size: 40px;
+    }
+    /*Card/Column*/
+    .column{
+        cursor: pointer;
     }
     /*Other statistiques start*/
     .userpage h2{
@@ -172,7 +179,7 @@
                 <li>
                     <a href="createlisting.html">
                         <img src="../assets/house_icon_create.svg">
-                        New Property
+                        Add New
                     </a>
                 </li>
                 <li>
@@ -227,6 +234,10 @@
                         <div class="column">
                             <label>0</label>
                             <h3>Users</h3>
+                        </div>
+                        <div class="column">
+                            <label>0</label>
+                            <h3>Revenue</h3>
                         </div>
                     </div>
                 </div>

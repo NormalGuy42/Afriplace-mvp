@@ -114,92 +114,6 @@ label.logo{
     width: 60%;
     margin-bottom: 30px;
 }
-.userpage .title{
-    font-size: 35px;
-    margin-top: 20px;
-}
-.userpage h1{
-    margin:20px 0;
-    font-size: 26px;
-}
-.userpage .stat_page h3{
-    color: gray;
-}
-.userpage .stat_page h4{
-    color: gray;
-}
-.userpage .stats{
-    display: flex;
-    gap: 25px;
-    /* flex-direction: column; */
-    justify-content: space-between;
-    text-align: center;
-    width: 100%;
-    margin-bottom:30px;
-}
-.userpage .stats .column{
-    padding: 8px;
-    width: 120px;
-    height: 70px;
-    box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
-}
-.userpage .stats .column label{
-    font-size: 40px;
-}
-/*Other statistiques start*/
-.userpage h2{
-    margin: 20px 0;
-    font-size: 21px;
-    color: #6d6d6e;
-}
-.userpage .sub_stats{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
-.userpage .sub_stats .column{
-    padding: 8px;
-    width: 120px;
-    height: 70px;
-    text-align: center;
-    box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
-}
-.userpage .sub_stats label{
-    font-size: 35px;
-}
-/*Other statistiques end*/
-.userpage .properties{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    text-align: center;
-}
-.userpage .properties img{
-    height: 80px;
-}
-.userpage .new_listings_title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px ;
-}
-.userpage .new_listings_title h1{
-    margin: 0;
-}
-.userpage .new_listings_title svg{
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-}
-.userpage .property_box button{
-    padding: 0 10px;
-}
-.userpage .property_box button svg{
-    margin: auto 0;
-    height: 30px;
-    width: 30px;
-}
-/*Admin page end*/
 /*Create Listing start*/
 .main_body{
     display: inline;
@@ -488,6 +402,9 @@ label.logo{
     }
     .admin_nav ul{
         padding: 20px 0 0 20px;
+    }
+    .userpage{
+        width: 85%;
     }
 }
 @media (max-width:520px) {
