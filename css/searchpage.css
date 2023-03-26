@@ -5,10 +5,11 @@ section .tab{
 section .tab .search_field{
     height: 45px;
     width: 300px;
-    font-size: 20px;
+    font-size: 18px;
     position: relative;
     top: 2px;
     border: 1px solid;
+    padding: 0 8px;
 }
 .tab_index.home_type{display: inline-block;}
 .tab_index.action_type{display: inline-block;}
