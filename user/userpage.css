@@ -178,7 +178,7 @@ h3{
 /*Property grid start*/
 .properties_container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,280px);
+    grid-template-columns: repeat(auto-fit,300px);
     justify-content: center;
     gap: 40px;
     padding: 20px 30px;
@@ -194,12 +194,16 @@ h3{
 .property_box img{
     width: 100%;
 }
+.property_box .outer_stats{
+    position: absolute;
+    width: 300px;
+    display: flex;
+    justify-content: end;
+}
 .property_box .stats_container{
     display: flex;
     justify-content: space-between;
     padding: 0 20px 10px;
-    position: absolute;
-    right: 20px;
     box-sizing: border-box;
     background: linear-gradient(45deg, black, transparent);
     border-bottom-left-radius: 8px;
@@ -208,11 +212,12 @@ h3{
 .property_box .stats_container .stat{
     display: flex;
     align-items: center;
+    margin: 0 5px 0 0;
 }
 .property_box .stats_container img{
     height: 25px;
     width: 25px;
-    margin: 0 10px 0 0;
+    margin: 0 8px 0 0;
 }
 .property_box .flex{
     width: 100%;
@@ -225,14 +230,18 @@ h3{
 .property_box h3{
     font-weight: bold;
     font-size: 25px;
-    padding: 10px 24px 0;
+    padding: 10px 18px 0;
 }
 .property_box svg{
-    height: 20px;
-    width: 23px;
+    height: 18px;
+    width: 22px;
+}
+.property_box h4{
+    padding: 4px 10px 0;
+    font-size: 18px;
 }
 .property_box p{
-    padding: 10px 10px 5px;
+    padding: 5px 10px 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
