@@ -25,7 +25,7 @@
                 <li><a href="index.php">Acceuil</a></li>
                 <li><a href="searchpage.php">Achetez</a></li>
                 <li><a href="searchpage.php">Louez</a></li>
-                <li><a href="user/userpage.php">Listez</a></li>
+                <li><a href="user/login.php">Listez</a></li>
                 <li><a href="contact.php">Contactez-nous</a></li>
                 <li><a href="#"><img src="assets/guinea.jpg"></a></li>
             </ul>

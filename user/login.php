@@ -1,31 +1,33 @@
+<?php 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Connexion</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/userpage.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="userpage.css" />
     <script src="https://kit.fontawesome.com/92960f12ec.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <!--Header-->
     <?php include('../templates/user_header.php')?>
     <!--Header-->
     <section class="sign-in_box">
         <div class="userbox">
-            <form action="sign-in">
+            <form action="sign-in" action="login.php" method="POST">
                 <h3>Bienvenue</h3>
-                <input class="login_field" type="email" placeholder="Email" />
-                <input class="login_field" type="password" placeholder="Mot de passe" />
-                <button class="connexion">Connexion</button>
+                <input class="login_field" type="email" placeholder="Email" name="email"/>
+                <input class="login_field" type="password" placeholder="Mot de passe" name="password" />
+                <button class="connexion" name="submit" value="submit">Connexion</button>
                 <h4 class="forgot">
                     <a href="#" class="forgot_link">Mot de passe oublié?</a>
                 </h4>
-                <div class="connect_options">
+                <!-- <div class="connect_options"> 
                     <h4>Se connecter avec</h4>
                     <button type="submit" class="login_button btn-facebook">
                         <svg viewBox="0 0 200 200" aria-hidden="true" fill="currentColor"
@@ -55,16 +57,13 @@
                         </svg>
                         Continuer avec Google
                     </button>
-                </div>
+                </div> -->
                 <h5>
-                    <span>Pas de compte?</span><a href="register.html" class="link_text">Créez-en un</a>
+                    <span>Pas de compte?</span><a href="register.php" class="link_text">Créez-en un</a>
                 </h5>
             </form>
         </div>
     </section>
-    <!--Footer-->
-    <?php include('../templates/footer.php')?>
-    <!--Footer-->
 </body>
 
 </html>

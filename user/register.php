@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/userpage.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="userpage.css">
     <script src="https://kit.fontawesome.com/92960f12ec.js" crossorigin="anonymous"></script>
 </head>
 
@@ -65,13 +65,11 @@
                         Continuer avec Google
                     </button>
                 </div>
-                <h5><span>Vous avez déja un compte?</span><a href="login.html" class="link_text">Connectez-vous</a></h5>
+                <h5><span>Vous avez déja un compte?</span><a href="login.php" class="link_text">Connectez-vous</a></h5>
             </form>
         </div>
     </section>
-   <!--Footer-->
-   <?php include('../templates/footer.php')?>
-    <!--Footer-->
+   
 </body>
 
 </html>
