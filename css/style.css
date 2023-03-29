@@ -431,7 +431,7 @@ a.btn {
 }
 a.btn:hover {
     color: white;
-    background: #fb8c04ed;
+    background: orangered;
 }
 /*Button end*/
 .listings .more{

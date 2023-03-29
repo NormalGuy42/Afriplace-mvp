@@ -162,6 +162,20 @@ h3{
 }
 
 /*sidebar end*/
+/*Page headers start*/
+.title{
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+.line{
+    height: 5px;
+    background-color: black;
+    width: 80%;
+    min-width: 200px;
+    margin: 0 0 20px;
+}
+/*Page headers end*/
 /*Userpage start*/
 .userpage{
     width: 100%;
@@ -171,6 +185,7 @@ h3{
 .userpage_content{
     width: 90%;
     margin: 0 auto;
+    padding: 20px;
 }
 /*My properties start*/
 /*Properties start*/
@@ -183,7 +198,7 @@ h3{
     grid-template-columns: repeat(auto-fit,300px);
     justify-content: center;
     gap: 40px;
-    padding: 20px 30px;
+    padding: 0px 30px 20px;
     width: 100%;
 }
 /*Property box start*/
@@ -192,6 +207,7 @@ h3{
     flex-direction: column;
     border-radius: 8px;
     box-shadow: 0 0 4px 1px rgb(0, 0, 0, 30%);
+    cursor: pointer;
 }
 .property_box img{
     width: 100%;
@@ -268,6 +284,48 @@ h3{
 /*Property grid end*/
 /*Properties end*/
 /*My properties end*/
+
+/*Messages start*/
+.messages .card{
+    min-width:300px;
+    max-width: 600px;
+    width: 70%;
+    margin: 0 auto;
+    box-shadow: 0 0 2px 2px rgb(0,0,0,30%);
+}
+.messages .card img{
+    display: block;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+}
+.messages .card label{
+    display: block;
+    text-align: center;
+}
+.messages .card p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    letter-spacing: 0.03rem;
+    margin-bottom: 8px;
+}
+.messages .card .btn_container{
+    display: flex;
+}
+.messages .card button{
+    width: 50%;
+    height: 35px;
+    display: block;
+}
+.more{
+    display: block;
+    text-align: center;
+    margin: 20px;
+    cursor: pointer;
+}
+/*Messages end*/
 @media (max-width:1030px) {
     .header_container{
         position: fixed;
