@@ -1,17 +1,47 @@
 <?php 
+    //Initialize variables
+    $firstName = $lastName = $email = $phone = "";
+    $errors = array('email'=>'','firstName'=>'','lastName'=>'','phone'=>'');
+    
     if(isset($_POST['submit'])){
         //Check first name
         if(empty($_POST['firstName'])){
-            echo 'Enter firstName';
+            $errors['firstName'] =  'Entrez votre prénom';
         }else{
-            echo htmlspecialchars($_POST['firstName']);
+            $firstName = $_POST['firstName'];
+            if(!preg_match('/^[a-zA-Z\s]+$/',$firstName)){
+                $errors['firstName'] = 'Votre prénom doit uniquement contenir des lettres';
+            }
         }
         //Check last name
-        if(empty($_POST['lastName'])){}
+        if(empty($_POST['lastName'])){
+            $errors['lastName'] = 'Entrez votre nom';
+        }
+        else{
+            $lastName = $_POST['lastName'];
+            if(!preg_match('/^[a-zA-Z\s]+$/',$lastName)){
+                $errors['lastName'] ='Votre nom doit uniquement contenir des lettres';
+            }
+        }
         //Check email
-        if(empty($_POST['email'])){}
+        if(empty($_POST['email'])){
+            $errors['email'] = 'Entrez votre email';
+        }else{
+            $email = $_POST['email'];
+            if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = 'Votre email doit être une adresse email valide';
+            }
+        }
         //Check telephone
-        if(empty($_POST['phone'])){}
+        if(empty($_POST['phone'])){
+            $errors['phone'] = 'Entrez votre numero de téléphone';
+        }
+        else{
+            $phone = $_POST['phone'];
+            if(!preg_match('/^\+?[1-9][0-9]{7,14}$/',$phone)){
+                $errors['phone'] = 'Format du numero incorrect';
+            }
+        }
     }
 ?>
 
@@ -84,6 +114,7 @@
                 </div>
                 <label>Type de demande</label>
                 <select class="login_field contact" name="object">
+                    <option value="">Choissisez la raison de votre demande</option>
                     <option>Je veux lister ma propriété</option>
                     <option>Retirer ma propriété</option>
                     <option>Demande d'information générale</option>
@@ -96,21 +127,29 @@
             <div class="contact_group">
                 <div class="contact_row">
                     <label>Nom</label>
-                    <input class="login_field contact" type="text" maxlength="30" name="lastname">
+                    <input class="login_field contact" type="text" 
+                    maxlength="30" name="lastName" value="<?php echo htmlspecialchars($lastName)?>">
+                    <div class="error"><?php echo $errors['lastName']?></div>
                 </div>
                 <div class="contact_row">
                     <label>Prénom</label>
-                    <input class="login_field contact" type="text" maxlength="30" name="firstName"> 
+                    <input class="login_field contact" 
+                    type="text" maxlength="30" name="firstName" value="<?php echo htmlspecialchars($firstName)?>">
+                    <div class="error"><?php echo $errors['firstName']?></div> 
                 </div>
             </div>
             <div class="contact_group">
                 <div class="contact_row">
                     <label>Email</label>
-                    <input class="login_field contact" type="email" maxlength="50" name="email">
+                    <input class="login_field contact" 
+                    type="email" maxlength="50" name="email" value="<?php echo htmlspecialchars($email)?>">
+                    <div class="error"><?php echo $errors['email']?></div>
                 </div>          
                 <div class="contact_row">
                     <label>Telephone</label>
-                    <input class="login_field contact" type="tel" maxlength="50" name="phone">
+                    <input class="login_field contact" 
+                    type="tel" maxlength="50" name="phone" value="<?php echo htmlspecialchars($phone)?>">
+                    <div class="error"><?php echo $errors['phone']?></div>
                 </div>
             </div>
             <div class="contact_row">

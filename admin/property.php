@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="admin_style.css">
 </head>
 <body>
-    <?php include('../templates/admin_templates')?>
+    <?php include('../templates/admin_templates.php')?>
         <div class="property_body">
             <div class="action_btns">
                 <button>Edit</button>

@@ -4,7 +4,7 @@ document.addEventListener('click',(e)=>{
     if(e.target.closest('.burger')){
         sidebar.classList.toggle('showNav');
     }
-    if(!e.target.closest('.burger') && sidebar.classList.contains('show')){
+    if(!e.target.closest('.burger') && sidebar.classList.contains('showNav')){
         if(!e.target.closest(".admin_nav")){
             sidebar.classList.remove('showNav');
         }

@@ -117,10 +117,10 @@ nav ul li:first-child{display: none;}
     margin: 0 5px;
 }
 svg.burger{
-    height: 45px;
-    width: 45px;
+    height: 55px;
+    width: 55px;
     float: left;
-    margin: 20px 0 0 32px;
+    margin: 15px 0 0 32px;
     cursor: pointer;
     display: none;
 }
@@ -740,9 +740,13 @@ a.btn:hover {
     .listings_container{
         grid-template-columns: repeat(auto-fit,22rem)
     }
-    
     .logo_area label{
         font-size: 40px;
+    }
+    svg.burger{
+        height: 50px;
+        width: 50px;
+        margin: 20px 0 0 32px;
     }
 }
 @media (max-width:500px) {

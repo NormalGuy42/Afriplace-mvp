@@ -9,7 +9,7 @@
     <script src="admin_script.js" defer></script>
 </head>
 <body>
-    <?php include('../templates/admin_templates')?>
+    <?php include('../templates/admin_templates.php')?>
     </section>
 </body>
 </html>

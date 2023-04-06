@@ -67,7 +67,7 @@
                         <button>Louez des biens</button>
                     </div>
                 </a>
-                <a href="user/userpgage.php">
+                <a href="user/userpage.php">
                     <div class="box">
                         <img src="assets/sell.png">
                         <h3>Listez une maison</h3>

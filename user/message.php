@@ -14,8 +14,6 @@
     <!--Header-->
     <?php include('../templates/user_header.php')?>
     <!--Header-->
-    <div class="userpage">
-        <?php include('../templates/user_sidebar.php')?>
         <div class="userpage_content">
             <h1 class="title">Messages</h1>
             <div class="line"></div>
@@ -27,7 +25,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque officiis qui excepturi reprehenderit 
                         ea corporis possimus cum consequatur itaque illum?</p>
                         <div class="btn_container">
-                            <button class="ignore">Ignorer</button>
+                            <button class="ignore">Rejeter</button>
                             <button class="respond">Répondre</button>
                         </div>
                     </div>

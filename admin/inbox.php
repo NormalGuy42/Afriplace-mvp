@@ -10,7 +10,7 @@
 </head>
 <body>
    
-    <?php include('../templates/admin_templates')?>    
+    <?php include('../templates/admin_templates.php')?>    
     </section>
 </body>
 </html>

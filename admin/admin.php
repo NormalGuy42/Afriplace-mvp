@@ -113,7 +113,7 @@
         cursor: pointer;
     }
     .userpage .property_box button{
-        padding: 0 10px;
+        padding: 30px 10px 0px;
     }
     .userpage .property_box button svg{
         margin: auto 0;
@@ -124,7 +124,7 @@
     </style>
 </head>
 <body>
-    <?php include('../templates/admin_templates')?>
+    <?php include('../templates/admin_templates.php')?>
         <div class="userpage">
             <div class="title">Hello Admin</div>
             <div class="stat_page">
@@ -294,11 +294,11 @@
                                 </div>
                             </a>
                             <button>
-                                <!-- ⋮ -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 25 25">
+                                ⋮
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 25 25">
                                     <path fill="currentColor" d="m13.06 12.15 5.02-5.03a.75.75 0 1 0-1.06-1.06L12 11.1 
                                     6.62 5.7a.75.75 0 1 0-1.06 1.06l5.38 5.38-5.23 5.23a.75.75 0 1 0 1.06 1.06L12 13.2l4.88 
-                                    4.87a.75.75 0 1 0 1.06-1.06l-4.88-4.87z"></path></svg>
+                                    4.87a.75.75 0 1 0 1.06-1.06l-4.88-4.87z"></path></svg> -->
                             </button>
                         </div>
                     </li>

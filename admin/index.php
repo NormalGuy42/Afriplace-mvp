@@ -1,6 +1,24 @@
+<?php 
+    $id = $password = '';
+    $errors = ['id'=>'','password'=>''];
+
+    if(isset($_POST['submit'])){
+        if(empty($_POST['id'])){
+            $errors['id'] = "Vous devez entrer un identifiant";
+        }
+        if(empty($_POST['password'])){
+            $errors['password'] = "Vous devez entrer un mot de passe";
+        }
+        //Check if there are no errors
+        if(!array_filter($errors)){
+            header('Location: admin.php');
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,19 +61,9 @@
             margin-bottom: 8px;
             cursor: pointer;
         }
-        .userbox .forgot{
-            margin-bottom: 16px;
-        }
-        .userbox .forgot a{
-            text-decoration: none;
-            color: black;
-            font-weight: normal;
-        }
-        .userbox .forgot a:hover{
-            text-decoration: underline;
-            color: darkorange;
-        }
+        
         .login_field{
+            box-sizing: border-box;
             display: block;
             width: 100%;
             margin: 1rem 0;
@@ -69,6 +77,9 @@
             font-family: arial;
             border: 1px solid rgb(133, 133, 133);
             border-radius: 3px;
+        }
+        .error{
+            color: red;
         }    
     </style>
 </head>
@@ -84,14 +95,13 @@
     </header>
     <section class="sign-in_box">
         <div class="userbox">
-            <form action="sign-in">
+            <form action="index.php" method="POST">
                 <h3>Bienvenue</h3>
-                <input class="login_field" type="email" placeholder="Email" />
-                <input class="login_field" type="password" placeholder="Mot de passe" />
-                <button class="connexion">Connexion</button>
-                <h5>
-                    <span>Pas de compte?</span><a href="../index.html" class="link_text"> Retourner vers le site</a>
-                </h5>
+                <input class="login_field" type="text" placeholder="Identifiant"  name="id"/>
+                <div class="error"><?php echo htmlspecialchars($errors['id'])?></div>
+                <input class="login_field" type="password" placeholder="Mot de passe" name="password"/>
+                <div class="error"><?php echo htmlspecialchars($errors['password'])?></div>
+                <button class="connexion" name="submit" value="submit">Connexion</button>
             </form>
         </div>
     </section>

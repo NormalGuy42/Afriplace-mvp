@@ -9,7 +9,7 @@
     <script src="admin_script.js" defer></script>
 </head>
 <body>
-    <?php include('../templates/admin_templates')?>
+    <?php include('../templates/admin_templates.php')?>
         <div class="property_section">
             <div class="house_list">
                 <div class="title">

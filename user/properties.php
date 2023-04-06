@@ -14,10 +14,8 @@
     <!--Header-->
     <?php include('../templates/user_header.php')?>
     <!--Header-->
-    <div class="userpage">
-        <?php include('../templates/user_sidebar.php')?>
         <div class="userpage_content">
-            <h1>Liste de propriétés</h1>
+            <h1 class="title">Liste de propriétés</h1>
             <div class="line"></div>
             <div class="properties">
                     <div class="properties_container">

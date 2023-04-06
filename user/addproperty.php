@@ -205,8 +205,6 @@
     <!--Header-->
     <?php include('../templates/user_header.php')?>
     <!--Header-->
-    <div class="userpage">
-        <?php include('../templates/user_sidebar.php')?>
         <div class="main_body">
             <!--Send images start-->
             <div class="image_send">
@@ -305,6 +303,7 @@
            </form>
            <!--Form end-->
        </div>  
+    <!--End of userpage-->
     </div>
     <script defer>
         function bedCounter(){

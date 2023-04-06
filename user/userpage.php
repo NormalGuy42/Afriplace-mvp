@@ -35,47 +35,7 @@
             color: #afa7a7;
         }
         /*Profile end*/
-        /*Messages start*/
-        .messages .card{
-            min-width:300px;
-            max-width: 600px;
-            width: 70%;
-            margin: 0 auto;
-            box-shadow: 0 0 2px 2px rgb(0,0,0,30%);
-        }
-        .messages .card img{
-            display: block;
-            height: 60px;
-            width: 60px;
-            margin: 0 auto;
-        }
-        .messages .card label{
-            display: block;
-            text-align: center;
-        }
-        .messages .card p{
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            width: 100%;
-            letter-spacing: 0.03rem;
-            margin-bottom: 8px;
-        }
-        .messages .card .btn_container{
-            display: flex;
-        }
-        .messages .card button{
-            width: 50%;
-            height: 35px;
-            display: block;
-        }
-        /*Messages end*/
-        .more{
-            display: block;
-            text-align: center;
-            margin: 20px;
-            cursor: pointer;
-        }
+
         @media(max-width: 1030px) {
             .userpage_content{
                 padding: 8px;
@@ -85,13 +45,10 @@
 </head>
 <body>
     <?php include('../templates/user_header.php')?>
-    <div class="userpage">
-        <!-- Sidebar start-->
-        <?php include('../templates/user_sidebar.php')?>
-        <!--Sidebar end-->    
         <div class="userpage_content">
             <div class="profile">
-                <h1>Mon profil</h1>
+                <h1 class="title">Mon profil</h1>
+                <div class="line"></div>
                 <div class="container">
                     <div class="column">
                         <label>Nom</label>
@@ -114,9 +71,6 @@
                         <span>User</span>
                     </div>
                 </div>
-                <div>
-                    <label for="" style="color:red;padding:10px 30px">Déconnexion</label>
-                </div>
             </div>
             <div class="messages">
                 <h2>Messages</h2>
@@ -127,7 +81,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque officiis qui excepturi reprehenderit 
                         ea corporis possimus cum consequatur itaque illum?</p>
                         <div class="btn_container">
-                            <button class="ignore">Ignorer</button>
+                            <button class="ignore">Rejeter</button>
                             <button class="respond">Répondre</button>
                         </div>
                     </div>

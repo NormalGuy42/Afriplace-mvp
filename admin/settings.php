@@ -9,6 +9,6 @@
     <script src="admin_script.js"></script>
 </head>
 <body>
-    <?php include('../templates/admin_templates')?>
+    <?php include('../templates/admin_templates.php')?>
 </body>
 </html>
