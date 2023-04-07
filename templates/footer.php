@@ -34,16 +34,16 @@
             <!--Contact end-->
             <div class="box">
                 <h2>Liens utiles</h2>
-                <a href="#"><span>Acheter</span></a>
-                <a href="#"><span>Louer</span></a>
-                <a href="#"><span>Mettre en contact</span></a>
+                <a href="searchpage.php?action=buy"><span>Acheter</span></a>
+                <a href="searchpage.php?action=louer"><span>Louer</span></a>
+                <a href="contact.php"><span>Mettre en contact</span></a>
             </div>
             <div class="box">
                 <h2>Nos biens</h2>
-                <a><span>Maisons</span></a>
-                <a><span>Apparts</span></a>
-                <a><span>Bureaux</span></a>
-                <a><span>Terrains</span></a>
+                <a href="searchpage.php?type=maison"><span>Maisons</span></a>
+                <a href="searchpage.php?type=appart"><span>Apparts</span></a>
+                <a href="searchpage.php?type=bureaux"><span>Bureaux</span></a>
+                <a href="searchpage.php?type=terrain"><span>Terrains</span></a>
             </div>
             <div class="social_links">
                 <a href="#">

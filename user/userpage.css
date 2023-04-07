@@ -76,6 +76,9 @@ h3{
     border: 1px solid rgb(133, 133, 133);
     border-radius: 3px;
 }
+.error{
+    color: red;
+}
 /*Registering start*/
 .login_field.name{
     display: inline;

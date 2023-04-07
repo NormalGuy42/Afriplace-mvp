@@ -1,5 +1,8 @@
 <?php
     include('config/connection.php');
+    //Session initialization
+    session_start();
+    $_SESSION['isLogged'] = false;
     //Newsletter submission
     $success = '';
     $content = '';

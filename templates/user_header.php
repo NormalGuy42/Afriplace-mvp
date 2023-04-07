@@ -1,9 +1,11 @@
 <?php
-    session_start();
-    if(!$_SESSION['isLogged']) {
-      header("location: login.php"); 
-      die(); 
-    }
+    try{
+        session_start();
+        if(!$_SESSION['isLogged']) {
+        header("location: login.php"); 
+        die(); 
+        }
+    }catch(e){};
 ?>
 <!--Header-->
  <header class="header_container">

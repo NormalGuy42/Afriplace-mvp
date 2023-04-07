@@ -71,36 +71,47 @@
             </nav>
     </header>
     <?php
-        $error ="";
         session_start();
         $_SESSION['isLogged'] = false;
-        $errors = ['username'=>'','password'=>''];
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $username = test_input($_POST["username"]);
-            $password = test_input($_POST["password"]);
-            $stmt = $conn->prepare("SELECT * FROM admin_login");
-            $stmt->execute();
-            $users = $stmt->fetchAll();
-            
-            foreach($users as $user) {
-                if(($user['username'] == $username) &&
-                    ($user['password'] == $password)) {
-                        header("location: userpage.php");
-                        $_SESSION['isLogged'] = true;
+        $errors = ['email'=>'','password'=>''];
+        $error = '';
+        if(isset($_POST['submit'])){
+            $error ="";
+            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                $email = test_input($_POST["email"]);
+                $password = test_input($_POST["password"]);
+                $stmt = $conn->prepare("SELECT * FROM users");
+                $stmt->execute();
+                $users = $stmt->fetchAll();
+                $userID = '';
+
+                foreach($users as $user) {
+                    if(($user['email'] == $email) &&
+                        ($user['password'] == $password)) {
+                            '
+                            madioudiallo5742@gmail.com
+                            200410
+                            ';
+                            $email = mysqli_real_escape_string($db,$user['email']);
+                            $sql = "SELECT id FROM users WHERE email = '$email'";
+                            $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
+                            header("location: userpage.php?id=".$userID['id']);
+                            $_SESSION['isLogged'] = true;
+                    }
+                    else{
+                        $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
+                    }
                 }
-                else{
-                    $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
-                }
-            }
-        }        
+            }        
+        }
         ?>
-        <?php echo $error?>
     <section class="sign-in_box">
         <div class="userbox">
             <form action="login.php" method="POST">
                 <h3>Bienvenue</h3>
-                <input class="login_field" type="text" placeholder="Identifiant"  name="id" autocomplete="off"/>
-                <div class="error"><?php echo htmlspecialchars($errors['id'])?></div>
+                <?php echo $error?>
+                <input class="login_field" type="text" placeholder="Email" name="email" autocomplete="off"/>
+                <div class="error"><?php echo htmlspecialchars($errors['email'])?></div>
                 <input class="login_field" type="password" placeholder="Mot de passe" name="password" autocomplete="off"/>
                 <div class="error"><?php echo htmlspecialchars($errors['password'])?></div>
                 <button class="connexion" name="submit" value="submit">Connexion</button>
