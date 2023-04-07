@@ -1,18 +1,26 @@
 <?php 
-    $id = $password = '';
-    $errors = ['id'=>'','password'=>''];
-
-    if(isset($_POST['submit'])){
-        if(empty($_POST['id'])){
-            $errors['id'] = "Vous devez entrer un identifiant";
-        }
-        if(empty($_POST['password'])){
-            $errors['password'] = "Vous devez entrer un mot de passe";
-        }
-        //Check if there are no errors
-        if(!array_filter($errors)){
-            header('Location: admin.php');
-        }
+    //Connect to database
+    $conn = "";
+    try {
+        include('../config/connection.php');
+        $conn = new PDO(
+            "mysql:host=$servername; dbname=$dbname",
+            $username, $password
+        );
+        
+    $conn->setAttribute(PDO::ATTR_ERRMODE,
+                        PDO::ERRMODE_EXCEPTION);
+    }
+    catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+    //Connect to database end
+    //Validate start
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 ?>
 
@@ -80,10 +88,11 @@
         }
         .error{
             color: red;
+            text-align: center;
+            margin-top: 15px;
         }    
     </style>
 </head>
-
 <body>
     <!--Header-->
     <header class="header_container">
@@ -93,13 +102,38 @@
             </div>
         </nav>
     </header>
+    <?php
+            $error ="";
+            session_start();
+            $_SESSION['isLogged'] = false;
+            $errors = ['username'=>'','password'=>''];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $username = test_input($_POST["username"]);
+                $password = test_input($_POST["password"]);
+                $stmt = $conn->prepare("SELECT * FROM admin_login");
+                $stmt->execute();
+                $users = $stmt->fetchAll();
+                
+                foreach($users as $user) {
+                    if(($user['username'] == $username) &&
+                        ($user['password'] == $password)) {
+                            header("location: admin.php");
+                            $_SESSION['isLogged'] = true;
+                    }
+                    else{
+                        $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
+                    }
+                }
+            }        
+            ?>
+        <?php echo $error?>
     <section class="sign-in_box">
         <div class="userbox">
             <form action="index.php" method="POST">
                 <h3>Bienvenue</h3>
-                <input class="login_field" type="text" placeholder="Identifiant"  name="id"/>
-                <div class="error"><?php echo htmlspecialchars($errors['id'])?></div>
-                <input class="login_field" type="password" placeholder="Mot de passe" name="password"/>
+                <input class="login_field" type="text" placeholder="Identifiant"  name="username" autocomplete="off"/>
+                <div class="error"><?php echo htmlspecialchars($errors['username'])?></div>
+                <input class="login_field" type="password" placeholder="Mot de passe" name="password" autocomplete="off"/>
                 <div class="error"><?php echo htmlspecialchars($errors['password'])?></div>
                 <button class="connexion" name="submit" value="submit">Connexion</button>
             </form>

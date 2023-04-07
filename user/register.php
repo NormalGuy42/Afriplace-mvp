@@ -16,18 +16,18 @@
     <!--Header-->
     <section class="sign-in_box">
         <div class="userbox">
-            <form action="sign-in">
+            <form action="register.php" method="POST">
                 <h3>Créer un compte</h3>
                 <ul>
-                    <li><input class="login_field name" type="text" placeholder="Nom" maxlength="30"></li>
-                    <li><input class="login_field name" type="text" placeholder="Prénom" maxlength="30"></li>
+                    <li><input class="login_field name" type="text" placeholder="Nom" maxlength="30" name="nom"></li>
+                    <li><input class="login_field name" type="text" placeholder="Prénom" maxlength="30" name="prenom"></li>
                 </ul>
-                <input class="login_field" type="text" placeholder="Profession" maxlength="30">
-                <input class="login_field" type="tel" placeholder="Numero de téléphone" maxlength="30">
-                <input class="login_field" type="email" placeholder="Email">
-                <input class="login_field" type="password" placeholder="Mot de passe">
-                <input class="login_field" type="password" placeholder="Confirmer Mot de passe">
-                <button class="connexion">Créez mon compte</button>
+                <input class="login_field" type="text" placeholder="Profession" maxlength="30" name="profession">
+                <input class="login_field" type="tel" placeholder="Numero de téléphone" maxlength="30" name="numero">
+                <input class="login_field" type="email" placeholder="Email" name="email">
+                <input class="login_field" type="password" placeholder="Mot de passe" name="password">
+                <input class="login_field" type="password" placeholder="Confirmer Mot de passe" name="password2">
+                <button class="connexion" name="submit" value="submit">Créez mon compte</button>
                 <h4 class="forgot">
                     Bienvenue à afriplace
                 </h4>

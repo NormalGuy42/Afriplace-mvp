@@ -324,13 +324,11 @@ h3{
     height: 40px;
     font-size: 18px;
     display: block;
-}
-button.ignore{
+    background-color: #eee;
     border: 1px solid black;
 }
 button.respond{
-    background-color: orange;
-    color: white;
+    color: orange;
     border-collapse: collapse;
 }
 .more{

@@ -251,12 +251,12 @@
                    </div>
                    <div class="container input">
                        <label>Localisation</label>
-                       <input placeholder="Lien google maps">
+                       <input placeholder="Coordonnées google maps">
                    </div>
                </div>
                <div class="btn_input">
                    <div class="container">
-                       <label>Nombre de lits</label>
+                       <label>Nombre de chambres</label>
                        <div class="custom_btn" id="bed_num">
                            <!-- <input placeholder="Nombre de lits"> -->
                            <button data-bed-btn="decrement" type="button">-</button>

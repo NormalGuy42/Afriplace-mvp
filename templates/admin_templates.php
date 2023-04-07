@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!$_SESSION['isLogged']) {
+      header("location: index.php"); 
+      die(); 
+    }
+?>
 <header class="header_container">
         <nav>
             <div class="admin_logo_area">
