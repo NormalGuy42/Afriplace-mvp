@@ -16,6 +16,9 @@ body{
     text-decoration: none;
     color: black;
 }
+*:focus-visible {
+    outline: orange auto 2px;
+}
 ul{
     list-style-type: none;
     padding: 0;

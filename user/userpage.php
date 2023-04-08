@@ -45,6 +45,7 @@
 </head>
 <body>
     <?php include('../templates/user_header.php')?>
+    <?php $id = $_SESSION['id']['id']; echo $id;?>
         <div class="userpage_content">
             <div class="profile">
                 <h1 class="title">Mon profil</h1>

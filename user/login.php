@@ -95,8 +95,9 @@
                             $email = mysqli_real_escape_string($db,$user['email']);
                             $sql = "SELECT id FROM users WHERE email = '$email'";
                             $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
-                            header("location: userpage.php?id=".$userID['id']);
+                            header("location: userpage.php");
                             $_SESSION['isLogged'] = true;
+                            $_SESSION['id'] = $userID;
                     }
                     else{
                         $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
