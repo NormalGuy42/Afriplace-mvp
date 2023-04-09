@@ -208,11 +208,16 @@ h3{
 }
 /*Property box start*/
 .property_box{
-    display: flex;
-    flex-direction: column;
     border-radius: 8px;
     box-shadow: 0 0 4px 1px rgb(0, 0, 0, 30%);
     cursor: pointer;
+}
+.property_box a{
+    display: flex;
+    flex-direction: column;
+}
+.property_box a:hover{
+    color: black !important;
 }
 .property_box img{
     width: 100%;
