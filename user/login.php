@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="userpage.css" />
     <script src="../scripts/script.js" defer></script>
-    <script src="https://kit.fontawesome.com/92960f12ec.js" crossorigin="anonymous"></script>
 </head>
 <body>
      <!--Header-->

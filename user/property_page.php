@@ -17,7 +17,11 @@
     <!--Header-->
         <div class="userpage_content">
             <h1 class="title">Property name</h1>
-            <div class="line"></div>
+            <div class="actions"></div>
+            <div class="images">
+                <ul class="grid"></ul>
+            </div>
+            
         </div> 
     </div>
 </body>

@@ -1,6 +1,10 @@
 <?php
+    include('../config/connection.php');
+    session_start();
+    //Create variables
     $errors =['nom'=>'','prenom'=>'','numero'=>'','password'=>'','email'=>'','profession' =>''];
     $nom = $prenom = $numero = $password = $email = $profession = "";
+
     if(isset($_POST['submit'])){
         //Check name
         if(empty($_POST['nom'])){
@@ -49,6 +53,13 @@
                 $errors['email'] = 'Votre email doit être une adresse email valide';
             }
         }
+        //Check if email already exists
+        $email = $_POST['email'];
+        $checkEmail = mysqli_query($db,"SELECT * FROM users WHERE email='$email'");
+        $matchFound = mysqli_num_rows($checkEmail) >0? 'yes':'no';
+        if($matchFound == 'yes'){
+            $errors['email'] = 'Un compte a déjà été créé avec cet email';
+        }
         //Check password
         if(empty($_POST['password'])){
             $errors['password'] = 'Vous devez entrer un mot de passe';
@@ -59,9 +70,7 @@
                 $errors['password'] = 'Les deux mot de passe doivent etre les mêmes';
             }
         }
-
         //If there are no errors
-        include('../config/connection.php');
         if(!array_filter($errors)){
             //Variables
             $nom = mysqli_real_escape_string($db,$_POST['nom']);
@@ -76,7 +85,9 @@
             if(mysqli_query($db,$sql)){
                 $sql = "SELECT id FROM users WHERE email = '$email'";
                 $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
-                header("location: userpage.php?id=".$userID['id']);
+                $SESSION['isLogged'] = true;
+                $SESSION['id'] = $userID;
+                header("location: userpage.php");
             }
             //
             '
@@ -102,7 +113,7 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="userpage.css">
-    <script src="https://kit.fontawesome.com/92960f12ec.js" crossorigin="anonymous"></script>
+    <script src="../scripts/script.js" defer></script>
 </head>
 <body>
     <!--Header start-->

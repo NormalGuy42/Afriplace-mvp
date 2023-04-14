@@ -1,3 +1,4 @@
+<?php include('../config/connection.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,208 +9,16 @@
     <link rel="stylesheet" href=" ../css/style.css">
     <link rel="stylesheet" href="userpage.css">
     <script src="user_script.js" defer></script>
-    <style>
-        /*Create Listing start*/
-        .main_body{
-            display: inline;
-            margin: 0 auto;
-            width: 40%;
-            margin-bottom: 30px;
-        }
-        /*Images upload start*/
-        .main_body .image_send{
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .main_body img{
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
-        }
-        .main_body .image_send button{
-            background-color: rgb(72, 72, 248);
-            color: white;
-            border: 1px solid;
-            padding: 5px;
-            font-size: 17px;
-        }
-        .image_send{
-            margin: 20px 0;
-        }
-        .image_send .images{
-            background: url(../assets/picture\ icon.png) no-repeat;
-            background-size: 200px;
-            background-color: #d2d2db;
-            background-position: center;
-            margin-bottom: 10px;
-        }
-        .images{
-            height: 350px;
-            width: 100%;
-        }
-        /*Images upload end*/
-        .main_body .container{
-            margin-top: 10px;
-        }
-        .custom_btn{
-            display: inline;
-        }
-        .main_body h4{
-            margin: 0;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        /*Input start*/
-        .inputs{
-            display: table;
-            margin: 10px 0px;
-            width: 100%;
-        }
-        .inputs .container.input{
-            display: table-row;
-        }
-        .inputs .container.input label{
-            display: table-cell;
-            padding-bottom: 20px;
-            width: 30%;
-        }
-        .inputs .container.input input{
-            width: 100%;
-            /* padding: 1px 2px; */
-            padding: 15px 0px 15px 20px;
-            font-size: 15px;
-        }
-        .inputs .container.input select{
-            width: 100%;
-            padding: 0 15px;
-            font-size: 15px;
-        }
-        .container button{
-            padding: 1px 6px;
-        }
-        .surface{
-            display: table;
-            width: 100%;
-        }
-        .container.surface{
-            display: table-row;
-        }
-        .container.surface label{
-            display: table-cell;
-            width: 30%;
-        }
-        .container.surface input{
-            width: 100%;
-            height: 25px;
-            border: 1px solid;
-            /* padding: 1px 2px; */
-            padding: 15px 0px 15px 20px;
-            font-size: 15px;
-        }
-        /*Input end*/
-        .container.input{
-            display: flex;
-            justify-content: space-between;
-        }
-        .container label{
-            font-size: 18px;
-        }
-        .container.input input{
-            width: 80%;
-            max-width: 450px;
-            height: 28px;
-            border: 1px solid black;
-            border-radius: 2px;
-        }
-        .container.input select{
-            width: 81%;
-            max-width:  450px;
-            height: 30px;
-            border: 1px solid black;
-        }
-        /*Button container start*/
-        .btn_input{
-            display: table;
-            margin-bottom: 10px;
-        }
-        .btn_input .container{
-            display: table-row;
-        }
-        .btn_input .container label{
-            display: table-cell;
-            padding-right: 20px;
-            padding-bottom: 8px ;
-        }
-        .btn_input input{
-            width: 80%;
-            height:25px;
-            border:1px solid;
-        }
-        /*Button container end*/
-        .container textarea{
-            width: 100%;
-            height: 150px;
-            border: 1px solid;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .container ul{
-            list-style-type: none;
-            column-count: 2;
-            padding: 0;
-            margin: 0;
-        }
-        .container ul li{
-            font-size: 18px;
-        }
-        .container ul li input{
-            margin-right: 5px;
-        }
-        .btn_container{
-            margin: 30px 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        .finish_btn{
-            background-color: orange;
-            color: white;
-            font-size: 20px;
-            border: 1px solid;
-            border-radius: 2px;
-            padding: 5px;
-        }
-        @media (max-width:1030px) {
-            .main_body{
-                width: 70%;
-            }
-        }
-        @media (max-width:600px) {
-            .main_body{
-                width: 85%;
-            }
-            .image_send .images{
-                height: 250px;
-            }
-        }
-        @media (max-width:440px) {
-            .container label{
-                font-size: 16px;
-            }
-        }
-        /*Create Listing end*/
-    </style>
+    
 </head>
 <body>
     <!--Header-->
     <?php include('../templates/user_header.php')?>
     <!--Header-->
-        <div class="main_body">
+        <div class="create_listing">
             <!--Send images start-->
             <div class="image_send">
                <div class="images">
-   
                    <ul>
                        <li></li>
                    </ul>
@@ -218,7 +27,7 @@
            </div>
            <!--Send images end-->
            <!--Form start-->
-           <form class="create_listing">
+           <form>
                <div class="inputs">
                    <div class="container input">
                        <label>Titre</label>

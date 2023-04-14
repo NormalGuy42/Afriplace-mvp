@@ -22,7 +22,9 @@
                 <div class="container">
                     <div class="card">
                         <img src="../assets/user-pfp.png" alt="">
-                        <label for="">Name</label>
+                        <label class="name">Name</label>
+                        <label class="message_title">Pour: <span>property name</span></label>
+                        <label>Je veux visiter</label>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque officiis qui excepturi reprehenderit 
                         ea corporis possimus cum consequatur itaque illum?</p>
                         <div class="btn_container">

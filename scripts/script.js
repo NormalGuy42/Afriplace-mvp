@@ -2,14 +2,16 @@
 var nav_list = document.querySelector('.nav_ul');
 document.addEventListener('click',function(e){
   
-  if(e.target.closest('.burger')){
-    nav_list.classList.toggle('showNav');
-  }
-  if(!e.target.closest('.burger') && nav_list.classList.contains('showNav')){
-    if(!e.target.closest(".nav_ul")){
-      nav_list.classList.remove('showNav');
+  try{
+    if(e.target.closest('.burger')){
+      nav_list.classList.toggle('showNav');
     }
-  }
+    if(!e.target.closest('.burger') && nav_list.classList.contains('showNav')){
+      if(!e.target.closest(".nav_ul")){
+        nav_list.classList.remove('showNav');
+      }
+    }
+  }catch(e){}
 })
 //Show navigation menu
 //Index script end
