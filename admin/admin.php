@@ -24,9 +24,9 @@
     }
     .userpage .stats{
         display: flex;
-        gap: 25px;
-        /* flex-direction: column; */
-        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: space-around;
         text-align: center;
         width: 100%;
         margin-bottom:30px;

@@ -1,17 +1,4 @@
-<?php
-    try{
-        session_start();
-        if(!$_SESSION['isLogged']) {
-        header("location: login.php"); 
-        die(); 
-        }
-        //Get user info if loggeg in
-        $id = $_SESSION['id']['id'];
-        $sql = "SELECT * FROM users WHERE id ='$id'";
-        $result = mysqli_query($db,$sql);
-        $userData = mysqli_fetch_assoc($result);
-    }catch(e){};
-?>
+
 <!--Header-->
  <header class="header_container">
         <nav>
@@ -77,6 +64,12 @@
                 <a href="../index.php">
                     <img src="../assets/web_icon.svg">
                     Site
+                </a>
+            </li>
+            <li>
+                <a href="settings.php">
+                    <img src="../assets/gear.svg" alt="" class="resize">
+                    Paramètres
                 </a>
             </li>
         </ul>

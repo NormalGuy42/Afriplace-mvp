@@ -142,11 +142,11 @@
                                 <label>Prix</label>
                                 <div class="input_group">
                                     <div class="input_row">
-                                        <input class="input_field" placeholder="Prix min">
+                                        <input class="input_field" placeholder="Prix min" data-input="true">
                                     </div>
                                     <div class="sep"><span>-</span></div>
                                     <div class="input_row">
-                                        <input class="input_field" placeholder="Prix max">
+                                        <input class="input_field" placeholder="Prix max" data-input="true">
                                     </div>  
                                 </div>
                             </div>
@@ -176,11 +176,11 @@
                                 <label>Surface</label>
                                 <div class="input_group">
                                     <div class="input_row">
-                                        <input class="input_field" placeholder="Surface min">
+                                        <input class="input_field" placeholder="Surface min" data-input="true">
                                     </div>
                                     <div class="sep"><span>-</span></div>
                                     <div class="input_row">
-                                        <input class="input_field" placeholder="Surface max">
+                                        <input class="input_field" placeholder="Surface max" data-input="true">
                                     </div>  
                             </div>
                             </div>
@@ -467,6 +467,17 @@
     <!--Footer end-->
     <script src="scripts/script.js"></script>
     <script defer>
+        //Add comma separation to input start
+        var inputFields = document.querySelectorAll('[data-input]');
+        inputFields.forEach(input =>{
+            input.onkeyup = function(){
+            var removeChar = this.value.replace(/[^0-9\.]/g,'');
+            var removeDot= removeChar.replace(/\./g,'');
+            var formatedNumber = removeDot.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+            this.value = formatedNumber;}
+        })
+        //Add comma separation to input end
+
         //When user clicks outside menu closes
         //Fix this it's not good
         document.addEventListener('click',function(e){

@@ -55,5 +55,30 @@ document.addEventListener('click',function(e){
     }) 
 }
 )
+//Collapse property list
+var boxes = document.querySelectorAll('.box');
+        boxes.forEach(box=>{
+            box.addEventListener('click',()=>{
+                var info = box.nextElementSibling;
+                var activeSection = document.querySelectorAll('section[data-active="true"]');
+                if(!info.dataset.active){
+                    info.dataset.active = true;
+                }else if(info.dataset.active = true){
+                    delete info.dataset.active;
+                }
+                try{
+                    if(activeSection.length = 1){
+                    delete activeSection[0].dataset.active;
+                    }
+                }catch(e){}
+            })
+        })
+        /*Click outside and container closes*/
+        document.addEventListener('click',(e)=>{
+            var activeSection = document.querySelector('section[data-active="true"]');
+            if(!e.target.closest('.container') && activeSection.dataset.active){
+                delete activeSection.dataset.active;
+            }
+        })
 //Properties end
 

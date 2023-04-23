@@ -1,4 +1,8 @@
-<?php include('../config/connection.php')?>
+<?php 
+    include('../config/connection.php');
+    include('../templates/get_user_id.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

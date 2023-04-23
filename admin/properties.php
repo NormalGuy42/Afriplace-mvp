@@ -7,11 +7,16 @@
     <title>Properties</title>
     <link rel="stylesheet" href="admin_style.css">
     <script src="admin_script.js" defer></script>
+    <style>
+        .property_list{
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <?php include('../templates/admin_templates.php')?>
         <div class="property_section">
-            <div class="house_list">
+            <div class="property_container">
                 <div class="title">
                     <h3>Maisons</h3>
                     <svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 2 30 28" 
@@ -43,7 +48,7 @@
                 <ul class="property_list">
                     <li>
                         <div class="property_box">
-                            <a href="property.html">
+                            <a href="property.php?id=">
                                 <img src="../assets/living.jpg">
                                 <div class="property_info">
                                     <div class="property_stats">
@@ -97,7 +102,7 @@
                     </li>
                     <li>
                         <div class="property_box">
-                            <a href="property.html">
+                            <a href="property.php?id=">
                                 <img src="../assets/living.jpg">
                                 <div class="property_info">
                                     <div class="property_stats">
@@ -151,7 +156,7 @@
                     </li>
                     <li>
                         <div class="property_box">
-                            <a href="property.html">
+                            <a href="property.php?id=">
                                 <img src="../assets/living.jpg">
                                 <div class="property_info">
                                     <div class="property_stats">
@@ -205,7 +210,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="appart_list">
+            <div class="property_container">
                 <div class="title">
                     <h3>Apparts</h3>
                     <svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 2 30 28" 
@@ -217,7 +222,7 @@
                 <ul class="property_list">
                 </ul>
             </div>
-            <div class="terrains_list">
+            <div class="property_container">
                 <div class="title">
                     <h3>Terrains</h3>
                     <svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 2 30 28" 
@@ -229,7 +234,7 @@
                 <ul class="property_list">
                 </ul>
             </div>
-            <div class="bureaux_list">
+            <div class="property_container">
                 <div class="title">
                     <h3>Bureaux</h3>
                     <svg role="img" aria-label="" aria-hidden="true" class="svg" viewBox="0 2 30 28" 

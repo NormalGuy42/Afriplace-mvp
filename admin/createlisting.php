@@ -1,3 +1,8 @@
+<?php
+    include('../config/connection.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,14 @@
     <title>New Property</title>
     <link rel="stylesheet" href="admin_style.css">
     <script src="admin_script.js" defer></script>
+    <style>
+        #house_stats{
+            display: none;
+        }
+        .showSection{
+            display: table !important;
+        }
+    </style>
 </head>
 <body>
     <?php include('../templates/admin_templates.php')?>
@@ -31,12 +44,13 @@
                     </div>
                     <div class="container input">
                         <label>Prix</label>
-                        <input class="prix" placeholder="Prix du bien">
+                        <input class="prix" placeholder="Prix du bien" data-input="true">
                     </div>
                     
                     <div class="container input">
                         <label>Type de bien</label>
-                        <select>
+                        <select id="type">
+                            <option>Choisir le type</option>
                             <option>Maison</option>
                             <option>Appart</option>
                             <option>Terrain</option>
@@ -46,10 +60,13 @@
                     <div class="container input">
                         <label>Statut du bien</label>
                         <select>
+                            <option>Choisir le statut</option>
                             <option>A acheter</option>
                             <option>A louer</option>
                         </select>
                     </div>
+                </div>
+                <div class="inputs" id="house_form">
                     <div class="container input">
                         <label>Quartier</label>
                         <input placeholder="Entre le quartier">
@@ -59,7 +76,7 @@
                         <input placeholder="Coordonnées google maps">
                     </div>
                 </div>
-                <div class="btn_input">
+                <div class="btn_input" id="house_stats">
                     <div class="container">
                         <label>Nombre de chambres</label>
                         <div class="custom_btn" id="bed_num">
@@ -82,25 +99,7 @@
                 <div class="surface">
                     <div class="container surface">
                         <label>Surface</label>
-                        <input placeholder="Entre la surface">
-                    </div>
-                </div>
-                <div class="inputs">
-                    <div class="container input">
-                        <label>Nom</label>
-                        <input class="titre" placeholder="Nom de l'annonçeur">
-                    </div>
-                    <div class="container input">
-                        <label>Statut</label>
-                        <select>
-                            <option>Propiétaire</option>
-                            <option>Agent Immobilier</option>
-                            <option>Agence Immobilière</option>
-                        </select>
-                    </div>
-                    <div class="container input">
-                        <label>E-mail</label>
-                        <input placeholder="Email">
+                        <input placeholder="Entre la surface" data-input="true">
                     </div>
                 </div>
                 <div class="container">
@@ -130,6 +129,34 @@
 </body>
 <script defer>
     //Create Listing start
+    //Add comma separation to input start
+    var inputFields = document.querySelectorAll('[data-input]');
+        inputFields.forEach(input =>{
+            input.onkeyup = function(){
+            var removeChar = this.value.replace(/[^0-9\.]/g,'');
+            var removeDot= removeChar.replace(/\./g,'');
+            var formatedNumber = removeDot.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+            this.value = formatedNumber;}
+        })
+        //Add comma separation to input end 
+        //Show options depending on choice start
+        var type = document.querySelector('#type');
+        var houseStats = document.querySelector('#house_stats');
+        type.addEventListener('change',()=>{
+            if(type.value == "Appart" || type.value == "Maison"){
+                if(!houseStats.classList.contains('showSection')){
+                    houseStats.classList.add('showSection');
+                }
+                console.log('house')
+            }else if(type.value != "Appart" || type.value !="Maison"){
+                if(houseStats.classList.contains('showSection')){
+                    houseStats.classList.remove('showSection');
+                }
+                console.log('not house')
+
+            }
+        })
+        //Show options depending on choice end
     //Couldn't find a way for both of them to work at the same time
     //Fix this
     function bedCounter(){

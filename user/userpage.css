@@ -4,6 +4,14 @@
     --main-color: rgb(255 121 7);
     --grey: rgb(216, 216, 216);
 }
+/*Css for errors*/
+.errorBox{
+    position: absolute;
+    padding: 5px;
+    z-index: 999;
+    color: #e91010;
+    background-color: rgb(251 188 188);
+}
 /*CSS for login ,registering and the userpage*/
 /*Login start*/
 html{
@@ -101,6 +109,15 @@ h3{
     margin-right: 16px;
 }
 /*Registering end */
+.sign-in_box .check{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.sign-in_box input[type="checkbox"] {
+    height: 16px;
+    width: 16px;
+}
 .connect_options{
     border-top: 1px solid rgb(209, 209, 213);
     padding: 16px 8px 0px;
@@ -145,7 +162,7 @@ h3{
     overflow: hidden;
 }
 .sidebar_nav ul{
-    padding: 40px 0 0 40px;
+    padding: 25px 0 0 40px;
     min-height: 20%;
     display: flex;
     flex-wrap: wrap;
@@ -219,6 +236,13 @@ h3{
     cursor: pointer;
     position: relative;
     margin: 20px 0;
+}
+.noproperty {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #959292;
 }
 /*Speech bubble start*/
 .bubble_container{
@@ -312,6 +336,9 @@ h3{
     font-weight: bold;
     font-size: 25px;
     padding: 10px 18px 0;
+}
+.property_box h3 span{
+    font-weight: bold;
 }
 .property_box svg{
     height: 18px;
@@ -422,12 +449,13 @@ button.respond{
     height: 300px;
     margin-top: 20px;
 }
-.create_listing .image_send button{
+.create_listing .image_send .upload_btn{
     background-color: rgb(72, 72, 248);
     color: white;
     border: 1px solid;
     padding: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 .create_listing .image_send{
     margin: 20px 0;
@@ -440,8 +468,17 @@ button.respond{
     margin-bottom: 10px;
 }
 .create_listing .images{
-    height: 350px;
+    height: 300px;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,25%);
+    grid-template-rows: repeat(4,25%);
+    overflow: hidden;
+}
+.create_listing .images img{
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
 }
 /*Images upload end*/
 .create_listing .container{
@@ -458,7 +495,7 @@ button.respond{
 /*Input start*/
 .create_listing .inputs{
     display: table;
-    margin: 10px 0px;
+    margin: 2px 0px;
     width: 100%;
 }
 .create_listing .inputs .container.input{
@@ -473,12 +510,13 @@ button.respond{
     width: 100%;
     /* padding: 1px 2px; */
     padding: 15px 0px 15px 20px;
-    font-size: 15px;
+    font-size: 17px;
 }
 .create_listing .inputs .container.input select{
     width: 100%;
     padding: 0 15px;
-    font-size: 15px;
+    font-size: 17px;
+    height: 38px;
 }
 .create_listing .container button{
     padding: 1px 6px;
@@ -496,11 +534,11 @@ button.respond{
 }
 .create_listing .container.surface input{
     width: 100%;
-    height: 25px;
+    height: 38px;
     border: 1px solid;
     /* padding: 1px 2px; */
     padding: 15px 0px 15px 20px;
-    font-size: 15px;
+    font-size: 17px;
 }
 /*Input end*/
 .create_listing .container.input{
@@ -513,7 +551,7 @@ button.respond{
 .create_listing .container.input input{
     width: 80%;
     max-width: 450px;
-    height: 28px;
+    height: 38px;
     border: 1px solid black;
     border-radius: 2px;
 }
@@ -547,6 +585,8 @@ button.respond{
     height: 150px;
     border: 1px solid;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    font-size:16px;
 }
 .create_listing .container ul{
     list-style-type: none;
@@ -588,6 +628,9 @@ button.respond{
     }
 }
 @media (max-width:440px) {
+    .create_listing {
+        width: 95%;
+    }
     .container label{
         font-size: 16px;
     }
@@ -600,14 +643,14 @@ button.respond{
     }
     .sidebar_nav{
         position: fixed;
-        z-index: 3;
+        z-index: 7;
         width: 0;
         min-width: unset;
         transition: width .3s;
         height: 100%;
     }
     .sidebar_nav ul{
-        padding: 40px 0 0 15px;
+        padding: 25px 0 0 15px;
         /* display: none; */
     }
     .userpage{

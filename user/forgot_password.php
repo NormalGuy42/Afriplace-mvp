@@ -1,27 +1,8 @@
 <?php 
     //Connect to database
-    $conn = "";
-    try {
-        include('../config/connection.php');
-        $conn = new PDO(
-            "mysql:host=$servername; dbname=$dbname",
-            $username, $password
-        );
-        
-    $conn->setAttribute(PDO::ATTR_ERRMODE,
-                        PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
-    //Connect to database end
-    //Validate start
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+    include('../config/connection.php');
+    $error = '';
+    $emailError ='';
 ?>
 
 <!DOCTYPE html>
@@ -69,50 +50,16 @@
                 </ul>
             </nav>
     </header>
-    <?php
-        session_start();
-        $_SESSION['isLogged'] = false;
-        $errors = ['email'=>'','password'=>''];
-        $error = '';
-        if(isset($_POST['submit'])){
-            $error ="";
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $email = test_input($_POST["email"]);
-                $password = test_input($_POST["password"]);
-                $stmt = $conn->prepare("SELECT * FROM users");
-                $stmt->execute();
-                $users = $stmt->fetchAll();
-                $userID = '';
-
-                foreach($users as $user) {
-                    if(($user['email'] = $email) &&
-                        ($user['password'] == $password)) {
-                            $email = mysqli_real_escape_string($db,$user['email']);
-                            $sql = "SELECT id FROM users WHERE email = '$email'";
-                            $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
-                            header("location: userpage.php");
-                            $_SESSION['isLogged'] = true;
-                            $_SESSION['id'] = $userID;
-                    }
-                    else{
-                        $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
-                    }
-                }
-            }        
-        }
-        ?>
     <section class="sign-in_box">
         <div class="userbox">
             <form action="login.php" method="POST">
-                <h3>Bienvenue</h3>
+                <h3>Mot de passe</h3>
                 <?php echo $error?>
-                <input class="login_field" type="text" placeholder="Email" name="email" autocomplete="off"/>
-                <div class="error"><?php echo htmlspecialchars($errors['email'])?></div>
-                <input class="login_field" type="password" placeholder="Mot de passe" name="password" autocomplete="off"/>
-                <div class="error"><?php echo htmlspecialchars($errors['password'])?></div>
-                <button class="connexion" name="submit" value="submit">Connexion</button>
+                <input class="login_field" type="text" placeholder="Entrez votre email" name="email" autocomplete="off"/>
+                <div class="error"><?php echo htmlspecialchars($emailError)?></div>
+                <button class="connexion" name="submit" value="submit">Envoyer un email</button>
                 <h4 class="forgot">
-                    <a href="forgot_password.php" class="forgot_link">Mot de passe oublié?</a>
+                    <a href="login.php" class="forgot_link">Revenir en arrière</a>
                 </h4>
                 <h5>
                     <span>Pas de compte?</span><a href="register.php" class="link_text">Créez-en un</a>
@@ -121,5 +68,4 @@
         </div>
     </section>
 </body>
-
 </html>

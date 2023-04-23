@@ -3,7 +3,7 @@
     session_start();
     //Create variables
     $errors =['nom'=>'','prenom'=>'','numero'=>'','password'=>'','email'=>'','profession' =>''];
-    $nom = $prenom = $numero = $password = $email = $profession = "";
+    $nom = $prenom = $numero = $password = $email = $profession = $agency = $check ="";
 
     if(isset($_POST['submit'])){
         //Check name
@@ -40,7 +40,7 @@
         }
         else{
             $profession = $_POST['profession'];
-            if(!preg_match('/^[a-zA-Z\s]+$/',$profession)){
+            if(!preg_match('/^[a-zA-Zéêèçîô\s]+$/',$profession)){
                 $errors['profession'] = 'Votre profession ne peut comporter que des lettres';
             }
         }
@@ -70,6 +70,11 @@
                 $errors['password'] = 'Les deux mot de passe doivent etre les mêmes';
             }
         }
+        //Agency name
+        $agency = $_POST['display_name'];
+        if(isset($_POST['agencyCheckbox'])){
+            $check = "on";
+        }
         //If there are no errors
         if(!array_filter($errors)){
             //Variables
@@ -79,8 +84,13 @@
             $profession = mysqli_real_escape_string($db,$_POST['profession']);
             $email= mysqli_real_escape_string($db,$_POST['email']);
             $password = mysqli_real_escape_string($db,$_POST['password']);
+            if(isset($_POST['agencyCheckbox'])){
+                $agencyName = mysqli_real_escape_string($db,$_POST['display_name']);
+            }else{
+                $agencyName = mysqli_real_escape_string($db,'null');
+            }
             //Insert sql
-            $sql = "INSERT INTO users(nom,prenom,numero,profession,email,password) VALUES('$nom','$prenom','$numero','$profession','$email','$password')";
+            $sql = "INSERT INTO users(nom,prenom,numero,profession,email,password,display_name) VALUES('$nom','$prenom','$numero','$profession','$email','$password','$agencyName')";
             $userID = "SELECT id FROM users WHERE email= $email";
             if(mysqli_query($db,$sql)){
                 $sql = "SELECT id FROM users WHERE email = '$email'";
@@ -160,15 +170,19 @@
                 </ul>
                 <div class="error"><?php echo $errors['nom']?></div>
                 <div class="error"><?php echo $errors['prenom']?></div>
-                <input class="login_field" type="text" placeholder="Profession" maxlength="30" name="profession" autocomplete="off" value="<?php echo $profession?>">
-                <div class="error"><?php echo $errors['profession']?></div>
-                <input class="login_field" type="tel" placeholder="Numero de téléphone" maxlength="30" name="numero" autocomplete="off" value="<?php echo $numero?>">
-                <div class="error"><?php echo $errors['numero']?></div>
                 <input class="login_field" type="email" placeholder="Email" name="email" autocomplete="off" value="<?php echo $email?>">
                 <div class="error"><?php echo $errors['email']?></div>
                 <input class="login_field" type="password" placeholder="Mot de passe" name="password" autocomplete="off" value="<?php echo $password?>">
                 <div class="error"><?php echo $errors['password']?></div>
                 <input class="login_field" type="password" placeholder="Confirmer Mot de passe" name="password2" autocomplete="off" value="<?php echo $password?>">
+                <input class="login_field" type="tel" placeholder="Numero de téléphone" maxlength="30" name="numero" autocomplete="off" value="<?php echo $numero?>">
+                <div class="error"><?php echo $errors['numero']?></div>
+                <input class="login_field" type="text" placeholder="Profession" maxlength="30" name="profession" autocomplete="off" value="<?php echo $profession?>">
+                <div class="error"><?php echo $errors['profession']?></div>
+                <div class="check">
+                    <label>Vous êtes Agent Immobilier?</label>
+                </div>
+                <input class="login_field" id="agencyName" type="text" placeholder="Nom de votre agence (optionel)" maxlength="30" name="display_name" autocomplete="off" value="<?php echo $agency?>">
                 <button class="connexion" name="submit" value="submit">Créez mon compte</button>
                 <h4 class="forgot">
                     Bienvenue à afriplace

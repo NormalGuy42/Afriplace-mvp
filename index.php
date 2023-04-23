@@ -94,7 +94,7 @@
         <section class="navigation">
             <h1 class="heading">Nos services</h1>
             <div class="navigation_container">
-                <a href="searchpage.php?action=buy" style="text-decoration: none;">
+                <a href="searchpage.php?action=buy" class="noSelect">
                     <div class="box">
                         <img src="assets/buy.png">
                         <h3>Achetez une maison</h3>
@@ -102,7 +102,7 @@
                         <button>Cherchez des maisons</button>
                     </div>
                 </a>
-                <a href="searchpage.php?action=louer" style="text-decoration: none;">
+                <a href="searchpage.php?action=louer" class="noSelect">
                     <div class="box">
                         <img src="assets/rent.png">
                         <h3>Louez une maison</h3>
@@ -110,7 +110,7 @@
                         <button>Louez des biens</button>
                     </div>
                 </a>
-                <a href="user/userpage.php">
+                <a href="user/userpage.php" class="noSelect">
                     <div class="box">
                         <img src="assets/sell.png">
                         <h3>Listez une maison</h3>

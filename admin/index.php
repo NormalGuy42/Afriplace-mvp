@@ -90,6 +90,12 @@
             color: red;
             text-align: center;
             margin-top: 15px;
+        }
+        @media (max-width:390px) {
+            .admin_logo_area{
+                margin-left: -150px;
+                width: 300px;
+            }
         }    
     </style>
 </head>
@@ -98,7 +104,7 @@
     <header class="header_container">
         <nav>
             <div class="admin_logo_area">
-                <a href="admin.html"><span><label class="logo">afriplace</label></span></a>
+                <a href="../index.php"><span><label class="logo">afriplace</label></span></a>
             </div>
         </nav>
     </header>
