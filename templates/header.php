@@ -1,4 +1,4 @@
- <!--Header-->
+<!--Header-->
  <header class="header_container">
         <nav>
             <svg class="burger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" version="1.1" 
@@ -29,6 +29,12 @@
                 <li><a href="contact.php">Contactez-nous</a></li>
                 <li><a href="#"><img src="assets/guinea.jpg"></a></li>
             </ul>
+            <?php
+                session_start();
+                if($_SESSION['isLogged']):
+            ?>
+                <div>Logged In</div>
+            <?php endif?>
         </nav>
     </header>
 <!--Header-->

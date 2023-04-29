@@ -1,8 +1,6 @@
 <?php 
     include('../config/connection.php');
     include('../templates/get_user_id.php');
-    include('../lib/user_authentication.php');
-
     if(isset($_POST['logout'])){
         logout();
     }

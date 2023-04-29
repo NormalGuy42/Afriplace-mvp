@@ -1,8 +1,5 @@
 <?php
     include('config/connection.php');
-    //Session initialization
-    session_start();
-    $_SESSION['isLogged'] = false;
     //Search functionality
     if(isset($_GET['search'])){
         $type = $_GET['type'];

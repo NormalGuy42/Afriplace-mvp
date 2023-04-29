@@ -7,8 +7,8 @@
     {   
         $user = ['status'=>true,'id'=>$id];
         log_user_in($user);
-        remember_me($_SESSION['id']);
-        return false;
+        remember_me($id);
+        return true;
     }
     function log_user_in(array $user): bool
     {
@@ -65,7 +65,6 @@
     function remember_me(int $user_id, int $day = 15)
     {
         [$selector, $validator, $token] = generate_tokens();
-
         // remove all existing token associated with the user id
         delete_user_token($user_id);
 
@@ -76,9 +75,9 @@
         $hash_validator = password_hash($validator, PASSWORD_DEFAULT);
         $expiry = date('Y-m-d H:i:s', $expired_seconds);
 
-        if (insert_user_token($user_id, $selector, $hash_validator, $expiry)) {
-            setcookie('remember_me', $token, $expired_seconds);
-        }
+        insert_user_token($user_id, $selector, $hash_validator, $expiry); 
+        setcookie('remember_me', $token, $expired_seconds);
+        
     }
     //Verify token if valid
     function token_is_valid(string $token): bool 
@@ -115,16 +114,21 @@
     function insert_user_token(int $user_id, string $selector, string $hashed_validator, string $expiry): bool
     {
         global $db;
-        $sql = 'INSERT INTO user_tokens(user_id, selector, hashed_validator, expiry)
-                VALUES(:user_id, :selector, :hashed_validator, :expiry)';
+        $sql = "INSERT INTO user_tokens(user_id, selector, hashed_validator, expiry)
+              VALUES($user_id, '$selector', '$hashed_validator', '$expiry')";
+        mysqli_query($db,$sql);
+        return true;
 
-        $statement = $db()->prepare($sql);
-        $statement->bindValue(':user_id', $user_id);
-        $statement->bindValue(':selector', $selector);
-        $statement->bindValue(':hashed_validator', $hashed_validator);
-        $statement->bindValue(':expiry', $expiry);
+        // $sql = 'INSERT INTO user_tokens(user_id, selector, hashed_validator, expiry)
+        //         VALUES(:user_id, :selector, :hashed_validator, :expiry)';
 
-        return $statement->execute();
+        // $statement = $db()->prepare($sql);
+        // $statement->bindValue(':user_id', $user_id);
+        // $statement->bindValue(':selector', $selector);
+        // $statement->bindValue(':hashed_validator', $hashed_validator);
+        // $statement->bindValue(':expiry', $expiry);
+
+        // return $statement->execute();
         
     }
 
@@ -176,8 +180,6 @@
 
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-
-
 ?>
 
 
