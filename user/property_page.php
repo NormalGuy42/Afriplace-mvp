@@ -4,10 +4,6 @@
     $propertyID = $_GET['id'];
     $sql = "SELECT * FROM  properties WHERE `id`= $propertyID";
     $property = mysqli_fetch_assoc(mysqli_query($db,$sql));
-    '
-    Madioudiallo5742@gmail.com
-    200410
-    '
 ?>
 <!DOCTYPE html>
 <html lang="en">

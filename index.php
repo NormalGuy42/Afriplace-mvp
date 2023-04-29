@@ -3,6 +3,14 @@
     //Session initialization
     session_start();
     $_SESSION['isLogged'] = false;
+    //Search functionality
+    if(isset($_GET['search'])){
+        $type = $_GET['type'];
+        $action = $_GET['action'];
+        $place = $_GET['place'];
+
+    }
+
     //Newsletter submission
     $success = '';
     $content = '';
@@ -62,8 +70,7 @@
             <section class="form_section">
                 <div class="card_container">
                 <!--Form starts-->
-                <form action="get" class="form">
-                    
+                <form action="searchpage.php" method="GET" class="form">
                     <div class="row">
                         <select name="type" id="" class="control">
                             <option value="Appartement">Appartement</option>
@@ -73,14 +80,22 @@
                             <option value="Tout">Tous nos biens</option>
                         </select>
                         <select name="action" id="" class="control">
-                            <option value="Louer">Louer</option>
-                            <option value="Acheter">Acheter</option>
-                            <option value="Tout-type">Tout type</option>
+                            <option value="rent">Louer</option>
+                            <option value="buy">Acheter</option>
+                            <option value="tout">Tout type</option>
                         </select>
-                        <select name="lieu" class="control">
-                            <option>Conakry</option>
+                        <select name="place" class="control">
+                            <option value="conakry">Conakry</option>
+                            <option value="kindia">Kindia</option>
+                            <option value="boké">Boké</option>
+                            <option value="labé">Labé</option>
+                            <option value="mamou">Mamou</option>
+                            <option value="kankan">Kankan</option>
+                            <option value="faranah">Faranah</option>
+                            <option value="nzérékoré">N'Zérékoré</option>
+                            <option value="tout">Toute la Guinée</option>
                         </select>
-                        <button class="form-control-button"><span>Cherche</span><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button name="search" value="submit" class="form-control-button"><span>Cherche</span><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                   </form>
                   <!--Form ends-->

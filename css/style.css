@@ -47,6 +47,9 @@ select{
 .noSelect:focus {
     outline: none !important;
 }
+button{
+    cursor: pointer;
+}
 /*Important classes start*/
 .showNav{left:0;}
 /*Important classes end*/

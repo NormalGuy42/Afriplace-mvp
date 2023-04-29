@@ -12,7 +12,8 @@
                         PDO::ERRMODE_EXCEPTION);
     }
     catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
+        $errorMessage = "Erreur de connection: " . $e->getMessage();
+        echo "<div class='errorBox'>$errorMessage</div>";
     }
     //Connect to database end
     //Validate start
@@ -70,6 +71,7 @@
             </nav>
     </header>
     <?php
+        include('../lib/user_authentication.php');
         session_start();
         $_SESSION['isLogged'] = false;
         $errors = ['email'=>'','password'=>''];
@@ -90,12 +92,19 @@
                             $email = mysqli_real_escape_string($db,$user['email']);
                             $sql = "SELECT id FROM users WHERE email = '$email'";
                             $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
-                            header("location: userpage.php");
-                            $_SESSION['isLogged'] = true;
-                            $_SESSION['id'] = $userID;
+                            login($userID['id']);
+                            remember_me($userID['id']);
+                            // $_SESSION['isLogged'] = true;
+                            // $_SESSION['id'] = $userID;
+                            // header("location: userpage.php");
+
+                            '
+                            admin@afriplace.net
+                            admin2004
+                            ';
                     }
                     else{
-                        $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
+                        $error = '<div class="errorBox">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
                     }
                 }
             }        

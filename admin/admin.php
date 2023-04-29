@@ -1,3 +1,20 @@
+<?php
+    include('../config/connection.php');
+    //Properties
+    $propertiesQuery = "SELECT * FROM properties";
+    $propertiesResult = mysqli_query($db,$propertiesQuery);
+    $totalProperties = mysqli_num_rows($propertiesResult);
+
+    //Users
+    $usersQuery = "SELECT * FROM users";
+    $usersResult = mysqli_query($db,$usersQuery);
+    $totalUsers = mysqli_num_rows($usersResult);
+    //Newsletter
+    $newsletterQuery = "SELECT * FROM newsletter";
+    $newslettterResult = mysqli_query($db,$newsletterQuery);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,19 +147,19 @@
             <div class="stat_page">
                 <div class="stats">
                     <div class="column">
-                        <label for="" id="daily_visits">0</label>
+                        <label for="" id="daily_visits" class="stat">0</label>
                         <h3>Visits</h3>
                     </div>
                     <div class="column">
-                        <label for="" id="current_visits">0</label>
+                        <label for="" id="current_visits" class="stat">0</label>
                         <h3>Properties</h3>
                     </div>
                     <div class="column">
-                        <label id="daily_signups">0</label>
+                        <label id="daily_signups" class="stat">0</label>
                         <h3>Users</h3>
                     </div>
                     <div class="column">
-                        <label>0</label>
+                        <label class="stat">0</label>
                         <h3>Revenue</h3>
                     </div>
                 </div>
@@ -153,19 +170,19 @@
                     <h2>Ce mois-ci</h2>
                     <div class="sub_stats">
                         <div class="column">
-                            <label for="">0</label>
+                            <label for="" class="stat">0</label>
                             <h3>Visits</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Properties</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Users</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Revenue</h3>
                         </div>
                     </div>
@@ -174,64 +191,64 @@
                     <h2>Total</h2>
                     <div class="sub_stats">
                         <div class="column">
-                            <label for="">0</label>
+                            <label for="" class="stat">0</label>
                             <h3>Visits</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat"><?php echo mysqli_num_rows($propertiesResult)?></label>
                             <h3>Properties</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat"><?php echo mysqli_num_rows($usersResult)?></label>
                             <h3>Users</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Revenue</h3>
                         </div>
                         <div class="column">
-                            <label>0</label>
-                            <h3>Subscriptions</h3>
+                            <label class="stat"><?php echo mysqli_num_rows($newslettterResult)?></label>
+                            <h3>Newsletter sub</h3>
                         </div>
                         <div class="column" id="facebook">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Facebook</h3>
                             <div class="line"></div>
                         </div>
                         <div class="column" id="instagram">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Instagram</h3>
                             <div class="line"></div>
                         </div>
                         <div class="column" id="twitter">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Twitter</h3>
                             <div class="line"></div>
                         </div>
                         <div class="column" id="youtube">
-                            <label>0</label>
+                            <label class="stat">0</label>
                             <h3>Twitter</h3>
                             <div class="line"></div>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Maisons</h4>
-                            <label for="" id="num_houses">0</label>
+                            <label for="" id="num_houses" class="stat">0</label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Apparts</h4>
-                            <label for="" id="num_apparts">0</label>
+                            <label for="" id="num_apparts" class="stat">0</label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Terrains</h4>
-                            <label for="" id="num_terrains">0</label>
+                            <label for="" id="num_terrains" class="stat">0</label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Bureaux</h4>
-                            <label for="" id="num_bureaux">0</label>
+                            <label for="" id="num_bureaux" class="stat">0</label>
                         </div>
                     </div>
                 </div>

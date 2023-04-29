@@ -9,18 +9,21 @@
     $GLOBALS['quirks'] = '';
     
     if(isset($_POST['submit'])){
+
         //Check title
         if(empty($_POST['title'])){
             $errors['title'] = 'Vous devez entrer un titre';
         }else{
             $title = $_POST['title'];
         }
+
         //Check price
         if(empty($_POST['price'])){
             $errors['price'] = 'Vous devez entrer un prix';
         }else{
             $price = $_POST['price'];
         }
+
         //Check type
         $type = $_POST['type'];
         if($type == "Choisir le type"){
@@ -28,6 +31,7 @@
         }else{
             $type = $_POST['type'];
         }
+
         //Check Status
         $statut = $_POST['statut'];
         if($statut == "Choisir le statut"){
@@ -35,6 +39,7 @@
         }else{
             $statut = $_POST['statut'];
         }
+
         //Check quartier
         if(empty($_POST['quartier'])){
             $errors['quartier'] = 'Vous devez choisir un quartier';
@@ -272,10 +277,10 @@
                        <label>Type de bien <span> *</span></label>
                        <select id="type" name="type" value="<?php echo htmlspecialchars($type)?>">
                            <option>Choisir le type</option>
-                           <option>Maison</option>
-                           <option>Appart</option>
-                           <option>Terrain</option>
-                           <option>Bureaux</option>
+                           <option <?php if($type=="Maison"){echo 'selected';}?>>Maison</option>
+                           <option <?php if($type=="Appart"){echo 'selected';}?>>Appart</option>
+                           <option <?php if($type=="Terrain"){echo 'selected';}?>>Terrain</option>
+                           <option <?php if($type=="Bureaux"){echo 'selected';}?>>Bureaux</option>
                        </select>
                    </div>
                 </div>
@@ -285,8 +290,8 @@
                     <label>Statut du bien<span> *</span></label>
                     <select name="statut" value="<?php echo htmlspecialchars($statut)?>">
                         <option>Choisir le statut</option>
-                        <option>A acheter</option>
-                        <option>A louer</option>
+                        <option <?php if($statut=="A acheter"){echo 'selected';}?>>A acheter</option>
+                        <option <?php if($statut=="A louer"){echo 'selected';}?>>A louer</option>
                     </select>
                 </div>
                </div>
@@ -348,14 +353,38 @@
                <div class="container">
                    <h4>Installations</h4>
                    <ul>
-                       <li><input type="checkbox" name="quirks[]" value="Meublé">Meublé</li>
-                       <li><input type="checkbox" name="quirks[]" value="Non-meublé">Non-Meublé</li>
-                       <li><input type="checkbox" name="quirks[]" value="Climatisation">Climatisation</li>
-                       <li><input type="checkbox" name="quirks[]" value="Gardiens">Gardiens</li>
-                       <li><input type="checkbox" name="quirks[]" value="Machine à laver ">Machine à laver</li>
-                       <li><input type="checkbox" name="quirks[]" value="Piscine">Piscine</li>
-                       <li><input type="checkbox" name="quirks[]" value="Parking">Parking</li>
-                       <li><input type="checkbox" name="quirks[]" value="Groupe Electrogène">Groupe Electrogène</li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Meublé" <?php if(!empty($_POST['quirks'])){if(in_array('Meublé',$_POST['quirks'])){echo 'checked';}}?>>
+                            Meublé
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Non-meublé" <?php if(!empty($_POST['quirks'])){if(in_array('Non-meublé',$_POST['quirks'])){echo 'checked';}}?>
+                            >Non-Meublé
+                      </li>
+                      <li><input type="checkbox" name="quirks[]" 
+                            value="Climatisation"<?php if(!empty($_POST['quirks'])) if(in_array('Climatisation',$_POST['quirks'])){echo 'checked';}?>>
+                            Climatisation
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Gardiens" <?php if(!empty($_POST['quirks'])){if(in_array('Gardiens',$_POST['quirks'])){echo 'checked';}}?>>
+                            Gardiens
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Machine à laver"<?php if(!empty($_POST['quirks'])){if(in_array('Machine à laver',$_POST['quirks'])){echo 'checked';}}?>>
+                            Machine à laver
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Piscine"<?php if(!empty($_POST['quirks'])){if(in_array('Piscine',$_POST['quirks'])){echo 'checked';}}?>>
+                            Piscine
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Parking"<?php if(!empty($_POST['quirks'])){if(in_array('Parking',$_POST['quirks'])){echo 'checked';}}?>>
+                            Parking
+                        </li>
+                       <li><input type="checkbox" name="quirks[]" 
+                            value="Groupe Electrogène" <?php if(!empty($_POST['quirks'])){if(in_array('Groupe Electrogène',$_POST['quirks'])){echo 'checked';}}?>>
+                            Groupe Electrogène
+                        </li>
                    </ul>
                </div>
                <div class="btn_container">

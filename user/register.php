@@ -1,6 +1,5 @@
 <?php
     include('../config/connection.php');
-    session_start();
     //Create variables
     $errors =['nom'=>'','prenom'=>'','numero'=>'','password'=>'','email'=>'','profession' =>''];
     $nom = $prenom = $numero = $password = $email = $profession = $agency = $check ="";
@@ -84,7 +83,7 @@
             $profession = mysqli_real_escape_string($db,$_POST['profession']);
             $email= mysqli_real_escape_string($db,$_POST['email']);
             $password = mysqli_real_escape_string($db,$_POST['password']);
-            if(isset($_POST['agencyCheckbox'])){
+            if(isset($_POST['display_name']) || empty($_POST['display_name'])){
                 $agencyName = mysqli_real_escape_string($db,$_POST['display_name']);
             }else{
                 $agencyName = mysqli_real_escape_string($db,'null');
@@ -95,19 +94,20 @@
             if(mysqli_query($db,$sql)){
                 $sql = "SELECT id FROM users WHERE email = '$email'";
                 $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
+                //Redirect
+                session_start();
                 $SESSION['isLogged'] = true;
                 $SESSION['id'] = $userID;
-                header("location: userpage.php");
+                header("location: userpage.php?success");
             }
             //
             '
-            Kane
-            Mamadou
-            Agent Immobilier
+            Madiou
+            Diallo
+            Admin
             622122364
-            kane72@gmail.com
-            200410
-            200410
+            admin@afriplace.net
+            admin2004
             ';
         } 
     }

@@ -161,7 +161,7 @@
             </div>
         </form>
     </section>
-    <section class="FAQ">
+    <!-- <section class="FAQ">
         <h1>FAQ</h1>
         <div class="grid_container">
             <div class="container">
@@ -208,7 +208,8 @@
             </div>
             
         </div>
-    </section>
+    </section> -->
+
     <!--Footer start-->
     <?php include('templates/footer.php')?>
     <!--Footer end-->

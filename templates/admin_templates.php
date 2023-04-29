@@ -45,12 +45,12 @@
                         Messages
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="ad_manager.php">
                         <img src="../assets/ads.svg" alt="" class="resize">
                         Ads
                     </a>
-                </li> 
+                </li>  -->
                 <li>
                     <a href="properties.php">
                         <img src="../assets/house_icon.svg">
@@ -58,9 +58,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="createlisting.php">
-                        <img src="../assets/house_icon_create.svg">
-                        Add New
+                    <a href="users.php">
+                        <img src="../assets/person_icon.svg">
+                        Utilisateurs
                     </a>
                 </li>
                 <li>
