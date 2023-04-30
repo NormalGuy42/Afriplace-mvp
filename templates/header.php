@@ -31,10 +31,17 @@
             </ul>
             <?php
                 session_start();
+                $_SESSION['adminLogged'] = false;
+                if(!empty($_SESSION['isLogged'])){
                 if($_SESSION['isLogged']):
             ?>
-                <div>Logged In</div>
+                <div class="account">
+                    <a href="user/userpage.php">
+                        <img src="assets/default_userBlack.jpg" alt="account">
+                    </a>
+                </div>
             <?php endif?>
+            <?php }?>
         </nav>
     </header>
 <!--Header-->

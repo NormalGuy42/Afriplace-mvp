@@ -133,12 +133,13 @@ nav ul li a:hover{
 nav ul li:first-child{display: none;}
 .account{
     float: right;
-    margin-right:20px;
+    margin: 15px 32px 0 0;
+    height: 55px;
+    width: 55px;
 }
-.account li {
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
+.account img{
+    height: 100%;
+    width: 100%;   
 }
 svg.burger{
     height: 55px;
@@ -380,6 +381,9 @@ div.nav{
     color: #333;
     margin: 7px 0px 0px;
     font-weight: 600;
+}
+.priceValue{
+    font-weight: bold;
 }
 .listings .box .flex_container{
     padding-bottom: 5px;
@@ -770,7 +774,12 @@ a.btn:hover {
     svg.burger{
         height: 50px;
         width: 50px;
-        margin: 20px 0 0 32px;
+        margin: 20px 0 0 20px;
+    }
+    .account{
+        height: 50px;
+        width: 50px;
+        margin: 20px 20px 0 0 ;
     }
 }
 @media (max-width:500px) {
@@ -784,7 +793,7 @@ a.btn:hover {
         margin-left: -80px;
     }
 }
-@media (max-width:370px) {
+@media (max-width:380px) {
     /*Navigation cards*/
     .navigation_container{
         grid-template-columns: repeat(auto-fit,95%);
@@ -803,7 +812,7 @@ a.btn:hover {
     }
     /*Newsletter*/
     .newsletter .box{
-        padding: 2rem 0px;
+        padding: 1.5rem 0px;
         width: 98%;
         margin: 0 auto;
     }

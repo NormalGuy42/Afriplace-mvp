@@ -30,6 +30,11 @@
                 <li><a href="../contact.php">Contactez-nous</a></li>
                 <li><a href="#"><img src="../assets/guinea.jpg"></a></li>
             </ul>
+            <div class="account">
+                    <a href="userpage.php">
+                        <img src="../assets/default_userBlack.jpg" alt="account">
+                    </a>
+            </div>
         </nav>
 </header>
 <!--Header-->

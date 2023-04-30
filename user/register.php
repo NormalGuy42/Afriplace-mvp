@@ -1,5 +1,6 @@
 <?php
     include('../config/connection.php');
+    include('../lib/user_authentication.php');
     //Create variables
     $errors =['nom'=>'','prenom'=>'','numero'=>'','password'=>'','email'=>'','profession' =>''];
     $nom = $prenom = $numero = $password = $email = $profession = $agency = $check ="";
@@ -83,7 +84,7 @@
             $profession = mysqli_real_escape_string($db,$_POST['profession']);
             $email= mysqli_real_escape_string($db,$_POST['email']);
             $password = mysqli_real_escape_string($db,$_POST['password']);
-            if(isset($_POST['display_name']) || empty($_POST['display_name'])){
+            if(isset($_POST['display_name']) || !empty($_POST['display_name'])){
                 $agencyName = mysqli_real_escape_string($db,$_POST['display_name']);
             }else{
                 $agencyName = mysqli_real_escape_string($db,'null');
@@ -96,19 +97,13 @@
                 $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
                 //Redirect
                 session_start();
-                $SESSION['isLogged'] = true;
-                $SESSION['id'] = $userID;
-                header("location: userpage.php?success");
+                login($userID['id']);
+            }else{
+                echo 
+                '
+                    <div class="errorBox">Erreur de connexion</div>
+                ';
             }
-            //
-            '
-            Madiou
-            Diallo
-            Admin
-            622122364
-            admin@afriplace.net
-            admin2004
-            ';
         } 
     }
 

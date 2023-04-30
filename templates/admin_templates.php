@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!$_SESSION['isLogged']) {
+    if(!$_SESSION['adminLogged']) {
       header("location: index.php"); 
       die(); 
     }

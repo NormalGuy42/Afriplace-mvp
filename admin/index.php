@@ -111,7 +111,7 @@
     <?php
             $error ="";
             session_start();
-            $_SESSION['isLogged'] = false;
+            $_SESSION['adminLogged'] = false;
             $errors = ['username'=>'','password'=>''];
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $username = test_input($_POST["username"]);
@@ -123,8 +123,8 @@
                 foreach($users as $user) {
                     if(($user['username'] == $username) &&
                         ($user['password'] == $password)) {
+                            $_SESSION['adminLogged'] = true;
                             header("location: admin.php");
-                            $_SESSION['isLogged'] = true;
                     }
                     else{
                         $error = '<div class="error">Mot de Passe ou Identifiant incorrect. Réesayez!</div>';
