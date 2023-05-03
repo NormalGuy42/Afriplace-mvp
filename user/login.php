@@ -85,19 +85,19 @@
                 $stmt->execute();
                 $users = $stmt->fetchAll();
                 $userID = '';
-
+                if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                    $errors['email'] = 'Votre email doit être une adresse email valide';
+                }
                 foreach($users as $user) {
                     if(($user['email'] = $email) &&
                         ($user['password'] == $password)) {
-                            $email = mysqli_real_escape_string($db,$user['email']);
-                            $sql = "SELECT id FROM users WHERE email = '$email'";
-                            $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
-                            login($userID['id']);
-                            remember_me($userID['id']);
-                            // $_SESSION['isLogged'] = true;
-                            // $_SESSION['id'] = $userID;
-                            // header("location: userpage.php");
-
+                            if(empty($error)){
+                                $email = mysqli_real_escape_string($db,$user['email']);
+                                $sql = "SELECT id FROM users WHERE email = '$email'";
+                                $userID = mysqli_fetch_assoc(mysqli_query($db,$sql));
+                                login($userID['id']);
+                            }
+                            
                             '
                             admin@afriplace.net
                             admin2004
@@ -113,8 +113,8 @@
     <section class="sign-in_box">
         <div class="userbox">
             <form action="login.php" method="POST">
+                <div class="errorPlace"><?php echo $error?></div>
                 <h3>Bienvenue</h3>
-                <?php echo $error?>
                 <input class="login_field" type="text" placeholder="Email" name="email" autocomplete="off"/>
                 <div class="error"><?php echo htmlspecialchars($errors['email'])?></div>
                 <input class="login_field" type="password" placeholder="Mot de passe" name="password" autocomplete="off"/>

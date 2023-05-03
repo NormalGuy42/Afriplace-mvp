@@ -1,15 +1,22 @@
 <?php 
+    include('config/connection.php');
     //Initialize variables
-    $firstName = $lastName = $email = $phone = "";
-    $errors = array('email'=>'','firstName'=>'','lastName'=>'','phone'=>'');
+    $firstName = $lastName = $email = $phone = $message = $object = "";
+    $errors = array('object'=>'','email'=>'','firstName'=>'','lastName'=>'','phone'=>'','message'=>'');
     
     if(isset($_POST['submit'])){
+        //Check object
+        if(empty($_POST['object']) || $_POST['object']=="choice"){
+            $errors['object'] = 'Choissisez l\'objet de la demande';
+        }else{
+            $object = $_POST['object'];
+        }
         //Check first name
         if(empty($_POST['firstName'])){
             $errors['firstName'] =  'Entrez votre prénom';
         }else{
             $firstName = $_POST['firstName'];
-            if(!preg_match('/^[a-zA-Z\s]+$/',$firstName)){
+            if(!preg_match('/^[a-zA-Zéêèçîô\s]+$/',$firstName)){
                 $errors['firstName'] = 'Votre prénom doit uniquement contenir des lettres';
             }
         }
@@ -19,7 +26,7 @@
         }
         else{
             $lastName = $_POST['lastName'];
-            if(!preg_match('/^[a-zA-Z\s]+$/',$lastName)){
+            if(!preg_match('/^[a-zA-Zéêèçîô\s]+$/',$lastName)){
                 $errors['lastName'] ='Votre nom doit uniquement contenir des lettres';
             }
         }
@@ -42,6 +49,28 @@
                 $errors['phone'] = 'Format du numero incorrect';
             }
         }
+        //Check message
+        if(empty($_POST['message'])){
+            $errors['message'] = 'Entrez un message';
+        }else{
+            $message = $_POST['message'];
+        }
+        //If no errors
+        if(!array_filter($errors)){
+            $object = mysqli_real_escape_string($db,$_POST['object']);
+            $name = mysqli_real_escape_string($db,$_POST['lastName']);
+            $firstName = mysqli_real_escape_string($db,$_POST['firstName']);
+            $email = mysqli_real_escape_string($db,$_POST['email']);
+            $phone = mysqli_real_escape_string($db,$_POST['phone']);
+            $message = mysqli_real_escape_string($db,$_POST['message']);
+
+            $object = ucfirst($object);
+            $query = "INSERT INTO admin_messages(object,last_name,first_name,email,phone,message) 
+            VALUES('$object','$name','$firstName','$email','$phone','$message')";
+            if(mysqli_query($db,$query)){
+                header('Location: contact.php');
+            }
+        }
     }
 ?>
 
@@ -60,6 +89,9 @@
             text-align: center;
             font-size: 28px;
             font-weight:bold;
+        }   
+        .error{
+            color: red;
         }
         .FAQ .grid_container{
             display: grid;
@@ -113,28 +145,26 @@
                     <h3>Envoyez nous un message</h3>
                 </div>
                 <label>Type de demande</label>
-                <select class="login_field contact" name="object">
-                    <option value="">Choissisez la raison de votre demande</option>
-                    <option>Je veux lister ma propriété</option>
-                    <option>Retirer ma propriété</option>
-                    <option>Demande d'information générale</option>
-                    <option>Suggestion pour le site</option>
-                    <option>Plainte</option>
-                    <option>Question</option>
-                    <option>Autre</option>
+                <select class="login_field contact" name="object" value="<?php echo htmlspecialchars($object)?>">
+                    <option value="choice">Choissisez la raison de votre demande</option>
+                    <option value="suggestion" <?php if($object =="suggestion"){echo 'selected';}?>>Suggestion pour le site</option>
+                    <option value="plainte" <?php if($object =="plainte"){echo 'selected';}?>>Plainte</option>
+                    <option value="question" <?php if($object =="question"){echo 'selected';}?>>Question</option>
+                    <option value="other" <?php if($object =="other"){echo 'selected';}?>>Autre</option>
                 </select>
+                <div class="error"><?php echo $errors['object']?></div> 
             </div>
             <div class="contact_group">
                 <div class="contact_row">
                     <label>Nom</label>
                     <input class="login_field contact" type="text" 
-                    maxlength="30" name="lastName" value="<?php echo htmlspecialchars($lastName)?>">
+                    maxlength="30" name="lastName" value="<?php echo htmlspecialchars($lastName)?>" autocomplete="off">
                     <div class="error"><?php echo $errors['lastName']?></div>
                 </div>
                 <div class="contact_row">
                     <label>Prénom</label>
                     <input class="login_field contact" 
-                    type="text" maxlength="30" name="firstName" value="<?php echo htmlspecialchars($firstName)?>">
+                    type="text" maxlength="30" name="firstName" value="<?php echo htmlspecialchars($firstName)?>" autocomplete="off">
                     <div class="error"><?php echo $errors['firstName']?></div> 
                 </div>
             </div>
@@ -142,19 +172,20 @@
                 <div class="contact_row">
                     <label>Email</label>
                     <input class="login_field contact" 
-                    type="email" maxlength="50" name="email" value="<?php echo htmlspecialchars($email)?>">
+                    type="email" maxlength="50" name="email" value="<?php echo htmlspecialchars($email)?>" autocomplete="off">
                     <div class="error"><?php echo $errors['email']?></div>
                 </div>          
                 <div class="contact_row">
                     <label>Telephone</label>
                     <input class="login_field contact" 
-                    type="tel" maxlength="50" name="phone" value="<?php echo htmlspecialchars($phone)?>">
+                    type="tel" maxlength="50" name="phone" value="<?php echo htmlspecialchars($phone)?>" autocomplete="off">
                     <div class="error"><?php echo $errors['phone']?></div>
                 </div>
             </div>
             <div class="contact_row">
                 <label>Votre message</label>
-                <textarea class= "login_field textarea"name="" id="" cols="30" rows="10" maxlength="1000" name="message"></textarea>
+                <textarea class= "login_field textarea" name="message" id="" cols="30" rows="10" maxlength="1000" name="message"><?php echo htmlspecialchars($message)?></textarea>
+                <div class="error"><?php echo $errors['message']?></div>
             </div>
             <div class="contact_button">
                 <button class="connexion contact" name="submit" value="submit">Envoyer</button>

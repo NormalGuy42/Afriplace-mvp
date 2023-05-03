@@ -7,8 +7,21 @@
         $place = $_GET['place'];
 
     }
+    //Handle visits
+    $visitor_ip = $_SERVER['REMOTE_ADDR'];
+    $visitor_ip = mysqli_real_escape_string($db,$visitor_ip);
+    //Check if ip in database for unique visits
+    $unique_visists_query = "SELECT * FROM visits WHERE ip_address='$visitor_ip'";
+    $unique_visitor = mysqli_query($db,$unique_visists_query);
+    if(mysqli_num_rows($unique_visitor)<1){
+        $visitQuery = "INSERT INTO unique_visits(ip_address) VALUES('$visitor_ip')";
+        mysqli_query($db,$visitQuery);
+    }
+    //Add ip address to regular visits
+    $regularVisits = "INSERT INTO visits(ip_address) VALUES('$visitor_ip')";
+    mysqli_query($db,$regularVisits);    
     //New properties
-    $propertyQuery = "SELECT * FROM properties ORDER BY id DESC LIMIT 6";
+    $propertyQuery = "SELECT * FROM properties ORDER BY id DESC LIMIT 5";
     $newProperties = mysqli_query($db,$propertyQuery);
 
     //Newsletter submission
@@ -205,10 +218,12 @@
                 <?php endforeach?>
             </div>
             <div class="more">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="orange">
-                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M214.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 402.7 329.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 
-                0-45.3s32.8-12.5 45.3 0L192 210.7 329.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"/>
-                </svg>
+                <a href="searchpage.php?action=new">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="orange">
+                    <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M214.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 402.7 329.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 
+                    0-45.3s32.8-12.5 45.3 0L192 210.7 329.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"/>
+                    </svg>
+                </a>
             </div>
         </section>
     </div>
@@ -304,6 +319,24 @@
         }
         )
         //Add comma separation to price end
+        
+        //Remove listings section if there are no listings
+        //Add 250px padding to previous section
+        var listings = document.querySelector('.listings');
+        var listingsContainer = document.querySelector('.listings_container');
+        var listingsLength = listingsContainer.children.length;
+
+        var navigation = document.querySelector('.navigation');
+        if(listingsLength == 0){
+            listings.style.display = "none";
+            navigation.style.paddingBottom = "250px";
+        }
+        document.addEventListener('change',()=>{
+            if(listingsLength = 0){
+            listings.style.display = "none";
+            navigation.style.paddingBottom = "250px";
+            }
+        })
     </script>
 </body>
 </html>

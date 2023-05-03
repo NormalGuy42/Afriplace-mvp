@@ -45,6 +45,11 @@
             $errors['quartier'] = 'Vous devez choisir un quartier';
         }else{
             $quartier = $_POST['quartier'];
+            $quartierQuery = "SELECT `communes rurales` FROM places WHERE `communes rurales` LIKE '%$quartier%'";
+            $quartierResult = mysqli_query($db,$quartierQuery);
+            if(mysqli_num_rows($quartierResult) >1){
+                $errors['quartier'] ='Ce quartier n\'est pas dans notre base de donnée';
+            }
         }
         //Check Localisation
         if(empty($_POST['localisation'])){
@@ -302,7 +307,6 @@
                         <input placeholder="Entre le quartier" id="quartier" name="quartier" value="<?php echo htmlspecialchars($quartier)?>" autocomplete="off">
                         <div class="quartierList">
                             <div class="quartierContainer">
-                                
                             </div>
                         </div>
                     </div>
@@ -323,7 +327,7 @@
                                 <button data-bed-btn="decrement" type="button">-</button>
                                 <span id="num_lits">0</span>
                                 <button data-bed-btn="increment" type="button">+</button>
-                                <input type="hidden" name="bedNum" id="bedInput">
+                                <input type="hidden" name="bedNum" id="bedInput" value="<?php echo htmlspecialchars($bedNum)?>">
                             </div>
                         </div>
                         <div class="container">
@@ -333,7 +337,7 @@
                                 <button data-bath-btn="decrement" type="button">-</button>
                                 <span id="num_toilettes">0</span>
                                 <button data-bath-btn="increment" type="button">+</button>
-                                <input type="hidden" name="toiletteNum" id="toiletteInput">
+                                <input type="hidden" name="toiletteNum" id="toiletteInput" value="<?php echo htmlspecialchars($toiletteNum)?>">
                             </div>
                         </div>
                     </div>
@@ -485,9 +489,9 @@
                 else{num--}
                 if(num<0){num = 0}
                 spanToilette.innerText = num;
+                toiletteInput.value = num;
                 })
             })
-            toiletteInput.value =parseInt(spanToilette.innerText)
         }
         bedCounter();
         bathCounter();

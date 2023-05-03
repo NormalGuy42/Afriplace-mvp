@@ -84,6 +84,8 @@
     margin-top: 10px;
     width: 100%;
     align-items: flex-start;
+    margin-left: 20px;
+    font-size: 18px;
 }
 .property_info{
     display: flex;

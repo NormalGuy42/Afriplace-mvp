@@ -1,18 +1,104 @@
 <?php
     include('../config/connection.php');
+    date_default_timezone_set('UTC');
+    $today = date('Y/m/d', time());
+    $currentMonth = date('m/Y',strtotime($today));
+
+    //Visits
+    $visitsQuery = "SELECT * FROM visits";
+    $visitsResult = mysqli_query($db,$visitsQuery);
+    $totalVisits = mysqli_num_rows($visitsResult);
+
+    $dailyVisits = [];
+    $monthlyVisits = [];
+
+    foreach($visitsResult as $visit){
+        if(date('Y/m/d',strtotime($visit['visit_date'])) == $today){
+            array_push($dailyVisits,$visit);
+        }
+        if(date('m/Y',strtotime($visit['visit_date'])) == $currentMonth){
+            array_push($monthlyVisits,$visit);
+        }  
+    }
+
+    //Unique Visits
+    $uniqueVisitsQuery = "SELECT * FROM unique_visits";
+    $uniqueVisitsResult = mysqli_query($db,$uniqueVisitsQuery);
+    $totalUniqueVisits = mysqli_num_rows($uniqueVisitsResult);
+
+    $dailyUniqueVisits = [];
+    $monthlyUniqueVisits = [];
+
+    foreach($uniqueVisitsResult as $visit){
+        if(date('Y/m/d',strtotime($visit['visit_date'])) == $today){
+            array_push($dailyUniqueVisits,$visit);
+        }
+        if(date('m/Y',strtotime($visit['visit_date'])) == $currentMonth){
+            array_push($monthlyUniqueVisits,$visit);
+        }  
+    }
+
     //Properties
     $propertiesQuery = "SELECT * FROM properties";
     $propertiesResult = mysqli_query($db,$propertiesQuery);
     $totalProperties = mysqli_num_rows($propertiesResult);
+    //Create lists for each type of properties
+    $numHouses = [];
+    $numApparts = [];
+    $numTerrains = [];
+    $numBureaux = [];
 
+    foreach($propertiesResult as $property){
+        if($property['type']== "Maison"){
+            array_push($numHouses,$property);
+        }
+        if($property['type']== "Appart"){
+            array_push($numApparts,$property);
+        }
+        if($property['type']== "Terrain"){
+            array_push($numTerrains,$property);
+        }
+        if($property['type']== "Bureaux"){
+            array_push($numBureaux,$property);
+        }
+    }
+    $dailyProperties = [];
+    $monthlyProperties = [];
+    
+    foreach($propertiesResult as $property){
+        if(date('Y/m/d',strtotime($property['created_at'])) == $today){
+            array_push($dailyProperties,$property);
+        }
+        if(date('m/Y',strtotime($property['created_at'])) == $currentMonth){
+            array_push($monthlyProperties,$property);
+        }  
+    }
     //Users
     $usersQuery = "SELECT * FROM users";
     $usersResult = mysqli_query($db,$usersQuery);
     $totalUsers = mysqli_num_rows($usersResult);
+    $dailyUsers = [];
+    $monthlyUsers = [];
+    
+    foreach($usersResult as $user){
+        if(date('Y/m/d',strtotime($user['created_at'])) == $today){
+            array_push($dailyUsers,$user);
+        }
+        if(date('m/Y',strtotime($user['created_at'])) == $currentMonth){
+            array_push($monthlyUsers,$user);
+        }  
+    }
+
     //Newsletter
     $newsletterQuery = "SELECT * FROM newsletter";
     $newslettterResult = mysqli_query($db,$newsletterQuery);
 
+    //New properties
+    $newPropertiesQuery = "SELECT * FROM properties ORDER BY id DESC LIMIT 6";
+    $newProperties = mysqli_query($db,$newPropertiesQuery);
+    
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -129,9 +215,9 @@
         width: 30px;
         cursor: pointer;
     }
-    .userpage .property_box button{
+    /* .userpage .property_box button{
         padding: 30px 10px 0px;
-    }
+    } */
     .userpage .property_box button svg{
         margin: auto 0;
         height: 30px;
@@ -147,20 +233,28 @@
             <div class="stat_page">
                 <div class="stats">
                     <div class="column">
-                        <label for="" id="daily_visits" class="stat">0</label>
+                        <label for="" class="stat">
+                            <?php echo htmlspecialchars(count($dailyVisits))?>
+                        </label>
                         <h3>Visits</h3>
                     </div>
                     <div class="column">
-                        <label for="" id="current_visits" class="stat">0</label>
+                        <label class="stat">
+                            <?php echo htmlspecialchars(count($dailyUniqueVisits))?>
+                        </label>
+                        <h3>Unique visits</h3>
+                    </div>
+                    <div class="column">
+                        <label for=""  class="stat">
+                            <?php echo htmlspecialchars(count($dailyProperties))?>
+                        </label>
                         <h3>Properties</h3>
                     </div>
                     <div class="column">
-                        <label id="daily_signups" class="stat">0</label>
+                        <label id="daily_signups" class="stat">
+                            <?php echo htmlspecialchars(count($dailyUsers))?>
+                        </label>
                         <h3>Users</h3>
-                    </div>
-                    <div class="column">
-                        <label class="stat">0</label>
-                        <h3>Revenue</h3>
                     </div>
                 </div>
                 <div class="graph">
@@ -170,20 +264,28 @@
                     <h2>Ce mois-ci</h2>
                     <div class="sub_stats">
                         <div class="column">
-                            <label for="" class="stat">0</label>
+                            <label for="" class="stat">
+                                <?php echo htmlspecialchars(count($monthlyVisits))?>
+                            </label>
                             <h3>Visits</h3>
                         </div>
                         <div class="column">
-                            <label class="stat">0</label>
+                            <label class="stat">
+                                <?php echo htmlspecialchars(count($monthlyUniqueVisits))?>
+                            </label>
+                            <h3>Unique visits</h3>
+                        </div>
+                        <div class="column">
+                            <label class="stat">
+                                <?php echo htmlspecialchars(count($monthlyProperties))?>
+                            </label>
                             <h3>Properties</h3>
                         </div>
                         <div class="column">
-                            <label class="stat">0</label>
+                            <label class="stat">
+                                <?php echo htmlspecialchars(count($monthlyUsers))?>
+                            </label>
                             <h3>Users</h3>
-                        </div>
-                        <div class="column">
-                            <label class="stat">0</label>
-                            <h3>Revenue</h3>
                         </div>
                     </div>
                 </div>
@@ -191,8 +293,16 @@
                     <h2>Total</h2>
                     <div class="sub_stats">
                         <div class="column">
-                            <label for="" class="stat">0</label>
+                            <label for="" class="stat">
+                            <?php echo htmlspecialchars($totalVisits)?>
+                            </label>
                             <h3>Visits</h3>
+                        </div>
+                        <div class="column">
+                            <label class="stat">
+                                <?php echo htmlspecialchars($totalUniqueVisits)?>
+                            </label>
+                            <h3>Unique visits</h3>
                         </div>
                         <div class="column">
                             <label class="stat"><?php echo mysqli_num_rows($propertiesResult)?></label>
@@ -201,10 +311,6 @@
                         <div class="column">
                             <label class="stat"><?php echo mysqli_num_rows($usersResult)?></label>
                             <h3>Users</h3>
-                        </div>
-                        <div class="column">
-                            <label class="stat">0</label>
-                            <h3>Revenue</h3>
                         </div>
                         <div class="column">
                             <label class="stat"><?php echo mysqli_num_rows($newslettterResult)?></label>
@@ -233,22 +339,30 @@
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Maisons</h4>
-                            <label for="" id="num_houses" class="stat">0</label>
+                            <label for="" id="num_houses" class="stat">
+                                <?php echo htmlspecialchars(count($numHouses))?>
+                            </label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Apparts</h4>
-                            <label for="" id="num_apparts" class="stat">0</label>
+                            <label for="" id="num_apparts" class="stat">
+                                <?php echo htmlspecialchars(count($numApparts))?>
+                            </label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Terrains</h4>
-                            <label for="" id="num_terrains" class="stat">0</label>
+                            <label for="" id="num_terrains" class="stat">
+                                <?php echo htmlspecialchars(count($numTerrains))?>
+                            </label>
                         </div>
                         <div class="column">
                             <img src="../assets/house_img.png">
                             <h4>Bureaux</h4>
-                            <label for="" id="num_bureaux" class="stat">0</label>
+                            <label for="" id="num_bureaux" class="stat">
+                                <?php echo htmlspecialchars(count($numBureaux))?>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -263,10 +377,15 @@
             </div>
             <div class="new_listings">
                 <ul class="property_list">
-                    <li>
+                    <?php foreach($newProperties as $newProperty):?>
+                        <li>
                         <div class="property_box">
-                            <a href="property.html">
-                                <img src="../assets/living.jpg">
+                            <a href="property.php?location=admin.php&id=<?php echo htmlspecialchars($newProperty['id'])?>">
+                                <?php
+                                    $images = explode(',',$newProperty['images']);
+                                    array_pop($images);
+                                ?>
+                                <img src="../<?php echo htmlspecialchars($images[0])?>">
                                 <div class="property_info">
                                     <div class="property_stats">
                                         <!--Location-->
@@ -279,35 +398,35 @@
                                                     159.375 C 144.750 125.629,176.460 94.198,210.156 101.591 " stroke="none" fill="#afa7a7" fill-rule="evenodd">
                                                     </path>
                                                 </g>
-                                            </svg> Lambagny
+                                            </svg> <?php echo htmlspecialchars($newProperty['quartier'])?>
                                         </span>
-                                        <!--Beds-->
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
-                                                <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
-                                                fill="#afa7a7">
-                                                </path>
-                                            </svg> 2
-                                        </span>
-                                        <!--Baths-->
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
-                                                <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
-                                                2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
-                                                4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
-                                                </path></svg> 3
-                                        </span>
+                                        <?php if($newProperty['statut'] == "Maison" || $newProperty['statut']=="Appart"):?>
+                                            <!--Beds-->
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+                                                    <path d="M9.196 14.603h15.523v.027h1.995v10.64h-3.99v-4.017H9.196v4.017h-3.99V6.65h3.99v7.953zm2.109-1.968v-2.66h4.655v2.66h-4.655z" 
+                                                    fill="#afa7a7">
+                                                    </path>
+                                                </svg> <?php echo htmlspecialchars($newProperty['bedNum'])?>
+                                            </span>
+                                            <!--Baths-->
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                                    <path d="M23.981 15.947H26.6v1.33a9.31 9.31 0 0 1-9.31 9.31h-2.66a9.31 9.31 0 0 1-9.31-9.31v-1.33h16.001V9.995a2.015 
+                                                    2.015 0 0 0-2.016-2.015h-.67c-.61 0-1.126.407-1.29.965a2.698 2.698 0 0 1 1.356 2.342H13.3a2.7 2.7 0 0 1 1.347-2.337 
+                                                    4.006 4.006 0 0 1 3.989-3.63h.67a4.675 4.675 0 0 1 4.675 4.675v5.952z" fill="#afa7a7">
+                                                    </path></svg> <?php echo htmlspecialchars($newProperty['toiletteNum'])?>
+                                            </span>
+                                        <?php endif?>
                                         <!--Surface-->
                                         <span>
                                             <svg width="20" height="20">
                                                 <rect y="6" height="14" width="16" fill="#afa7a7"></rect>
-                                            </svg> 750m<sup>2</sup>
+                                            </svg> <?php echo htmlspecialchars($newProperty['surface'])?>m<sup>2</sup>
                                         </span>
                                     </div>
-                                    <h4>Titre</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                    Eligendi veniam sunt ipsum repudiandae labore aut magnam temporibus earum 
-                                    dignissimos fuga!</p>
+                                    <h4><?php echo htmlspecialchars($newProperty['title'])?></h4>
+                                    <p><?php echo htmlspecialchars($newProperty['description'])?></p>
                                 </div>
                             </a>
                             <button>
@@ -319,6 +438,7 @@
                             </button>
                         </div>
                     </li>
+                    <?php endforeach?>
                 </ul>
             </div>
         </div>

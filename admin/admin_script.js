@@ -76,9 +76,24 @@ var boxes = document.querySelectorAll('.box');
         /*Click outside and container closes*/
         document.addEventListener('click',(e)=>{
             var activeSection = document.querySelector('section[data-active="true"]');
-            if(!e.target.closest('.container') && activeSection.dataset.active){
-                delete activeSection.dataset.active;
-            }
+            try{
+                if(!e.target.closest('.container') && activeSection.dataset.active){
+                    delete activeSection.dataset.active;
+                }
+            }catch(e){}
         })
+        
 //Properties end
+var filterBtn = document.querySelector('.filterBtn');
+filterBtn.addEventListener('click',()=>{
+    var section = filterBtn.nextElementSibling;
+    section.classList.toggle('showFilterSection');
 
+    document.addEventListener('click',(e)=>{
+        if(!e.target.closest('.filterBtn')){
+            if(!e.target.closest('.filterSection') && section.classList.contains('showFilterSection')){
+                section.classList.remove('showFilterSection');
+            }
+        }
+    })
+})

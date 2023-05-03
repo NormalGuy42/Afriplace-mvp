@@ -318,6 +318,33 @@ label.logo{
     align-items: center;
     margin-top: 20px;
 }
+/*Filter button start*/
+.showFilterSection{
+    display: block !important;
+}
+.filter{
+    position: relative;
+}
+.filterSection {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 0 3px 0px rgba(0,0,0);
+    transform: translate(-35px, 5px);
+}
+.filterSection input {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: unset !important;
+    margin-right: 5px;
+}
+.filterSection .flex{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+/*Filter button end*/
 .property_section .advanced_search input{
     height: 28px;
     font-size: 18px;
@@ -376,6 +403,7 @@ label.logo{
 }
 .property_box .property_info{
     margin-left: 10px;
+    width: 82%;
     overflow: hidden;
 }
 .property_box .property_info h4{

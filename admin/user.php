@@ -166,6 +166,10 @@
                         <span><?php echo htmlspecialchars($user['email'])?></span>
                     </div>
                     <div class="info_box">
+                        <label class="info">Mot de passe:</label>
+                        <span><?php echo htmlspecialchars($user['password'])?></span>
+                    </div>
+                    <div class="info_box">
                         <label class="info">Numero:</label>
                         <span><?php echo htmlspecialchars($user['numero'])?></span>
                     </div>

@@ -1,3 +1,20 @@
+<?php
+    include("config/connection.php");
+    $propertyID = $_GET['id']; 
+    $query = "SELECT * FROM properties WHERE id = $propertyID";
+    $property = mysqli_fetch_assoc(mysqli_query($db,$query));
+
+    //Get user info
+    $userID = $property['userID'];
+    $userQuery = "SELECT * FROM users WHERE id=$userID";
+    $user = mysqli_fetch_assoc(mysqli_query($db,$userQuery));
+
+    //Update views
+    $numViews = $property['views'];
+    $viewQuery = "UPDATE properties SET `views` = $numViews+1 WHERE `id`=$propertyID";
+    mysqli_query($db,$viewQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +35,17 @@
             <div class="exit_arrow">
             </div>
             <div class="img_containers" data-slide-container>
-                <a href="fullscreen.html">
+                <a href="fullscreen.php?id=<?php echo htmlspecialchars($propertyID)?>">
                     <ul data-slides>
-                        <li class="slide" data-active><img src="assets/living.jpg" alt=""></li>
-                        <li class="slide"><img src="assets/new-living.jpg" alt=""></li>
-                        <li class="slide"><img src="assets/maison.png" alt=""></li>
+                        <?php
+                            $images = explode(',',$property['images']);
+                            array_pop($images);
+                            foreach($images as $img):
+                        ?>
+                            <li class="slide" <?php if($img == $images[0]) echo 'data-active'?>>
+                                <img src="<?php echo htmlspecialchars($img)?>" alt="">
+                            </li>
+                        <?php endforeach?>
                     </ul>
                 </a>
                 <a href="fullscreen.html"class="more_photos">
@@ -45,22 +68,24 @@
                     </svg>
                 </button>
             </div>  
-            <div class="adress"><span>Lambagny</span></div>  
+            <div class="adress"><span><?php echo htmlspecialchars($property['quartier'])?></span></div>  
             <div class="property_info">
                 <div class="column price">
-                    <div class="column_row price">5.000.000 GNF</div>
+                    <div class="column_row price"><span class="priceValue"><?php echo htmlspecialchars($property['price'])?></span> GNF</div>
                     <label class="price_label">Prix</label>
                 </div>
+                <?php if($property['type'] == "Maison" || $property['type'] == "Appart"):?>
+                    <div class="column">
+                        <div class="column_row"><span class="priceValue"><?php echo htmlspecialchars($property['bedNum'])?></span> </div>
+                        <label>Lits</label>
+                    </div>
+                    <div class="column">
+                        <div class="column_row"><?php echo htmlspecialchars($property['toiletteNum'])?></div>
+                        <label>Toilettes</label>
+                    </div>
+                <?php endif?>
                 <div class="column">
-                    <div class="column_row">3</div>
-                    <label>Lits</label>
-                </div>
-                <div class="column">
-                    <div class="column_row">2</div>
-                    <label>Toilettes</label>
-                </div>
-                <div class="column">
-                    <div class="column_row">750m<sup>2</sup></div>
+                    <div class="column_row"><?php echo htmlspecialchars($property['surface'])?>m<sup>2</sup></div>
                     <label>Surface</label>
                 </div>
             </div>   
@@ -69,24 +94,21 @@
                     <div class="description">
                         <h3>Description</h3>
                         <div class="line"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus animi quisquam, accusamus similique quasi 
-                            impedit quis 
-                            beatae, dolorem reiciendis, obcaecati omnis magnam ipsum dicta laboriosam quidem maxime placeat 
-                            recusandae architecto!
+                        <p>
+                            <?php echo htmlspecialchars($property['description'])?>
                         </p>
                     </div>
                     <div class="installation">
                         <h3>Installations</h3>
                         <div class="line"></div>
                         <ul class="installation_list"> 
-                            <li>Meublé</li>
-                            <li>Climatisation</li>
-                            <li>Meublé</li>
-                            <li>Climatisation</li>
-                            <li>Meublé</li>
-                            <li>Climatisation</li>
-                            <li>Meublé</li>
-                            <li>Climatisation</li>
+                            <?php
+                                $installations = explode(',',$property['quirks']);
+                                array_pop($installations);
+                                foreach($installations as $i):
+                            ?>
+                                <li><?php echo htmlspecialchars($i)?></li>
+                            <?php endforeach?>
                         </ul>
                     </div>
                     <div class="contact_title">
@@ -96,8 +118,25 @@
                 <div class="contact_box">
                     <div class="contact_info">
                         <img src="assets/user-pfp.png">
-                        <h3>User</h3>
-                        <label>Propiétaire</label>
+                        <h3>
+                            <?php
+                               if(!empty($user['display_name'] && $user['display_name'] !== null)){
+                                echo $user['display_name'];
+                                }else{
+                                    echo $user['nom'].' '.$user['prenom'];
+                                } 
+                            ?>
+                        </h3>
+                        <label>
+                            <?php
+                                if(!empty($user['display_name'] || $user['display_name'] != 'null')){
+                                    echo 'Agence';
+                                }else{
+                                    echo 'Propiétaire';
+                                    
+                                }
+                            ?>
+                        </label>
                         <button class="contact_btn">Mettre en contact</button>
                         <div class="contact_form">
                             <form>
@@ -119,8 +158,25 @@
             <div class="mobile_contact_box">
                 <div class="mobile_contact_info">
                     <div class="contact_id">
-                        <label>User</label>
-                        <p>Propiétaire</p>
+                        <label>
+                            <?php
+                                if(!empty($user['display_name'] && $user['display_name'] !== null)){
+                                    echo $user['display_name'];
+                                }else{
+                                    echo $user['nom'].' '.$user['prenom'];
+                                }
+                            ?>
+                        </label>
+                        <p>
+                            <?php
+                                if(!empty($user['display_name'] || $user['display_name'] != 'null')){
+                                    echo 'Agence';
+                                }else{
+                                    echo 'Propiétaire';
+                                    
+                                }
+                            ?>
+                        </p>
                     </div>
                     <button class="contact_btn">Mettre en contact</button>
                 </div>
@@ -152,22 +208,25 @@
         const currentImg = document.querySelector('#current_img');
         const totalImg = document.querySelector('#total_img');
         const images = document.querySelector("[data-slides]");
+        //Total amount of images
         totalImg.innerText = images.children.length;
 
         buttons.forEach(button =>{
         button.addEventListener("click",()=>{
-            //Find which button was pressed and retrieve data from the slide container
-            const offset = button.dataset.slideBtn === "next" ?1:-1
-            const slides = button.closest("[data-slide-container]").querySelector("[data-slides]")
-            const activeSlide = slides.querySelector("[data-active]")
-            //Index
-            let newIndex = [...slides.children].indexOf(activeSlide) + offset
-            if(newIndex < 0) newIndex = slides.children.length -1
-            if(newIndex >= slides.children.length) newIndex = 0
-            //Make changes
-            slides.children[newIndex].dataset.active = true
-            currentImg.innerText = newIndex+1
-            delete activeSlide.dataset.active
+            if(images.children.length >1){
+                //Find which button was pressed and retrieve data from the slide container
+                const offset = button.dataset.slideBtn === "next" ?1:-1
+                const slides = button.closest("[data-slide-container]").querySelector("[data-slides]")
+                const activeSlide = slides.querySelector("[data-active]")
+                //Index
+                let newIndex = [...slides.children].indexOf(activeSlide) + offset
+                if(newIndex < 0) newIndex = slides.children.length -1
+                if(newIndex >= slides.children.length) newIndex = 0
+                //Make changes
+                slides.children[newIndex].dataset.active = true
+                currentImg.innerText = newIndex+1
+                delete activeSlide.dataset.active
+            }
         })
         })
         //Contact form 
@@ -191,11 +250,15 @@
         }
         )
         })
-        //Function for returning property ID
-        function returnID(){
-            return console.log('Yijeiei3');
+        //Add comma separation to price
+        var prices = document.querySelectorAll('.priceValue');
+        prices.forEach(price =>{
+            priceValue = price.textContent;
+            var formatedNumber = priceValue.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+            price.textContent = formatedNumber;
         }
-        //View property end
+        )
+        //Add comma separation to price end
     </script>
 </body>
 </html>
