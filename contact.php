@@ -90,9 +90,6 @@
             font-size: 28px;
             font-weight:bold;
         }   
-        .error{
-            color: red;
-        }
         .FAQ .grid_container{
             display: grid;
             grid-template-columns: repeat(auto-fit,320px);
