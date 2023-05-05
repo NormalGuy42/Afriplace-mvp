@@ -13,6 +13,83 @@
     $numViews = $property['views'];
     $viewQuery = "UPDATE properties SET `views` = $numViews+1 WHERE `id`=$propertyID";
     mysqli_query($db,$viewQuery);
+
+    //Message
+    $headerLink = "viewproperty.php?id=$propertyID";
+    $errors = ['objet'=>'','email'=>'','phone'=>'','name'=>'','message'=>''];
+    $objet = $email = $phone = $name = $message = '';
+    if(isset($_POST['submitMessage'])){
+        //Check object
+        if(empty($_POST['objet']) || $_POST['objet'] == "choice"){
+            $errors['objet'] = 'Vous devez choisir la raison de votre demande';
+        }else{
+            $objet = $_POST['objet'];
+        }
+        //Check name
+        if(empty($_POST['name'])){
+            $errors['name'] = 'Entrez votre nom et votre prenom';
+        }
+        else{
+            $name = $_POST['name'];
+            if(!preg_match('/^[a-zA-Zéêèçîô\s]+$/',$name)){
+                $errors['name'] ='Votre nom doit uniquement contenir des lettres';
+            }
+        }
+        //Check email
+        if(empty($_POST['email'])){
+            $errors['email'] = 'Entrez votre email';
+        }else{
+            $email = $_POST['email'];
+            if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = 'Votre email doit être une adresse email valide';
+            }
+        }
+        //Check telephone
+        if(empty($_POST['phone'])){
+            $errors['phone'] = 'Entrez votre numero de téléphone';
+        }
+        else{
+            $phone = $_POST['phone'];
+            if(!preg_match('/^\+?[1-9][0-9]{7,14}$/',$phone)){
+                $errors['phone'] = 'Format du numero incorrect';
+            }
+        }
+        //Check message
+        if(empty($_POST['message'])){
+            $errors['message'] = 'Entrez un message';
+        }else{
+            $message = $_POST['message'];
+        }
+        if(!array_filter($errors)){
+            //objet
+            if($objet== "interest"){
+                $objet = "est intéressé par votre bien";
+            }
+            if($objet== "visit"){
+                $objet = "souhaite visiter votre bien";
+            }
+            if($objet== "renseignement"){
+                $objet = "souhaite se renseigner";
+            }
+            //Put in query
+            $objet = mysqli_real_escape_string($db,$objet);
+            $email = mysqli_real_escape_string($db,$_POST['email']);
+            $name = mysqli_real_escape_string($db,$_POST['name']);
+            $phone = mysqli_real_escape_string($db,$_POST['phone']);
+            $message = mysqli_real_escape_string($db,$_POST['message']);
+            $propertyName = mysqli_real_escape_string($db,$property['title']);
+            $userID = mysqli_real_escape_string($db,$property['userID']);
+
+            $sql = "INSERT INTO `messages`(`objet`, `email`, `name`, `phone`, `message`, `user_ID`, `property_name`) 
+            VALUES ('$objet','$email','$name','$phone','$message','$userID','$propertyName')";
+            if(mysqli_query($db,$sql)){
+                $numMessages = $property['messages'];
+                $messageQuery = "UPDATE properties SET `messages` = $numMessages+1 WHERE `id`=$propertyID";
+                mysqli_query($db,$messageQuery);
+                header('Location: '.$headerLink);
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -138,18 +215,24 @@
                             ?>
                         </label>
                         <button class="contact_btn">Mettre en contact</button>
-                        <div class="contact_form">
-                            <form>
-                                <select>
-                                    <option>Je suis intéressé(e) par votre bien</option>
-                                    <option>Je souhaite visiter ce bien</option>
-                                    <option>Je veux me renseigner</option>
+                        <div class="contact_form <?php if(array_filter($errors)){echo 'show';}?>">
+                            <form action="<?php echo htmlspecialchars($headerLink)?>" method="POST">
+                                <select name="objet">
+                                    <option value="choice">Choissisez une raison</option>
+                                    <option value="interest"<?php if(isset($_POST['submit'])){if($_POST['objet']=="interest"){echo 'selected';}}?>>Je suis intéressé(e) par votre bien</option>
+                                    <option value="visit" <?php if(isset($_POST['submit'])){if($_POST['objet']=="visit"){echo 'selected';}}?>>Je souhaite visiter ce bien</option>
+                                    <option value="renseignement" <?php if(isset($_POST['submit'])){if($_POST['objet']=="renseignement"){echo 'selected';}}?>>Je veux me renseigner</option>
                                 </select>
-                                <input type="text" placeholder="Nom et Prénom">
-                                <input type="email" placeholder="Email">
-                                <input type="number" placeholder="Numéro de télephone">
-                                <textarea cols="20" placeholder="Votre message"></textarea>
-                                <button class="contact_form_btn">Envoyer</button>
+                                <div class="error"><?php echo $errors['objet']?></div>
+                                <input type="text" placeholder="Nom et Prénom" name="name" value="<?php echo $name?>">
+                                <div class="error"><?php echo $errors['name']?></div>
+                                <input type="email" placeholder="Email" name="email" value="<?php echo $email?>">
+                                <div class="error"><?php echo $errors['email']?></div>
+                                <input type="number" placeholder="Numéro de télephone" name="phone" value="<?php echo $phone?>">
+                                <div class="error"><?php echo $errors['phone']?></div>
+                                <textarea cols="20" placeholder="Votre message" name="message"><?php echo $message?></textarea>
+                                <div class="error"><?php echo $errors['message']?></div>
+                                <button class="contact_form_btn" name="submitMessage">Envoyer</button>
                             </form>
                         </div>
                     </div>
@@ -180,18 +263,24 @@
                     </div>
                     <button class="contact_btn">Mettre en contact</button>
                 </div>
-                <div class="contact_form">
-                    <form>
-                        <select>
-                            <option>Je suis intéressé(e) par votre bien</option>
-                            <option>Je souhaite visiter ce bien</option>
-                            <option>Je veux me renseigner</option>
+                <div class="contact_form <?php if(array_filter($errors)){echo 'show';}?>">
+                    <form action="<?php echo htmlspecialchars($headerLink)?>" method="POST">
+                        <select name="objet">
+                            <option value="choice">Choissisez une raison</option>
+                            <option value="interest"<?php if(isset($_POST['submit'])){if($_POST['objet']=="interest"){echo 'selected';}}?>>Je suis intéressé(e) par votre bien</option>
+                            <option value="visit" <?php if(isset($_POST['submit'])){if($_POST['objet']=="visit"){echo 'selected';}}?>>Je souhaite visiter ce bien</option>
+                            <option value="renseignement" <?php if(isset($_POST['submit'])){if($_POST['objet']=="renseignement"){echo 'selected';}}?>>Je veux me renseigner</option>
                         </select>
-                        <input type="text" placeholder="Nom et Prénom">
-                        <input type="email" placeholder="Email">
-                        <input type="number" placeholder="Numéro de télephone">
-                        <textarea cols="20" placeholder="Votre message"></textarea>
-                        <button class="contact_form_btn">Envoyer</button>
+                        <div class="error"><?php echo $errors['objet']?></div>
+                        <input type="text" placeholder="Nom et Prénom" name="name" value="<?php echo $name?>">
+                        <div class="error"><?php echo $errors['name']?></div>
+                        <input type="email" placeholder="Email" name="email" value="<?php echo $email?>">
+                        <div class="error"><?php echo $errors['email']?></div>
+                        <input type="number" placeholder="Numéro de télephone" name="phone" value="<?php echo $phone?>">
+                        <div class="error"><?php echo $errors['phone']?></div>
+                        <textarea cols="20" placeholder="Votre message" name="message"><?php echo $message?></textarea>
+                        <div class="error"><?php echo $errors['message']?></div>
+                        <button class="contact_form_btn" name="submitMessage">Envoyer</button>
                     </form>
                 </div>
             </div>

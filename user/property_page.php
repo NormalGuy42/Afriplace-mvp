@@ -29,14 +29,20 @@
     }
     //Delete
     if(isset($_POST['deleteButton'])){
+        //Delete images
+        $images = explode(',',$property['images']);
+        array_pop($images);                
+        foreach($images as $img){
+            unlink('../'.$img);
+        }
+        //Delete property
         $propertyID = mysqli_real_escape_string($db,$propertyID);
         $location = mysqli_real_escape_string($db,$location);
-        $query = "DELETE FROM properties WHERE `properties`.`id` = $propertyID";
+        $query = "DELETE FROM properties WHERE `id` = $propertyID";
         mysqli_query($db,$query);
-        //Delete images
-
+    
         //Redirect
-        header('Refresh: 0');
+        header('Location: '.$location);
     }
 ?>
 <!DOCTYPE html>
@@ -225,8 +231,6 @@
                     <?php
                         $images = explode(',',$property['images']);
                         array_pop($images);
-                        // $imagesLength = sizeof($imagesArray)-1;
-                        // $images = array_splice($imagesArray,$imagesLength);
                         foreach($images as $img):  
                     ?>
                         <li><img src="<?php echo htmlspecialchars('../'.$img)?>" alt=""></li>
@@ -254,6 +258,14 @@
                                 }
                             ?>
                         </span>
+                    </div>
+                    <div class="info_box">
+                        <label class="info">Nombre de messages:</label>
+                        <span><?php echo htmlspecialchars($property['messages'])?></span>
+                    </div>
+                    <div class="info_box">
+                        <label class="info">Nombre de vues:</label>
+                        <span><?php echo htmlspecialchars($property['views'])?></span>
                     </div>
                     <div class="info_box">
                         <label class="info">Quartier:</label>
@@ -325,7 +337,7 @@
                             <form action="<?php echo $headerLink?>" method="POST">
                                 <div class="flex">
                                     <button class="cancel" type="button">Annuler</button>
-                                    <button class="deleteButton" name="deleteButton" value="submit">Supprimer</button>
+                                    <button class="deleteButton" name="deleteButton">Supprimer</button>
                                 </div>
                             </form>
                     </div>
@@ -342,7 +354,7 @@
             var popup = document.querySelector('.popup');
             var body = document.querySelector('body');
             if(e.target.closest('.cancel') || e.target.closest('.screen_overlay')){
-                if(!e.target.closest('.text_container')){
+                if(!e.target.closest('.text_container') && !e.target.closest('.deleteButton')){
                     body.removeChild(popup);
                 }
             }

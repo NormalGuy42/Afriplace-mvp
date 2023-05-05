@@ -10,6 +10,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    top: -35px;
 }
 .errorBox{
     position: absolute;
@@ -256,7 +257,7 @@ h3{
     position: relative;
     margin: 20px 0;
 }
-.noproperty {
+.emptySection {
     height: 200px;
     display: flex;
     justify-content: center;
@@ -328,7 +329,9 @@ h3{
 }
 
 .deletePopup p{
+    margin-top: 5px;
     white-space: normal !important;
+    letter-spacing: 0.03rem;
     text-overflow: unset !important;
 }
 .deletePopup .text_container{
@@ -492,6 +495,9 @@ h3{
     letter-spacing: 0.03rem;
     margin-bottom: 8px;
     padding: 3px 5px 5px;
+    max-height: 200px;
+    /* overflow-y: scroll; */
+    overflow: hidden;
 }
 .messages .card .btn_container{
     display: flex;

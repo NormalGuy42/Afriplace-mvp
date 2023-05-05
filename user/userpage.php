@@ -1,11 +1,22 @@
 <?php
     include('../config/connection.php');
-    include('../templates/get_user_id.php');
+    include('../templates/get_user_id.php');    
     //Get properties
     $userID = mysqli_real_escape_string($db,$id);
-    $propertiesSql = "SELECT * FROM properties WHERE `userID`= '$userID' ORDER BY id DESC";
+    $propertiesSql = "SELECT * FROM properties WHERE `userID`= '$userID' ORDER BY id DESC LIMIT 5";
     $properties = mysqli_query($db,$propertiesSql);
 
+    //Get messages
+    $messagesSql = "SELECT * FROM messages WHERE user_ID= $userID ORDER BY id DESC";
+    $messages = mysqli_query($db,$messagesSql);
+    $messages_list = [];
+    if(mysqli_num_rows($messages) >3){
+        for($i=0;$i<3;$i++){
+            array_push($messages_list,$messageQuery[$i]);
+        }
+    }else{
+        $messages_list = $messages;
+    }
     //Get removed properties
     $removedProperties = [];
     foreach($properties as $property){
@@ -54,7 +65,9 @@
             color: #afa7a7;
         }
         /*Profile end*/
-
+        .messages{
+            margin-bottom: 100px;
+        }
         @media(max-width: 1030px) {
             .userpage_content{
                 padding: 8px;
@@ -91,26 +104,31 @@
                     </div>
                 </div>
             </div>
-            <div class="messages">
-                <h2>Messages</h2>
-                <div class="container">
-                    <div class="card">
-                        <img src="../assets/user-pfp.png" alt="">
-                        <label class="name">Name</label>
-                        <label class="message_title">Pour: <span>property name</span></label>
-                        <label>Je veux visiter</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque officiis qui excepturi reprehenderit 
-                        ea corporis possimus cum consequatur itaque illum?</p>
-                        <div class="btn_container">
-                            <button class="ignore">Rejeter</button>
-                            <button class="respond">Répondre</button>
+            <?php if(mysqli_num_rows($messages)>0):?>
+                <div class="messages">
+                    <h2>Messages</h2>
+                <?php foreach($messages_list as $msg):?>
+                    <div class="container">
+                        <div class="card">
+                            <img src="../assets/user-pfp.png" alt="">
+                            <label class="name"><?php echo htmlspecialchars($msg['name'])?></label>
+                            <label class="message_title">Pour: <span><?php echo htmlspecialchars($msg['property_name'])?></span></label>
+                            <label><?php echo htmlspecialchars($msg['objet'])?></label>
+                            <p><?php echo htmlspecialchars($msg['message'])?></p>
+                            <div class="btn_container">
+                                <button class="ignore">Rejeter</button>
+                                <button class="respond">Répondre</button>
+                            </div>
                         </div>
                     </div>
+                <?php endforeach?>
+                <?php if(mysqli_num_rows($messages)>3):?>
+                    <label for="" class="more"><a href="message.php">
+                    Voir tout mes messages
+                    </a></label>
+                <?php endif?>
                 </div>
-                <label for="" class="more"><a href="message.php">
-                Voir tout mes messages
-                </a></label>
-            </div>
+            <?php endif?>
             <div class="properties" oncontextmenu = "return false;">
                 <h2>Mes proprietes</h2>
                 <div class="properties_container">
@@ -133,11 +151,11 @@
                                             <div class="stats_container">
                                                 <div class="stat">
                                                     <img src="../assets/message2.svg" alt="">
-                                                    <label for=""><?php echo htmlspecialchars(strval($property['messages']))?></label>
+                                                    <label for="" data-stat="true"><?php echo htmlspecialchars(strval($property['messages']))?></label>
                                                 </div>
                                                 <div class="stat">
                                                     <img src="../assets/eye.svg" alt="">
-                                                    <label for=""><?php echo htmlspecialchars(strval($property['views']))?></label>
+                                                    <label for="" data-stat="true"><?php echo htmlspecialchars(strval($property['views']))?></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -293,7 +311,7 @@
                 </div>
                 <?php endif?>
                 <?php if(mysqli_num_rows($properties)<=0):?>
-                        <div class="noproperty">
+                        <div class="emptySection">
                             <div>Auncune propriété</div>
                         </div>
                 <?php endif?>
@@ -315,6 +333,19 @@
         }
         )
         //Add comma separation to price end
+        //Format big numbers start
+        var stats = document.querySelectorAll('[data-stat]');
+        stats.forEach(stat=>{
+            if(parseInt(stat.innerText)>=1000 && parseInt(stat.innerText)<1000000){
+                var value = parseInt(stat.innerText)/1000;
+                stat.innerText = value+'k';
+            }
+            if(parseInt(stat.innerText)>=1000000){
+                var value = parseInt(stat.innerText)/1000000;
+                stat.innerText = value+'M';
+            }
+        })
+        //Format big numbers end
     </script>
 </body>
 </html>

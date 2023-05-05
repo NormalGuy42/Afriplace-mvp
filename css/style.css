@@ -1,3 +1,9 @@
+:root{
+    /* --main-color: rgb(255 ,165, 0); */
+    /* --main-color: rgb(255 144 7); */
+    --main-color: rgb(255 121 7);
+    --grey: rgb(216, 216, 216);
+}
 *{
     padding: 0;
     margin: 0;
@@ -6,12 +12,26 @@
     box-sizing: border-box;
     font-weight: normal;
 }
-:root{
-    /* --main-color: rgb(255 ,165, 0); */
-    /* --main-color: rgb(255 144 7); */
-    --main-color: rgb(255 121 7);
-    --grey: rgb(216, 216, 216);
+/*Css for errors start*/
+.error{
+    color: red;
 }
+.errorPlace{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: -35px;
+}
+.errorBox{
+    position: absolute;
+    box-shadow: 0 0 2px 1px rgb(0 0 0 / 18%);
+    padding: 5px;
+    z-index: 999;
+    color: #e91010;
+    background-color: rgb(251 188 188);
+}
+/*Css for errors end*/
 body{
     /* font-family: system-ui;  */
     font-family: Arial, Helvetica, sans-serif;

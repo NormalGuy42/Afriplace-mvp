@@ -319,7 +319,7 @@
                     </div>
                 </div>
                 <div class="error"><?php echo htmlspecialchars($errors['localisation'])?></div>
-               <div class="btn_input" id="house_stats">
+               <div class="btn_input <?php if($type == "Maison"|| $type=="Appart"){echo 'showSection';}?>" id="house_stats">
                         <div class="container">
                             <label>Nombre de chambres</label>
                             <div class="custom_btn" id="bed_num">

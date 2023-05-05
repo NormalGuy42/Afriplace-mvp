@@ -1,6 +1,9 @@
 <?php 
     include('../config/connection.php');
     include('../templates/get_user_id.php');
+    $userID = mysqli_real_escape_string($db,$id);
+    $messagesSql = "SELECT * FROM messages WHERE user_ID= $userID ORDER BY id DESC";
+    $messages = mysqli_query($db,$messagesSql);
 ?>
 
 <!DOCTYPE html>
@@ -22,22 +25,30 @@
         <div class="userpage_content">
             <h1 class="title">Messages</h1>
             <div class="line"></div>
-            <div class="messages">
-                <div class="container">
-                    <div class="card">
-                        <img src="../assets/user-pfp.png" alt="">
-                        <label class="name">Name</label>
-                        <label class="message_title">Pour: <span>property name</span></label>
-                        <label>Je veux visiter</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque officiis qui excepturi reprehenderit 
-                        ea corporis possimus cum consequatur itaque illum?</p>
-                        <div class="btn_container">
-                            <button class="ignore">Rejeter</button>
-                            <button class="respond">Répondre</button>
+            <?php if(mysqli_num_rows($messages)>0):?>
+                <div class="messages">
+                    <?php foreach($messages as $msg):?>
+                        <div class="container">
+                            <div class="card">
+                                <img src="../assets/user-pfp.png" alt="">
+                                <label class="name"><?php echo htmlspecialchars($msg['name'])?></label>
+                                <label class="message_title">Pour: <span><?php echo htmlspecialchars($msg['property_name'])?></span></label>
+                                <label><?php echo htmlspecialchars($msg['objet'])?></label>
+                                <p><?php echo htmlspecialchars($msg['message'])?></p>
+                                <div class="btn_container">
+                                    <button class="ignore">Rejeter</button>
+                                    <button class="respond">Répondre</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <?php endforeach?>
                 </div>
-            </div>
+            <?php endif?>
+            <?php if(mysqli_num_rows($messages)<1):?>
+                <div class="emptySection">
+                    <div>Aucun message</div>
+                </div>
+            <?php endif?>
         </div>
     </div>
 </body>

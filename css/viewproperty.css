@@ -1,3 +1,4 @@
+
 /*Property Listing start*/
 .property_container{
     margin: 0 auto;
@@ -5,7 +6,12 @@
     width: 70%;
 }
 /*Important class*/
-.show{height: 360px !important;}
+.show{
+    /* height: 360px !important; */
+    height: 100% !important;
+    max-height: 470px !important;
+    min-height: 360px;
+}
 /*Image containers start*/
 .img_containers{
     height: 300px;
@@ -82,7 +88,6 @@
 .adress{
     display: flex;
     margin-top: 10px;
-    width: 100%;
     align-items: flex-start;
     margin-left: 20px;
     font-size: 18px;
