@@ -45,7 +45,7 @@
             $errors['quartier'] = 'Vous devez choisir un quartier';
         }else{
             $quartier = $_POST['quartier'];
-            $quartierQuery = "SELECT `communes rurales` FROM places WHERE `communes rurales` LIKE '%$quartier%'";
+            $quartierQuery = "SELECT `communes rurales` FROM places WHERE `communes rurales` = '$quartier'";
             $quartierResult = mysqli_query($db,$quartierQuery);
             if(mysqli_num_rows($quartierResult) >1){
                 $errors['quartier'] ='Ce quartier n\'est pas dans notre base de donnée';
@@ -124,12 +124,7 @@
         if(!array_filter($errors)){
             //format information start
             $priceString = str_replace('.','',$_POST['price']);
-            $statutString = $_POST['statut'];
-            if($statutString ='A acheter'){
-                $statutInfo = 'buy';
-            }elseif($statutString ='A louer'){
-                $statutInfo = 'rent';
-            }
+            $surfaceString = str_replace('.','',$_POST['surface']);
             //format information end
 
             //Get location information from quartier end
@@ -142,10 +137,10 @@
             $price = mysqli_real_escape_string($db,intval($priceString));
             $title = mysqli_real_escape_string($db,$_POST['title']);
             $type = mysqli_real_escape_string($db,$_POST['type']);
-            $statut = mysqli_real_escape_string($db,$statutInfo);
+            $statut = mysqli_real_escape_string($db,$_POST['statut']);
             $bedNum = mysqli_real_escape_string($db,intval($_POST['bedNum']));
             $toiletteNum = mysqli_real_escape_string($db,intval($_POST['toiletteNum']));
-            $surface = mysqli_real_escape_string($db,intval($_POST['surface']));
+            $surface = mysqli_real_escape_string($db,intval($surfaceString));
             $localisation = mysqli_real_escape_string($db,$_POST['localisation']);
             $quartier = mysqli_real_escape_string($db,$_POST['quartier']);
             $description = mysqli_real_escape_string($db,$_POST['description']);
@@ -157,30 +152,18 @@
             $prefecture = mysqli_real_escape_string($db,$placeInfo['prefectures']);
             $region = mysqli_real_escape_string($db,$placeInfo['regions']);
             $country =  mysqli_real_escape_string($db,$placeInfo['pays']);
+            
             //Information to insert end
-            $houses = ['Maison','Appart'];
-            if(in_array($type,$houses)){
-                $sql = "INSERT INTO properties(`title`, `price`,`type`, `action`, `bedNum`,
-                `toiletteNum`, `surface`, `description`, `quirks`, 
-                `images`, `localisation`, `userID`,`quartier`,`communes urbaines`, `prefectures`, `regions`, `pays`) 
-                VALUES('$title',$price,'$type','$statut',$bedNum,$toiletteNum,$surface,
-                '$description','$quirks','$images','$localisation',$userID,'$quartier','$district','$prefecture','$region','$country')";
-                if(mysqli_query($db,$sql)){
-                    header('Location: userpage.php');
-                }
-                else{
-                    echo "<div class='errorBox'>Erreur de connexion</div>";
-                }
-            }else{
-                $sql = "INSERT INTO properties(`title`,`price`,`type`, `action`, `surface`, `description`,
-                `images`, `localisation`, `userID`,`quartier`,`communes urbaines`, `prefectures`, `regions`, `pays`) 
-                VALUES('$title',$price,'$type','$statut',$surface,'$description','$images','$localisation',$userID,'$quartier','$district','$prefecture','$region','$country')";
-                if(mysqli_query($db,$sql)){
-                    header('Location: userpage.php');
-                }
-                else{
-                    echo "<div class='errorBox'>Erreur de connexion</div>";
-                }
+            $sql = "INSERT INTO properties(`title`, `price`,`type`, `action`, `bedNum`,
+            `toiletteNum`, `surface`, `description`, `quirks`, 
+            `images`, `localisation`, `userID`,`quartier`,`communes urbaines`, `prefectures`, `regions`, `pays`) 
+            VALUES('$title',$price,'$type','$statut',$bedNum,$toiletteNum,$surface,
+            '$description','$quirks','$images','$localisation',$userID,'$quartier','$district','$prefecture','$region','$country')";
+            if(mysqli_query($db,$sql)){
+                header('Location: userpage.php');
+            }
+            else{
+                echo "<div class='errorBox'>Erreur de connexion</div>";
             }
         }
         //Save data to database end
@@ -295,8 +278,8 @@
                     <label>Statut du bien<span> *</span></label>
                     <select name="statut" value="<?php echo htmlspecialchars($statut)?>">
                         <option>Choisir le statut</option>
-                        <option <?php if($statut=="A acheter"){echo 'selected';}?>>A acheter</option>
-                        <option <?php if($statut=="A louer"){echo 'selected';}?>>A louer</option>
+                        <option value="buy" <?php if($statut=="buy"){echo 'selected';}?>>A acheter</option>
+                        <option value="rent" <?php if($statut=="rent"){echo 'selected';}?>>A louer</option>
                     </select>
                 </div>
                </div>

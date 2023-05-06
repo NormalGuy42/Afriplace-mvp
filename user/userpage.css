@@ -20,6 +20,9 @@
     color: #e91010;
     background-color: rgb(251 188 188);
 }
+.hidden{
+    display: none;
+}
 a{
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -307,6 +310,7 @@ h3{
 .screen_overlay {
     position: fixed;
     top: 0;
+    right: 0;
     height: 100%;
     width: 100%;
     display: flex;
@@ -421,6 +425,7 @@ h3{
     display: flex;
     justify-content: space-evenly;
     text-overflow: ellipsis;
+    white-space: nowrap;
     padding: 5px 0 0;
 }
 .property_box h3{
@@ -529,6 +534,7 @@ button.respond{
     display: inline;
     margin: 0 auto;
     width: 40%;
+    max-width: 680px;
     margin-bottom: 30px;
 }
 /*Images upload start*/
@@ -589,6 +595,7 @@ button.respond{
 /*Input start*/
 .create_listing .inputs{
     display: table;
+    max-width: 680px;
     margin: 2px 0px;
     width: 100%;
 }
@@ -617,6 +624,7 @@ button.respond{
 }
 .create_listing .surface{
     display: table;
+    max-width: 680px;
     width: 100%;
 }
 .create_listing .container.surface{
@@ -677,6 +685,7 @@ button.respond{
 /*Button container end*/
 .create_listing .container textarea{
     width: 100%;
+    max-width: 680px;
     height: 150px;
     border: 1px solid;
     font-family: Arial, Helvetica, sans-serif;
@@ -713,6 +722,10 @@ button.respond{
     .create_listing{
         width: 70%;
     }
+    .create_listing .container textarea{
+        max-width: 655px;
+    }
+
 }
 @media (max-width:600px) {
     .create_listing{

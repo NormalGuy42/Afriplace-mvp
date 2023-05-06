@@ -67,7 +67,7 @@
             $errors['quartier'] = 'Vous devez choisir un quartier';
         }else{
             $quartier = $_POST['quartier'];
-            $quartierQuery = "SELECT `communes rurales` FROM places WHERE `communes rurales` LIKE '%$quartier%'";
+            $quartierQuery = "SELECT `communes rurales` FROM places WHERE `communes rurales` = '$quartier'";
             $quartierResult = mysqli_query($db,$quartierQuery);
             if(mysqli_num_rows($quartierResult) >1){
                 $errors['quartier'] ='Ce quartier n\'est pas dans notre base de donnée';
@@ -121,9 +121,12 @@
                                     //Create unique names for images
                                     $imageNewName = uniqid('',true).".".$imageActualExt;
                                     $imageDestination = '../uploads/properties/'.$imageNewName;
-                                    //Put images in list
+                                    //Put images in list and remove ../
                                     $GLOBALS['imageSources'].= str_replace('../','',$imageDestination).',';
                                     move_uploaded_file($imageTempName,$imageDestination);
+                                    foreach($imagesArr as $img){
+                                        unlink($img);
+                                    }
                                 }
                             }else{
                                 $errors['img'] = "Cette image est trop grande!";
@@ -138,13 +141,17 @@
             }catch(e){}
         }else{
             // $errors['img'] = "Vous devez choisir des images";
-            $GLOBALS['imageSources'] = implode(',',$imagesArr);
+            // $GLOBALS['imageSources'] = implode(',',$imagesArr);
+            foreach($imagesArr as $img){
+                $GLOBALS['imageSources'] .= $img.',';
+            }
         }
         //Image Upload end
         //Save data to database start
         if(!array_filter($errors)){
             //format information start
             $priceString = str_replace('.','',$_POST['price']);
+            $surfaceString = str_replace('.','',$_POST['surface']);
             //format information end
 
             //Get location information from quartier end
@@ -160,7 +167,7 @@
             $statut = mysqli_real_escape_string($db,$_POST['statut']);
             $bedNum = mysqli_real_escape_string($db,intval($_POST['bedNum']));
             $toiletteNum = mysqli_real_escape_string($db,intval($_POST['toiletteNum']));
-            $surface = mysqli_real_escape_string($db,intval($_POST['surface']));
+            $surface = mysqli_real_escape_string($db,intval($surfaceString));
             $localisation = mysqli_real_escape_string($db,$_POST['localisation']);
             $quartier = mysqli_real_escape_string($db,$_POST['quartier']);
             $description = mysqli_real_escape_string($db,$_POST['description']);
@@ -496,7 +503,7 @@
             var bedInput =document.querySelector('#bedInput');
             const bedButtons = document.querySelectorAll("[data-bed-btn]");
             const spanBed = document.getElementById('num_lits');
-            let num = 0;
+            let num = spanBed.innerText;
             bedButtons.forEach(button =>{
             button.addEventListener("click",()=>{
                 var value = button.dataset.bedBtn;
@@ -512,7 +519,7 @@
             var toiletteInput =document.querySelector('#toiletteInput');
             const toiletteButtons = document.querySelectorAll("[data-bath-btn]");
             const spanToilette = document.getElementById('num_toilettes');
-            let num = 0;
+            let num = spanToilette.innerText;
             toiletteButtons.forEach(button =>{
             button.addEventListener("click",()=>{
                 var value = button.dataset.bathBtn;
